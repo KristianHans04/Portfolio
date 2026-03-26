@@ -1,0 +1,20 @@
+{
+  "slug": "young-scientists-kenya-mentor",
+  "published": true,
+  "order": 30,
+  "area": "mentorship",
+  "title": "STEM Mentor",
+  "organization": "Young Scientists Kenya",
+  "year": "2024",
+  "summary": "Mentored high school students in technology, sharing technical guidance and pathways for global STEM opportunities.",
+  "details": [
+    "Engaged more than 1,000 students from over 25 high schools.",
+    "Provided technical coaching and practical innovation guidance."
+  ],
+  "links": [
+    {
+      "label": "Young Scientists Kenya",
+      "url": "https://ysk.co.ke"
+    }
+  ]
+}

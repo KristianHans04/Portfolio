@@ -1,0 +1,16 @@
+{
+  "slug": "public-speaking",
+  "published": true,
+  "order": 6,
+  "area": "speaking",
+  "title": "Public Speaker - Technology and STEM Events",
+  "organization": "Various",
+  "year": "2024 - Present",
+  "summary": "Regular public speaker at technology and STEM events. Spoken at iHub, Parklands, and industry events on topics spanning software engineering, robotics mentorship, and youth development in technology.",
+  "details": [
+    "Delivered talks at iHub, one of Africa's leading innovation hubs, on technology and engineering topics.",
+    "Public speaking at Parklands covering STEM education and mentorship experiences.",
+    "Speaks on the intersection of software engineering, international robotics competition, and building access to STEM for underserved communities."
+  ],
+  "links": []
+}

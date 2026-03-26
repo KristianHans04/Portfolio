@@ -1,0 +1,19 @@
+{
+  "slug": "award-most-creative-robot-2023",
+  "published": true,
+  "order": 110,
+  "area": "awards",
+  "title": "Most Creative Robot Bronze Medal",
+  "organization": "FIRST Global Roboco Challenge",
+  "year": "2023",
+  "summary": "Represented Kenya in the FIRST Global Roboco Challenge 2023 and received a bronze medal for the most creative robot.",
+  "details": [
+    "Recognition focused on robotics innovation and creative technical execution."
+  ],
+  "links": [
+    {
+      "label": "FIRST Global",
+      "url": "https://www.first.global"
+    }
+  ]
+}

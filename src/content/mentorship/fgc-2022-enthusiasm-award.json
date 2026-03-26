@@ -1,0 +1,23 @@
+{
+  "slug": "fgc-2022-enthusiasm-award",
+  "published": true,
+  "order": 4,
+  "area": "awards",
+  "title": "Silver Medal - International Enthusiasm Award",
+  "organization": "FIRST Global Challenge 2022",
+  "year": "2022",
+  "summary": "Won the Silver Medal for the International Enthusiasm Award at the FIRST Global Challenge 2022 in Geneva, Switzerland. Recognized for exceptional team spirit and cross-cultural collaboration.",
+  "details": [
+    "FIRST Global Challenge 2022, Geneva, Switzerland.",
+    "Silver Medal: International Enthusiasm Award.",
+    "Participated as a student representing Team Kenya.",
+    "This experience catalyzed the transition from participant to mentor in subsequent years."
+  ],
+  "links": [
+    {
+      "label": "FIRST Global",
+      "url": "https://www.first.global"
+    }
+  ],
+  "image": "/images/impact/fgc-2022-award.jpg"
+}

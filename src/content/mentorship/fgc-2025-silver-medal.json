@@ -1,0 +1,23 @@
+{
+  "slug": "fgc-2025-silver-medal",
+  "published": true,
+  "order": 3,
+  "area": "awards",
+  "title": "Silver Medal - 1st Runners Up in FIRST Global Winning Alliances",
+  "organization": "FIRST Global Challenge 2025",
+  "year": "2025",
+  "summary": "Team Kenya won the Silver Medal as 1st Runners Up in the Winning Alliances category at the FIRST Global Challenge 2025 in Panama City, Panama. Competing against teams from over 180 countries.",
+  "details": [
+    "FIRST Global Challenge 2025, Panama City, Panama.",
+    "Silver Medal: 1st Runners Up in FIRST Global Winning Alliances.",
+    "Competing against teams representing over 180 countries worldwide.",
+    "Served as Technical Mentor overseeing all engineering and strategy for the competition."
+  ],
+  "links": [
+    {
+      "label": "FIRST Global",
+      "url": "https://www.first.global"
+    }
+  ],
+  "image": "/images/impact/fgc-2025-silver.jpg"
+}

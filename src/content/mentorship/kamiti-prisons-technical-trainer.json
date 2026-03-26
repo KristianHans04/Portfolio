@@ -1,0 +1,21 @@
+{
+  "slug": "kamiti-prisons-technical-trainer",
+  "published": true,
+  "order": 60,
+  "area": "volunteering",
+  "title": "Technical Trainer",
+  "organization": "Kamiti Medium Prisons via School for a Village",
+  "year": "2024",
+  "summary": "Delivered technical training sessions on Arduino, sensors, and C++ through a community partnership program.",
+  "details": [
+    "Taught practical Arduino and sensor workflows.",
+    "Guided learners through projects such as traffic lights, Blink LED, and a simple alarm system.",
+    "Focused on hands-on curiosity and foundational technical skills."
+  ],
+  "links": [
+    {
+      "label": "School for a Village",
+      "url": "https://www.school4village.org"
+    }
+  ]
+}

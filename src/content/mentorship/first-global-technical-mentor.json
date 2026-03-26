@@ -1,0 +1,22 @@
+{
+  "slug": "first-global-technical-mentor",
+  "published": true,
+  "order": 1,
+  "area": "mentorship",
+  "title": "Technical Mentor, FIRST Global Team Kenya",
+  "organization": "FIRST Global Team Kenya",
+  "year": "2023 - Present",
+  "summary": "Oversaw everything built for international robotics competition from scratch to what traveled overseas. Teams competed in Singapore (2023), Athens (2024), Panama City (2025), and next in Incheon, South Korea (2026). Silver Medal in 2025 as 1st Runners Up in Winning Alliances.",
+  "details": [
+    "Technical Mentor from 2023 to present. Responsible for all engineering, design, and build decisions for international competition robots.",
+    "FGC 2023 (Singapore): First year as mentor. Guided students through full robot design, build, and competition cycle.",
+    "FGC 2024 (Athens, Greece): Expanded mentorship to include strategy, alliance formation, and international collaboration.",
+    "FGC 2025 (Panama City, Panama): Team won Silver Medal as 1st Runners Up in FIRST Global Winning Alliances. Peak competitive result.",
+    "FGC 2026 (Incheon, South Korea): Currently preparing the next cohort for October 7-10, 2026 competition.",
+    "Previously participated as a student in FGC 2022 (Geneva, Switzerland), winning the Silver Medal for the International Enthusiasm Award."
+  ],
+  "links": [
+    {"label": "FIRST Global", "url": "https://www.first.global"},
+    {"label": "Team Kenya Website", "url": "https://fgckenya.kristianhans.com"}
+  ]
+}

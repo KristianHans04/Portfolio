@@ -1,0 +1,9 @@
+{
+  "slug": "todo-book-slug",
+  "published": false,
+  "title": "TODO: Add book title",
+  "author": null,
+  "status": "reading",
+  "yearFinished": null,
+  "notes": null
+}
