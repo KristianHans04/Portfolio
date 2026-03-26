@@ -1,0 +1,16 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+<BaseLayout title="Page Not Found" noindex={true}>
+  <section class="section-shell py-20">
+    <div class="flex flex-col items-center text-center max-w-lg mx-auto">
+      <span class="stat-number text-accent/20 text-8xl sm:text-9xl">404</span>
+      <h1 class="headline-sm mt-4 text-ink">Nothing here.</h1>
+      <p class="mt-4 muted max-w-sm">This page does not exist. It might have been moved, or it never existed in the first place. Either way, you are in the wrong place.</p>
+      <div class="mt-8 flex flex-wrap gap-3 justify-center">
+        <a class="btn-primary" href="/">Go back home</a>
+        <a class="btn-secondary" href="/work">See the work</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

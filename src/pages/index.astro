@@ -1,0 +1,483 @@
+---
+import EmptyState from "@/components/ui/EmptyState.astro";
+import PhotoPlaceholder from "@/components/ui/PhotoPlaceholder.astro";
+import PillList from "@/components/ui/PillList.astro";
+import SectionHeading from "@/components/ui/SectionHeading.astro";
+import SectionDivider from "@/components/ui/SectionDivider.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getImpactEntries, getPhotoEntries, getProjects, getTravelEntries } from "@/lib/content/loaders";
+import { siteData } from "@/lib/site-data";
+import { hasItems, hasRealText, uniqueItems } from "@/lib/text";
+
+import { ScrollParallax } from "@/components/motion/ScrollParallax";
+import { InteractiveCard } from "@/components/motion/InteractiveCard";
+import { CounterUp } from "@/components/motion/CounterUp";
+import { StaggeredReveal } from "@/components/motion/StaggeredReveal";
+
+const projects = getProjects();
+const impactEntries = getImpactEntries();
+const photos = getPhotoEntries();
+const travelEntries = getTravelEntries();
+
+const featuredProjects = projects.filter((project) => project.featured).slice(0, 3);
+const projectSpotlight = featuredProjects.length > 0 ? featuredProjects : projects.slice(0, 3);
+const stack = uniqueItems(projects.flatMap((project) => project.stack)).slice(0, 12);
+
+const hasBio = hasRealText(siteData.shortBio);
+const capabilities = siteData.capabilities.slice(0, 6);
+const currentFocus = siteData.currentFocus.slice(0, 4);
+const credentialHighlights = siteData.credentialHighlights.slice(0, 4);
+
+const profilePhoto = photos.find((item) => item.category === "about") ?? null;
+
+const routeTiles = [
+  {
+    title: "Work",
+    href: "/work",
+    description: "Shipped products with real users, real constraints, and full technical breakdowns. No toy projects.",
+    icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2",
+  },
+  {
+    title: "Impact",
+    href: "/impact",
+    description: "Mentorship, leadership, and community work that produced measurable outcomes, not just attendance.",
+    icon: "M13 10V3L4 14h7v7l9-11h-7z",
+  },
+  {
+    title: "Press & Writing",
+    href: "/press",
+    description: "Public appearances, published thinking, and the ideas that drive the engineering.",
+    icon: "M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2",
+  },
+  {
+    title: "Life",
+    href: "/life",
+    description: "Context beyond the terminal. Travel, reading, and the things that make the work sustainable.",
+    icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z",
+  },
+];
+
+const heroSignals = [
+  "Full-stack delivery",
+  "Market intelligence",
+  "Scraping infrastructure",
+  "STEM mentorship",
+];
+---
+<BaseLayout
+  title="Home"
+  description="Full stack software engineer portfolio with technical depth, leadership context, and personal narrative."
+>
+  <!-- HERO -->
+  <section class="hero-section relative min-h-screen overflow-hidden pt-24 pb-12">
+    <!-- Decorative texture elements -->
+    <div class="pointer-events-none absolute top-20 right-10 h-64 w-64 border-t border-r border-border-subtle/20 opacity-40" aria-hidden="true"></div>
+    <div class="pointer-events-none absolute bottom-20 left-10 h-32 w-96 border-b border-l border-border-subtle/20 opacity-40" aria-hidden="true"></div>
+    <div class="pointer-events-none absolute top-1/2 left-1/4 h-screen w-px bg-gradient-to-b from-transparent via-accent/10 to-transparent" aria-hidden="true"></div>
+
+    <div class="section-shell">
+      <div class="grid grid-cols-1 items-start gap-12 lg:grid-cols-12">
+        <!-- Left content (columns 1-7) -->
+        <div class="flex flex-col pt-6 sm:pt-12 lg:col-span-7">
+          <!-- Role label with accent line -->
+          <div class="flex items-center gap-3 mb-6">
+            <span class="h-px w-8 bg-accent" aria-hidden="true"></span>
+            <span class="font-mono text-xs font-bold uppercase tracking-[0.18em] text-accent">
+              {siteData.role}
+            </span>
+          </div>
+
+          <!-- Headline with highlighted words -->
+          <h1 class="home-hero-title">
+            {hasRealText(siteData.positioningStatement) ? (
+              <Fragment>
+                I build software that <span class="text-accent/80">works</span> and teach people who <span class="text-highlight">will.</span>
+              </Fragment>
+            ) : (
+              "Add a strong homepage headline in src/data/site.json."
+            )}
+          </h1>
+
+          <!-- Subtext -->
+          <p class="home-hero-support mt-8">
+            {hasRealText(siteData.heroIntro)
+              ? siteData.heroIntro
+              : "Add a short supporting line in src/data/site.json to complete the homepage hero."}
+          </p>
+
+          <!-- Signal chips -->
+          <div class="mt-10 flex flex-wrap gap-3">
+            {heroSignals.map((item) => (
+              <span class="hero-signal-chip">
+                {item}
+              </span>
+            ))}
+          </div>
+
+          <!-- CTA cluster -->
+          <div class="mt-12 flex flex-wrap items-center gap-5">
+            <a class="btn-primary" href="/work">View projects</a>
+            <a class="btn-secondary" href="/about">About me</a>
+            <a class="btn-light group" href="/contact">
+              Contact
+              <svg class="ml-2 inline-block h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+            </a>
+          </div>
+
+          <!-- Meta info: Location & Email -->
+          <div class="mt-14 grid grid-cols-1 gap-6 border-t border-border-subtle/15 pt-8 sm:grid-cols-2">
+            {siteData.location && (
+              <div class="flex items-center gap-4">
+                <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-panel-strong/80">
+                  <svg class="h-5 w-5 text-accent" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" /></svg>
+                </div>
+                <div>
+                  <p class="text-[10px] font-mono uppercase tracking-[0.2em] text-ink-muted">Based In</p>
+                  <p class="mt-0.5 text-sm font-medium text-ink">{siteData.location}</p>
+                </div>
+              </div>
+            )}
+            {siteData.email && (
+              <div class="flex items-center gap-4">
+                <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-panel-strong/80">
+                  <svg class="h-5 w-5 text-highlight" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+                </div>
+                <div>
+                  <p class="text-[10px] font-mono uppercase tracking-[0.2em] text-ink-muted">Direct Line</p>
+                  <p class="mt-0.5 text-sm font-medium text-ink">{siteData.email}</p>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <!-- Right profile area (columns 8-12) -->
+        <div class="relative mt-8 lg:col-span-5 lg:col-start-8 lg:mt-0">
+          <!-- Decorative back plate -->
+          <div class="pointer-events-none absolute -top-4 -right-4 h-full w-full rounded-xl border border-accent/15" aria-hidden="true"></div>
+
+          <!-- Profile photo container -->
+          <div class="relative overflow-hidden rounded-xl shadow-2xl" style="aspect-ratio: 4/5;">
+            {
+              profilePhoto ? (
+                <img
+                  src={profilePhoto.src}
+                  alt={profilePhoto.alt}
+                  class="h-full w-full object-cover grayscale transition-all duration-700 hover:grayscale-0"
+                  loading="lazy"
+                />
+              ) : (
+                <PhotoPlaceholder
+                  shape="portrait"
+                  alt="Profile photo placeholder"
+                  label="Main portrait slot"
+                  caption="Replace with your primary portrait"
+                />
+              )
+            }
+
+            <!-- EPL-style stats overlay on photo -->
+            <div class="absolute inset-x-0 bottom-0 hero-glass-panel border-t border-white/10 px-5 py-4">
+              <div class="grid grid-cols-4 gap-2 text-center">
+                <div>
+                  <p class="font-display text-2xl font-extrabold tracking-tight text-accent sm:text-3xl">{projects.length}</p>
+                  <p class="text-[9px] font-mono uppercase tracking-[0.2em] text-ink-muted">PRJ</p>
+                </div>
+                <div>
+                  <p class="font-display text-2xl font-extrabold tracking-tight text-highlight sm:text-3xl">{travelEntries.length}</p>
+                  <p class="text-[9px] font-mono uppercase tracking-[0.2em] text-ink-muted">CTR</p>
+                </div>
+                <div>
+                  <p class="font-display text-2xl font-extrabold tracking-tight text-[#9f92ff] sm:text-3xl">{impactEntries.length}</p>
+                  <p class="text-[9px] font-mono uppercase tracking-[0.2em] text-ink-muted">IMP</p>
+                </div>
+                <div>
+                  <p class="font-display text-2xl font-extrabold tracking-tight text-[#ff9f6a] sm:text-3xl">{stack.length}</p>
+                  <p class="text-[9px] font-mono uppercase tracking-[0.2em] text-ink-muted">TEC</p>
+                </div>
+              </div>
+              <!-- Stat bar visualization -->
+              <div class="mt-3 grid grid-cols-4 gap-2">
+                <div class="h-1 rounded-full bg-accent/30 overflow-hidden"><div class="h-full rounded-full bg-accent" style={`width: ${Math.min(projects.length * 10, 100)}%`}></div></div>
+                <div class="h-1 rounded-full bg-highlight/30 overflow-hidden"><div class="h-full rounded-full bg-highlight" style={`width: ${Math.min(travelEntries.length * 8, 100)}%`}></div></div>
+                <div class="h-1 rounded-full bg-[#9f92ff]/30 overflow-hidden"><div class="h-full rounded-full bg-[#9f92ff]" style={`width: ${Math.min(impactEntries.length * 5, 100)}%`}></div></div>
+                <div class="h-1 rounded-full bg-[#ff9f6a]/30 overflow-hidden"><div class="h-full rounded-full bg-[#ff9f6a]" style={`width: ${Math.min(stack.length * 8, 100)}%`}></div></div>
+              </div>
+              <!-- Name plate -->
+              <div class="mt-3 flex items-center justify-between border-t border-white/5 pt-3">
+                <div>
+                  <p class="text-sm font-semibold tracking-tight text-ink">{siteData.name}</p>
+                  <p class="text-[10px] font-mono uppercase tracking-[0.15em] text-ink-muted">Full-Stack Engineer</p>
+                </div>
+                <div class="flex items-center gap-1.5">
+                  <span class="h-2 w-2 rounded-full bg-highlight animate-pulse"></span>
+                  <span class="text-[10px] font-mono uppercase tracking-[0.15em] text-highlight">Available</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NAVIGATE: Bento-style grid with icons -->
+  <section class="section-wash-blue py-16">
+    <div class="section-shell">
+      <SectionHeading
+        eyebrow="Navigate"
+        title="See the full picture"
+        intro="Engineering work, community impact, public thinking, and the person behind it all. Explore what matters to you."
+      />
+      <div class="mt-10 bento-grid">
+        {routeTiles.map((tile, i) => (
+          <a
+            href={tile.href}
+            class:list={[
+              "group relative overflow-hidden rounded-2xl border border-border-subtle/60 bg-panel/40 p-6 sm:p-8 text-decoration-none transition-all duration-300 hover:border-accent/40 hover:bg-panel/70 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(3,12,26,0.4)]",
+              i === 0 ? "bento-span-2 bento-row-2" : "",
+            ]}
+          >
+            <div class="absolute top-4 right-4 opacity-[0.06] transition-opacity group-hover:opacity-[0.12]">
+              <svg class="h-24 w-24" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d={tile.icon} />
+              </svg>
+            </div>
+            <div class="relative z-10">
+              <div class="flex items-center gap-3">
+                <svg class="h-5 w-5 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d={tile.icon} />
+                </svg>
+                <p class="text-xl font-semibold tracking-tight text-ink transition-colors group-hover:text-accent">{tile.title}</p>
+              </div>
+              <p class="mt-3 max-w-sm text-sm text-ink-muted">{tile.description}</p>
+              <div class="mt-6 flex items-center text-xs font-mono font-semibold text-accent/70 transition-all group-hover:text-accent group-hover:translate-x-1">
+                Explore <span class="ml-2 transition-transform group-hover:translate-x-1">→</span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <SectionDivider variant="dots" />
+
+  <!-- FEATURED WORK: Numbered cards with staggered layout -->
+  <section class="section-wash-amber py-20">
+    <div class="section-shell">
+      <div class="flex flex-col items-center text-center max-w-2xl mx-auto">
+        <p class="eyebrow inline-flex items-center gap-2">
+          <span class="h-px w-8 bg-accent/70" aria-hidden="true"></span>
+          Featured Work
+          <span class="h-px w-8 bg-accent/70" aria-hidden="true"></span>
+        </p>
+        <h2 class="headline-sm mt-3 text-ink">Projects that shipped, not projects that sat</h2>
+        <p class="mt-3 text-[1rem] muted">Real users, real constraints, full implementation details. Open any project to see the engineering.</p>
+      </div>
+      {
+        projectSpotlight.length > 0 ? (
+          <div class="mt-14 space-y-6">
+            {projectSpotlight.map((project, i) => (
+              <ScrollParallax client:visible offset={15}>
+                <a
+                  href={`/work/${project.slug}`}
+                  class:list={[
+                    "group block rounded-2xl border border-border-subtle/50 p-6 sm:p-8 text-decoration-none transition-all duration-300 hover:border-accent/30 hover:shadow-[0_20px_50px_rgba(3,12,26,0.4)]",
+                    i === 0
+                      ? "bg-gradient-to-br from-panel-strong/80 to-panel/60 lg:p-10"
+                      : "bg-panel/30 hover:bg-panel/50",
+                  ]}
+                >
+                  <div class="grid gap-6 lg:grid-cols-[auto_1fr_auto] items-center">
+                    <span class="hidden lg:flex h-16 w-16 items-center justify-center rounded-2xl bg-accent/8 font-display text-3xl font-bold text-accent/30">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div>
+                      <div class="flex flex-wrap items-center gap-3">
+                        <h3 class:list={[
+                          "font-semibold tracking-tight text-ink transition-colors group-hover:text-accent",
+                          i === 0 ? "text-3xl sm:text-4xl" : "text-2xl",
+                        ]}>
+                          {project.title}
+                        </h3>
+                        {project.featured && (
+                          <span class="rounded-md border border-accent/20 bg-accent-soft px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-accent">
+                            Featured
+                          </span>
+                        )}
+                      </div>
+                      <p class:list={[
+                        "mt-3 muted leading-relaxed max-w-2xl",
+                        i === 0 ? "text-base" : "text-sm",
+                      ]}>{project.summary}</p>
+                      {project.categories.length > 0 && (
+                        <div class="mt-4">
+                          <PillList items={project.categories} />
+                        </div>
+                      )}
+                    </div>
+                    <div class="flex items-center gap-2 text-sm font-semibold text-accent transition-transform group-hover:translate-x-1">
+                      <span class="hidden sm:inline">View project</span>
+                      <span class="text-lg">→</span>
+                    </div>
+                  </div>
+                </a>
+              </ScrollParallax>
+            ))}
+            <div class="text-center mt-8">
+              <a class="btn-secondary" href="/work">View all projects</a>
+            </div>
+          </div>
+        ) : (
+          <div class="mt-8">
+            <EmptyState
+              title="No published projects yet"
+              description="Add project JSON files under src/content/projects and set published to true."
+              ctaLabel="Go to Work page"
+              ctaHref="/work"
+            />
+          </div>
+        )
+      }
+    </div>
+  </section>
+
+  <SectionDivider variant="gradient" />
+
+  <!-- CAPABILITIES: Sticky scroll layout -->
+  <section class="section-wash-teal py-20">
+    <div class="section-shell">
+      <div class="grid gap-8 lg:grid-cols-[1fr_1fr]">
+        <!-- Sticky left side -->
+        <div class="hidden lg:block">
+          <div class="sticky top-28 space-y-8">
+            <div>
+              <p class="eyebrow inline-flex items-center gap-2">
+                <span class="h-px w-8 bg-accent/70" aria-hidden="true"></span>
+                Capabilities
+              </p>
+              <h2 class="headline-sm mt-3 text-ink">What I ship, end to end</h2>
+              <p class="mt-4 text-[1rem] muted">Not a list of buzzwords. These are the things I have actually done, repeatedly, under real constraints.</p>
+            </div>
+
+            <div class="glass-card p-6">
+              <p class="eyebrow">Stack</p>
+              <h3 class="mt-2 text-xl font-semibold tracking-tight text-ink">Tools of the trade</h3>
+              <div class="mt-4">
+                {stack.length > 0 ? <PillList items={stack} /> : <p class="muted text-sm">Publish projects with stack entries to render this list.</p>}
+              </div>
+            </div>
+
+            <div class="outline-card p-6">
+              <p class="eyebrow">Biography</p>
+              <h3 class="mt-2 text-xl font-semibold tracking-tight text-ink">The short version</h3>
+              <p class="mt-3 text-sm muted leading-relaxed">
+                {hasBio ? siteData.shortBio : "Add shortBio in src/data/site.json to populate this section."}
+              </p>
+              <a class="mt-4 inline-flex items-center text-sm font-semibold text-accent transition-colors hover:text-[#80d5ff] group" href="/about">
+                Read full biography <span class="ml-2 transition-transform group-hover:translate-x-1">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile: show heading -->
+        <div class="lg:hidden">
+          <p class="eyebrow inline-flex items-center gap-2">
+            <span class="h-px w-8 bg-accent/70" aria-hidden="true"></span>
+            Capabilities
+          </p>
+          <h2 class="headline-sm mt-3 text-ink">What I ship, end to end</h2>
+        </div>
+
+        <!-- Scrolling right side - capability items -->
+        <div>
+          {hasItems(capabilities) ? (
+            <StaggeredReveal client:visible className="space-y-4" direction="up" staggerDelay={0.1}>
+              {capabilities.map((item, index) => (
+                <div class="glass-card p-6 sm:p-8">
+                  <div class="flex items-start gap-4">
+                    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent/10 font-mono text-sm font-bold text-accent">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <p class="pt-2 text-base leading-relaxed text-ink-muted">{item}</p>
+                  </div>
+                </div>
+              ))}
+            </StaggeredReveal>
+          ) : (
+            <p class="muted">Add capabilities in src/data/site.json.</p>
+          )}
+
+          <!-- Mobile: show stack and bio -->
+          <div class="mt-8 space-y-6 lg:hidden">
+            <div class="glass-card p-6">
+              <p class="eyebrow">Stack</p>
+              <div class="mt-3">
+                {stack.length > 0 ? <PillList items={stack} /> : <p class="muted text-sm">Publish projects with stack entries.</p>}
+              </div>
+            </div>
+            <div class="outline-card p-6">
+              <p class="eyebrow">Biography</p>
+              <p class="mt-3 text-sm muted leading-relaxed">
+                {hasBio ? siteData.shortBio : "Add shortBio in src/data/site.json."}
+              </p>
+              <a class="mt-4 inline-flex items-center text-sm font-semibold text-accent group" href="/about">
+                Read full biography <span class="ml-2 transition-transform group-hover:translate-x-1">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS STRIP: Animated counters -->
+  <div class="section-dark py-12">
+    <div class="section-shell">
+      <div class="grid grid-cols-2 gap-6 sm:grid-cols-4">
+        <CounterUp client:visible target={projects.length} suffix="+" label="Projects" />
+        <CounterUp client:visible target={impactEntries.length} suffix="+" label="Impact Entries" />
+        <CounterUp client:visible target={travelEntries.length} label="Countries" />
+        <CounterUp client:visible target={stack.length} label="Technologies" />
+      </div>
+    </div>
+  </div>
+
+  <SectionDivider variant="space" />
+
+  <!-- CTA: Angled gradient with texture -->
+  <section class="section-shell pb-24 pt-10">
+    <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#10243c] to-[#0a1526] border border-accent/20">
+      <div class="absolute inset-0 opacity-30">
+        <div class="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(58,184,255,0.05)_25%,rgba(58,184,255,0.05)_50%,transparent_50%,transparent_75%,rgba(58,184,255,0.05)_75%)] bg-[length:60px_60px]"></div>
+      </div>
+      <div class="relative z-10 grid gap-8 p-10 sm:p-16 lg:grid-cols-[1.2fr_0.8fr] items-center">
+        <div>
+          <p class="eyebrow !text-accent">What Next</p>
+          <h2 class="headline-sm mt-4 text-white">
+            You have seen the work, the impact, and the thinking. If you are looking for someone who builds and teaches with equal rigor, the next step is a conversation.
+          </h2>
+          <div class="mt-8 flex flex-wrap items-center gap-4">
+            <a class="btn-primary" href="/contact">Start a conversation</a>
+            <a class="btn-light" href="/about">Read the full story</a>
+          </div>
+        </div>
+        <div class="hidden lg:flex flex-col items-end gap-4">
+          {hasItems(credentialHighlights) ? (
+            credentialHighlights.slice(0, 3).map((item) => (
+              <div class="glass-card px-5 py-3 max-w-xs">
+                <p class="text-sm text-ink-muted">{item}</p>
+              </div>
+            ))
+          ) : (
+            <div class="glass-card px-5 py-3">
+              <p class="text-sm text-ink-muted">Add credentialHighlights in src/data/site.json</p>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
