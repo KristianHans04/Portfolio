@@ -1,0 +1,165 @@
+---
+import EmptyState from "@/components/ui/EmptyState.astro";
+import SectionDivider from "@/components/ui/SectionDivider.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getPressEntries, getWritingEntries } from "@/lib/content/loaders";
+import { MediaModal } from "@/components/motion/MediaModal";
+import { ScrollParallax } from "@/components/motion/ScrollParallax";
+
+const pressEntries = getPressEntries();
+const writingEntries = getWritingEntries();
+
+const uniquePublications = [...new Set(pressEntries.map(e => e.publication).filter(Boolean))];
+
+function getMediaType(item: typeof pressEntries[0]): "article" | "video" | "image" {
+  const link = item.links[0];
+  if (!link) return "article";
+  if (link.url.includes("youtu") || link.url.includes("youtube")) return "video";
+  if (link.url.includes("drive.google.com")) return "image";
+  return "article";
+}
+---
+<BaseLayout
+  title="Press"
+  description="Featured in national television, print, and digital media. Evidence of impact, not claims."
+>
+  <section class="section-wash-violet pt-14 pb-8 sm:pt-18">
+    <div class="section-shell">
+      <div class="scene-panel p-8 sm:p-10 lg:p-12" data-tone="violet">
+        <div class="grid gap-8 lg:grid-cols-[1fr_auto] items-end">
+          <div>
+            <p class="eyebrow inline-flex items-center gap-2">
+              <span class="h-px w-8 bg-accent/70" aria-hidden="true"></span>
+              In The News
+            </p>
+            <h1 class="mt-5 font-display text-5xl font-bold tracking-tight text-ink sm:text-6xl lg:text-7xl leading-[0.95]">
+              As seen on<span class="gradient-text">.</span>
+            </h1>
+            <p class="mt-5 max-w-xl text-lg leading-relaxed muted">
+              National television, major newspapers, and digital media. These are not self-published posts. Every entry below is third-party coverage with real journalists and real editorial standards.
+            </p>
+          </div>
+          <div class="flex gap-8 border-l border-border-subtle/60 pl-8">
+            <div>
+              <p class="text-4xl font-display font-bold tracking-tight text-accent">{pressEntries.length}</p>
+              <p class="mt-1 text-xs uppercase tracking-[0.14em] text-ink-muted">Features</p>
+            </div>
+            <div>
+              <p class="text-4xl font-display font-bold tracking-tight text-highlight">{uniquePublications.length}</p>
+              <p class="mt-1 text-xs uppercase tracking-[0.14em] text-ink-muted">Outlets</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-10 border-t border-border-subtle/30 pt-8">
+          <p class="text-[10px] font-mono uppercase tracking-[0.25em] text-ink-muted mb-5">Featured In</p>
+          <div class="flex flex-wrap items-center gap-4">
+            {uniquePublications.map((name) => (
+              <div class="flex items-center gap-2 rounded-lg border border-border-subtle/40 bg-panel/40 px-4 py-2.5 transition-colors hover:border-accent/30 hover:bg-panel/60">
+                <span class="flex h-7 w-7 items-center justify-center rounded-md bg-accent/10 text-[10px] font-bold text-accent font-mono">
+                  {name!.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase()}
+                </span>
+                <span class="text-sm font-medium text-ink">{name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-shell py-12">
+    <div class="grid gap-5 md:grid-cols-2">
+      {pressEntries.length > 0 ? (
+        pressEntries.map((item, i) => (
+          <ScrollParallax client:visible offset={6 + (i * 2)}>
+            <article class="group flex h-full flex-col rounded-2xl border border-border-subtle/50 bg-gradient-to-br from-panel-strong/60 to-panel/30 overflow-hidden transition-all duration-300 hover:border-accent/30 hover:shadow-[0_12px_32px_rgba(3,12,26,0.3)]">
+              <div class="flex-1 p-6">
+                <div class="flex items-center gap-2.5 mb-4">
+                  <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-accent/10 text-[10px] font-bold text-accent font-mono">
+                    {item.publication ? item.publication.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase() : "PR"}
+                  </span>
+                  <div class="flex-1 min-w-0">
+                    <p class="text-sm font-semibold text-ink truncate">{item.publication ?? "Publication"}</p>
+                  </div>
+                  <span class="rounded-full bg-accent/10 border border-accent/20 px-2.5 py-0.5 text-[10px] font-mono uppercase tracking-[0.12em] text-accent shrink-0">
+                    {item.type === "media" ? "TV" : item.type}
+                  </span>
+                </div>
+
+                <h3 class="text-lg font-semibold tracking-tight text-ink transition-colors group-hover:text-accent leading-snug">
+                  {item.title}
+                </h3>
+                <p class="mt-2 text-sm text-ink-muted line-clamp-2">{item.summary}</p>
+              </div>
+
+              <div class="flex items-center gap-3 border-t border-border-subtle/30 px-6 py-4">
+                {item.links.length > 0 ? (
+                  <MediaModal
+                    client:visible
+                    url={item.links[0].url}
+                    label={item.links[0].label}
+                    type={getMediaType(item)}
+                    publication={item.publication ?? undefined}
+                  />
+                ) : (
+                  <span class="inline-flex items-center gap-2 rounded-lg border border-border-subtle bg-panel/50 px-4 py-2 text-xs text-ink-muted">
+                    Evidence pending
+                  </span>
+                )}
+                <a
+                  href={`/press/${item.slug}`}
+                  class="ml-auto inline-flex items-center gap-1 text-sm font-medium text-accent transition-colors hover:text-[#80d5ff]"
+                >
+                  Details
+                  <span class="transition-transform group-hover:translate-x-0.5">&#8594;</span>
+                </a>
+              </div>
+            </article>
+          </ScrollParallax>
+        ))
+      ) : (
+        <EmptyState
+          title="No published press entries"
+          description="Add JSON files in src/content/press and set published to true."
+        />
+      )}
+    </div>
+  </section>
+
+  {writingEntries.length > 0 && (
+    <>
+      <SectionDivider variant="dots" />
+      <section class="section-wash-violet pb-24 pt-8">
+        <div class="section-shell">
+          <h2 class="text-2xl font-semibold tracking-tight text-ink">Writing</h2>
+          <div class="mt-8 space-y-4">
+            {writingEntries.map((item, i) => (
+              <ScrollParallax client:visible offset={6 + (i * 3)}>
+                <a
+                  href={`/writing/${item.slug}`}
+                  class="group flex items-center gap-6 rounded-xl border border-border-subtle/40 bg-transparent p-5 sm:p-6 text-decoration-none transition-all duration-300 hover:border-highlight/30 hover:bg-panel/30"
+                >
+                  <span class="hidden sm:flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-highlight/8 font-display text-lg font-bold text-highlight/30">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div class="flex-1 min-w-0">
+                    <div class="flex flex-wrap items-center gap-2">
+                      <p class="text-[10px] font-semibold uppercase tracking-[0.14em] text-highlight">{item.format}</p>
+                      {item.readTimeMinutes && (
+                        <span class="text-[10px] text-ink-muted">/ {item.readTimeMinutes} min read</span>
+                      )}
+                    </div>
+                    <h3 class="mt-1 text-lg font-semibold tracking-tight text-ink transition-colors group-hover:text-highlight truncate">{item.title}</h3>
+                    <p class="mt-1 text-sm muted line-clamp-1">{item.summary}</p>
+                  </div>
+                  <span class="shrink-0 text-sm text-accent opacity-0 transition-all group-hover:opacity-100 group-hover:translate-x-1">&#8594;</span>
+                </a>
+              </ScrollParallax>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  )}
+</BaseLayout>

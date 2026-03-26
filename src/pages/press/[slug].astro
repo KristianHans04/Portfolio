@@ -1,0 +1,164 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getPressEntries } from "@/lib/content/loaders";
+import { hasItems } from "@/lib/text";
+import { MediaModal } from "@/components/motion/MediaModal";
+
+export function getStaticPaths() {
+  return getPressEntries().map((item) => ({
+    params: { slug: item.slug },
+    props: { item },
+  }));
+}
+
+const { item } = Astro.props;
+const allPress = getPressEntries();
+const similarStories = allPress.filter(p => p.slug !== item.slug).slice(0, 4);
+
+const videoLinks = item.links.filter((link) => link.url.includes("youtu"));
+const articleLinks = item.links.filter((link) =>
+  link.url.startsWith("http") && !link.url.includes("youtu")
+);
+
+function getMediaType(link: { url: string }): "article" | "video" | "image" {
+  if (link.url.includes("youtu") || link.url.includes("youtube")) return "video";
+  if (link.url.includes("drive.google.com")) return "image";
+  return "article";
+}
+---
+<BaseLayout title={item.title} description={item.summary} type="article">
+  <article class="section-shell py-14 sm:py-16">
+    <header class="max-w-4xl pb-10 border-b border-border-subtle/40">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-accent/10 text-[11px] font-bold text-accent font-mono">
+          {item.publication ? item.publication.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase() : "PR"}
+        </span>
+        <div>
+          <p class="text-sm font-semibold text-ink">{item.publication ?? "Publication"}</p>
+          <p class="text-xs text-ink-muted capitalize">{item.type === "media" ? "TV Broadcast" : item.type}</p>
+        </div>
+      </div>
+
+      <h1 class="headline mt-4 max-w-4xl">{item.title}</h1>
+      <p class="mt-5 text-lg muted leading-relaxed">{item.summary}</p>
+
+      {hasItems(item.links) && (
+        <div class="mt-8 flex flex-wrap gap-3">
+          {item.links.map((link) => (
+            <MediaModal
+              client:visible
+              url={link.url}
+              label={link.label}
+              type={getMediaType(link)}
+              publication={item.publication ?? undefined}
+            />
+          ))}
+        </div>
+      )}
+    </header>
+
+    <div class="mt-10 max-w-4xl space-y-8">
+      {videoLinks.length > 0 && (
+        <section>
+          <h2 class="headline-sm mb-4">Video</h2>
+          {videoLinks.map((link) => {
+            const videoId = link.url.includes("youtu.be/")
+              ? link.url.split("youtu.be/")[1]?.split("?")[0]
+              : link.url.includes("watch?v=")
+              ? link.url.split("watch?v=")[1]?.split("&")[0]
+              : null;
+            return videoId ? (
+              <div class="aspect-video overflow-hidden rounded-xl border border-border-subtle/40">
+                <iframe
+                  src={`https://www.youtube.com/embed/${videoId}`}
+                  title={link.label}
+                  class="h-full w-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  loading="lazy"
+                ></iframe>
+              </div>
+            ) : null;
+          })}
+        </section>
+      )}
+
+      {articleLinks.length > 0 && (
+        <section>
+          <h2 class="headline-sm mb-4">Article</h2>
+          {articleLinks.map((link) => {
+            const isDrive = link.url.includes("drive.google.com");
+            const fileId = isDrive ? link.url.match(/\/d\/([^/]+)/)?.[1] : null;
+            const embedUrl = isDrive && fileId ? `https://drive.google.com/file/d/${fileId}/preview` : link.url;
+            return (
+              <div class="overflow-hidden rounded-xl border border-border-subtle/40">
+                <iframe
+                  src={embedUrl}
+                  title={`${link.label} - ${item.publication}`}
+                  class="h-[600px] w-full"
+                  loading="lazy"
+                  sandbox="allow-scripts allow-same-origin allow-popups"
+                ></iframe>
+                <div class="flex items-center justify-between border-t border-border-subtle/40 bg-panel/60 px-5 py-3">
+                  <span class="text-sm text-ink-muted truncate">{item.publication}</span>
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="shrink-0 inline-flex items-center gap-1.5 rounded-lg border border-border-subtle px-3 py-1.5 text-sm font-medium text-accent transition-colors hover:border-accent/40"
+                  >
+                    Open in new tab
+                    <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                  </a>
+                </div>
+              </div>
+            );
+          })}
+        </section>
+      )}
+
+      {hasItems(item.details) && (
+        <section class="glass-card p-7">
+          <h2 class="headline-sm">Details</h2>
+          <ul class="mt-4 space-y-2">
+            {item.details.map((detail) => (
+              <li class="flex items-start gap-3 text-sm muted">
+                <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-highlight/50"></span>
+                {detail}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+    </div>
+
+    {similarStories.length > 0 && (
+      <section class="mt-16 border-t border-border-subtle/30 pt-10 max-w-4xl">
+        <h2 class="text-2xl font-semibold tracking-tight text-ink">More Coverage</h2>
+        <p class="mt-2 text-sm text-ink-muted">Other media features and press appearances.</p>
+        <div class="mt-8 grid gap-4 sm:grid-cols-2">
+          {similarStories.map((story) => (
+            <a
+              href={`/press/${story.slug}`}
+              class="group rounded-xl border border-border-subtle/40 bg-panel/20 p-5 no-underline transition-all hover:border-accent/30 hover:bg-panel/40"
+            >
+              <div class="flex items-center gap-2 mb-2">
+                <span class="flex h-6 w-6 items-center justify-center rounded-md bg-accent/10 text-[9px] font-bold text-accent font-mono">
+                  {story.publication ? story.publication.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase() : "PR"}
+                </span>
+                <span class="text-xs font-semibold text-ink-muted">{story.publication}</span>
+              </div>
+              <h3 class="text-base font-semibold tracking-tight text-ink transition-colors group-hover:text-accent leading-snug line-clamp-2">
+                {story.title}
+              </h3>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <div class="mt-10 max-w-4xl">
+      <a href="/press" class="btn-secondary">Back to all press</a>
+    </div>
+  </article>
+</BaseLayout>

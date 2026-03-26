@@ -1,0 +1,285 @@
+---
+import PillList from "@/components/ui/PillList.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getProjects } from "@/lib/content/loaders";
+import { hasItems, hasRealText } from "@/lib/text";
+
+export function getStaticPaths() {
+  return getProjects().map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+
+const projects = getProjects();
+const projectIndex = projects.findIndex((item) => item.slug === project.slug);
+const previousProject = projectIndex > 0 ? projects[projectIndex - 1] : null;
+const nextProject = projectIndex >= 0 && projectIndex < projects.length - 1 ? projects[projectIndex + 1] : null;
+const primaryLink = project.links[0] ?? null;
+
+const techMarkMap: Record<string, string> = {
+  Kotlin: "Kt",
+  "Jetpack Compose": "JC",
+  "Firebase Auth": "FA",
+  "Cloud Firestore": "CF",
+  Hilt: "Hi",
+  DataStore: "DS",
+  Coil: "Co",
+  Python: "Py",
+  Pandas: "Pd",
+  NumPy: "NP",
+  "TensorFlow/Keras": "TF",
+  Statsmodels: "SM",
+  MQTT: "MQ",
+  "Computer Vision": "CV",
+  "Image Classification": "IC",
+  "Mobile UX": "UX",
+  "AI Guidance": "AI",
+};
+
+const getTechMark = (label: string) => {
+  if (techMarkMap[label]) {
+    return techMarkMap[label];
+  }
+
+  return label
+    .split(/[\s/+-]+/)
+    .map((part: string) => part[0] ?? "")
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+};
+
+const sectionLinks = [
+  hasRealText(project.overview) ? { id: "overview", label: "Overview" } : null,
+  hasRealText(project.problem) ? { id: "problem", label: "Problem" } : null,
+  hasItems(project.role) || hasItems(project.architecture) ? { id: "build", label: "Build" } : null,
+  hasItems(project.gallery) ? { id: "gallery", label: "Gallery" } : null,
+  hasItems(project.links) ? { id: "links", label: "Links" } : null,
+].filter(Boolean) as Array<{ id: string; label: string }>;
+---
+<BaseLayout title={project.title} description={project.summary} type="article">
+  <article class="section-shell py-12 sm:py-16">
+    <header class="relative overflow-hidden rounded-[2rem] border border-border-subtle/40 bg-[linear-gradient(145deg,_var(--color-panel)_0%,_var(--color-canvas)_100%)] p-6 sm:p-8 lg:p-10">
+      <div class="absolute inset-0 opacity-20 [background-image:linear-gradient(to_right,rgba(131,161,202,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(131,161,202,0.08)_1px,transparent_1px)] [background-size:30px_30px]"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(58,184,255,0.1),_transparent_34%),radial-gradient(circle_at_bottom_left,_rgba(57,212,173,0.05),_transparent_30%)]"></div>
+
+      <div class="relative z-10 grid gap-8 xl:grid-cols-[1.2fr_0.8fr]">
+        <div>
+          <div class="flex flex-wrap items-center gap-3">
+            <p class="eyebrow">Project</p>
+            {project.featured && (
+              <span class="data-chip border-accent/20 bg-accent/8 text-accent">Featured</span>
+            )}
+            {project.period && (
+              <span class="data-chip border-highlight/20 bg-highlight/8 text-highlight">{project.period}</span>
+            )}
+          </div>
+
+          <h1 class="mt-4 max-w-4xl font-display text-[clamp(2.2rem,6vw,4rem)] font-semibold tracking-[-0.04em] leading-[0.95] text-ink">
+            {project.title}
+          </h1>
+
+          <p class="mt-4 max-w-2xl text-base leading-relaxed text-ink-muted sm:text-lg">
+            {project.summary}
+          </p>
+
+          {project.categories.length > 0 && (
+            <div class="mt-5">
+              <PillList items={project.categories} />
+            </div>
+          )}
+
+          <div class="mt-6 flex flex-wrap items-center gap-3">
+            {primaryLink && (
+              <a class="btn-primary" href={primaryLink.url}>
+                Open {primaryLink.label}
+              </a>
+            )}
+            <a class="btn-secondary" href="/work">All projects</a>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          {hasItems(project.stack) && (
+            <section class="rounded-xl border border-border-subtle/35 bg-panel/40 p-5">
+              <p class="eyebrow mb-3">Tech Stack</p>
+              <div class="flex flex-wrap gap-2">
+                {project.stack.map((item) => (
+                  <span class="inline-flex items-center gap-1.5 rounded-lg border border-border-subtle/35 bg-canvas/40 px-3 py-1.5 text-xs font-medium text-ink">
+                    <span class="font-mono text-[10px] font-bold text-accent">{getTechMark(item)}</span>
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {hasItems(project.architecture) && (
+            <section class="rounded-xl border border-border-subtle/35 bg-panel/25 p-5">
+              <p class="eyebrow mb-3">Build Highlights</p>
+              <ul class="space-y-2">
+                {project.architecture.slice(0, 3).map((item) => (
+                  <li class="flex items-start gap-2 text-sm leading-relaxed text-ink-muted">
+                    <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent/55"></span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+        </div>
+      </div>
+    </header>
+
+    <div class="mx-auto mt-16 max-w-4xl space-y-14">
+      {hasRealText(project.overview) && (
+        <section id="overview" class="border-t border-border-subtle/30 pt-12">
+          <p class="eyebrow">Overview</p>
+          <h2 class="mt-3 text-3xl font-semibold tracking-tight text-ink">Project overview</h2>
+          <p class="mt-5 max-w-3xl text-[1.08rem] leading-relaxed text-ink-muted">{project.overview}</p>
+        </section>
+      )}
+
+      {hasRealText(project.problem) && (
+        <section id="problem" class="border-t border-border-subtle/30 pt-12">
+          <p class="eyebrow">Problem</p>
+          <h2 class="mt-3 text-3xl font-semibold tracking-tight text-ink">What it solves</h2>
+          <div class="mt-5 rounded-[1.5rem] border border-border-subtle/35 bg-panel/24 p-7 sm:p-8">
+            <p class="text-[1.02rem] leading-relaxed text-ink-muted">{project.problem}</p>
+          </div>
+        </section>
+      )}
+
+      {(hasItems(project.role) || hasItems(project.architecture)) && (
+        <section id="build" class="border-t border-border-subtle/30 pt-12">
+          <p class="eyebrow">Build</p>
+          <h2 class="mt-3 text-3xl font-semibold tracking-tight text-ink">Implementation details</h2>
+
+          <div class="mt-8 space-y-6">
+            {hasItems(project.role) && (
+              <section class="rounded-[1.5rem] border border-border-subtle/35 bg-canvas/14 p-7 sm:p-8">
+                <h3 class="text-xl font-semibold tracking-tight text-ink">What I worked on</h3>
+                <ul class="mt-5 space-y-3">
+                  {project.role.map((item) => (
+                    <li class="flex items-start gap-3 text-sm leading-relaxed text-ink-muted">
+                      <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent/55"></span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+
+            {hasItems(project.architecture) && (
+              <section class="glass-card p-7 sm:p-8">
+                <h3 class="text-xl font-semibold tracking-tight text-ink">Technical implementation</h3>
+                <ol class="mt-5 space-y-4">
+                  {project.architecture.map((item, index) => (
+                    <li class="flex items-start gap-4">
+                      <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-accent/10 font-mono text-[10px] font-bold text-accent">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <p class="pt-0.5 text-sm leading-relaxed text-ink-muted">{item}</p>
+                    </li>
+                  ))}
+                </ol>
+              </section>
+            )}
+          </div>
+        </section>
+      )}
+
+      {hasItems(project.gallery) && (
+        <section id="gallery" class="border-t border-border-subtle/30 pt-12">
+          <p class="eyebrow">Gallery</p>
+          <h2 class="mt-3 text-3xl font-semibold tracking-tight text-ink">Project screens</h2>
+          <div class="mt-6 columns-1 gap-4 sm:columns-2 space-y-4">
+            {project.gallery.map((item, index) => (
+              <figure class="break-inside-avoid overflow-hidden rounded-[1.5rem] border border-border-subtle/35 bg-panel/24">
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  loading="lazy"
+                  class:list={["w-full object-cover", index % 2 === 0 ? "h-72" : "h-96"]}
+                />
+                {item.caption && (
+                  <figcaption class="border-t border-border-subtle/30 bg-panel/60 p-4 text-sm text-ink-muted">
+                    {item.caption}
+                  </figcaption>
+                )}
+              </figure>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {hasItems(project.links) && (
+        <section id="links" class="border-t border-border-subtle/30 pt-12">
+          <p class="eyebrow">Links</p>
+          <h2 class="mt-3 text-3xl font-semibold tracking-tight text-ink">Project links</h2>
+          <div class="mt-6 space-y-3">
+            {project.links.map((link) => (
+              <a
+                href={link.url}
+                class="group flex items-center justify-between gap-4 rounded-[1.25rem] border border-border-subtle/35 bg-canvas/18 px-5 py-4 no-underline transition-colors hover:border-accent/25 hover:bg-panel/32"
+              >
+                <div>
+                  <p class="text-base font-semibold tracking-tight text-ink">{link.label}</p>
+                  <p class="mt-1 text-sm break-all text-ink-muted">{link.url}</p>
+                </div>
+                <span class="shrink-0 text-accent transition-transform group-hover:translate-x-1">
+                  <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </span>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+    </div>
+
+    {(previousProject || nextProject) && (
+      <section class="mt-20 border-t border-border-subtle/30 pt-10">
+        <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p class="eyebrow">More Projects</p>
+            <h2 class="mt-2 text-2xl font-semibold tracking-tight text-ink">Continue browsing</h2>
+          </div>
+          <a class="btn-secondary" href="/work">Back to all projects</a>
+        </div>
+
+        <div class="mt-8 grid gap-4 md:grid-cols-2">
+          {previousProject && (
+            <a
+              href={`/work/${previousProject.slug}`}
+              class="group rounded-[1.5rem] border border-border-subtle/35 bg-canvas/18 p-6 no-underline transition-colors hover:border-accent/25 hover:bg-panel/30"
+            >
+              <p class="text-[11px] font-mono uppercase tracking-[0.14em] text-ink-muted">Previous Project</p>
+              <h3 class="mt-3 text-2xl font-semibold tracking-tight text-ink transition-colors group-hover:text-accent">
+                {previousProject.title}
+              </h3>
+              <p class="mt-3 text-sm leading-relaxed text-ink-muted">{previousProject.summary}</p>
+            </a>
+          )}
+
+          {nextProject && (
+            <a
+              href={`/work/${nextProject.slug}`}
+              class="group rounded-[1.5rem] border border-border-subtle/35 bg-panel/24 p-6 no-underline transition-colors hover:border-accent/25 hover:bg-panel/40"
+            >
+              <p class="text-[11px] font-mono uppercase tracking-[0.14em] text-ink-muted">Next Project</p>
+              <h3 class="mt-3 text-2xl font-semibold tracking-tight text-ink transition-colors group-hover:text-accent">
+                {nextProject.title}
+              </h3>
+              <p class="mt-3 text-sm leading-relaxed text-ink-muted">{nextProject.summary}</p>
+            </a>
+          )}
+        </div>
+      </section>
+    )}
+  </article>
+</BaseLayout>

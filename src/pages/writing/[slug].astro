@@ -1,0 +1,82 @@
+---
+import PillList from "@/components/ui/PillList.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getWritingEntries } from "@/lib/content/loaders";
+import { formatOptionalDate, hasItems, hasRealText } from "@/lib/text";
+
+export function getStaticPaths() {
+  return getWritingEntries().map((item) => ({
+    params: { slug: item.slug },
+    props: { item },
+  }));
+}
+
+const { item } = Astro.props;
+const formattedDate = formatOptionalDate(item.publishedAt);
+---
+<BaseLayout title={item.title} description={item.summary} type="article">
+  <article class="section-shell py-14 sm:py-16">
+    <!-- Editorial header -->
+    <header class="max-w-3xl pb-10 border-b border-border-subtle/40">
+      <div class="flex flex-wrap items-center gap-3 text-sm">
+        <span class="eyebrow">{item.format}</span>
+        {formattedDate && (
+          <span class="text-ink-muted">{formattedDate}</span>
+        )}
+        {item.readTimeMinutes && (
+          <span class="text-ink-muted">/ {item.readTimeMinutes} min read</span>
+        )}
+      </div>
+      <h1 class="headline mt-4 max-w-4xl">{item.title}</h1>
+      <p class="mt-5 text-lg muted leading-relaxed">{item.summary}</p>
+
+      <div class="mt-6 flex flex-wrap items-center gap-4">
+        {item.outlet && (
+          <span class="rounded-full border border-border-subtle/60 bg-panel/40 px-4 py-1.5 text-xs text-ink-muted">
+            {item.outlet}
+          </span>
+        )}
+        {hasItems(item.topics) && (
+          <PillList items={item.topics} />
+        )}
+      </div>
+    </header>
+
+    {/* Article body with reading-optimized layout */}
+    <div class="mt-10 max-w-3xl">
+      {hasItems(item.sections) && (
+        <div class="space-y-10">
+          {item.sections.map((section, i) => (
+            <section class:list={[
+              "relative",
+              i > 0 && "pt-10 border-t border-border-subtle/20",
+            ]}>
+              {hasRealText(section.heading) && (
+                <h3 class="text-2xl font-semibold tracking-tight text-ink mb-4">{section.heading}</h3>
+              )}
+              <div class="text-base muted leading-relaxed">{section.body}</div>
+            </section>
+          ))}
+        </div>
+      )}
+
+      {hasItems(item.links) && (
+        <section class="mt-12 pt-8 border-t border-border-subtle/40">
+          <h2 class="text-xl font-semibold tracking-tight text-ink">Related links</h2>
+          <ul class="mt-4 space-y-2 text-sm">
+            {item.links.map((link) => (
+              <li>
+                <a class="inline-flex items-center gap-1 font-medium text-accent transition-colors hover:text-[#80d5ff]" href={link.url}>
+                  {link.label}
+                  <svg class="h-3 w-3 opacity-50" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+    </div>
+  </article>
+</BaseLayout>

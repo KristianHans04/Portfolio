@@ -1,0 +1,100 @@
+---
+import WorkFilter from "@/components/work/WorkFilter";
+import EmptyState from "@/components/ui/EmptyState.astro";
+import SectionHeading from "@/components/ui/SectionHeading.astro";
+import SectionDivider from "@/components/ui/SectionDivider.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getProjects } from "@/lib/content/loaders";
+import { uniqueItems } from "@/lib/text";
+
+import { CounterUp } from "@/components/motion/CounterUp";
+import { ScrollParallax } from "@/components/motion/ScrollParallax";
+
+const projects = getProjects();
+const allCategories = uniqueItems(projects.flatMap((project) => project.categories));
+const allStack = uniqueItems(projects.flatMap((project) => project.stack));
+const featuredCount = projects.filter((project) => project.featured).length;
+---
+<BaseLayout
+  title="Work"
+  description="Shipped products with full technical breakdowns, implementation notes, and live repositories."
+>
+  <!-- HERO: Full-width editorial with stats bar -->
+  <section class="section-wash-blue pt-14 pb-6 sm:pt-18">
+    <div class="section-shell">
+      <div class="scene-panel p-8 sm:p-10 lg:p-12" data-tone="blue">
+        <div class="max-w-3xl">
+          <p class="eyebrow inline-flex items-center gap-2">
+            <span class="h-px w-8 bg-accent/70" aria-hidden="true"></span>
+            Work
+          </p>
+          <h1 class="headline mt-5 text-ink">The work</h1>
+          <p class="mt-5 max-w-2xl text-lg leading-relaxed muted">
+            Every project here solved a real problem for real people. Filter by category, open any project, and see the engineering behind it.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR: Horizontal counters strip -->
+  <section class="section-shell pb-8">
+    <div class="grid grid-cols-2 gap-4 sm:grid-cols-4">
+      <div class="rounded-xl border border-border-subtle/50 bg-panel/30 p-5 text-center transition-colors hover:border-accent/30">
+        <CounterUp client:visible target={projects.length} className="flex flex-col items-center" label="Published" />
+      </div>
+      <div class="rounded-xl border border-border-subtle/50 bg-panel/30 p-5 text-center transition-colors hover:border-highlight/30">
+        <CounterUp client:visible target={featuredCount} className="flex flex-col items-center" label="Featured" />
+      </div>
+      <div class="rounded-xl border border-border-subtle/50 bg-panel/30 p-5 text-center transition-colors hover:border-accent/30">
+        <CounterUp client:visible target={allCategories.length} className="flex flex-col items-center" label="Categories" />
+      </div>
+      <div class="rounded-xl border border-border-subtle/50 bg-panel/30 p-5 text-center transition-colors hover:border-highlight/30">
+        <CounterUp client:visible target={allStack.length} className="flex flex-col items-center" label="Technologies" />
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES: Horizontal scrolling pills -->
+  {allCategories.length > 0 && (
+    <section class="section-shell pb-6">
+      <div class="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-hide">
+        <span class="shrink-0 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-muted">Categories:</span>
+        {allCategories.slice(0, 12).map((category) => (
+          <span class="shrink-0 rounded-full border border-border-subtle/60 bg-canvas/50 px-4 py-1.5 text-[11px] font-mono tracking-wider text-ink-muted uppercase whitespace-nowrap">
+            {category}
+          </span>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <SectionDivider variant="gradient" />
+
+  <!-- PROJECT GRID: Filter + animated cards -->
+  <section class="section-wash-slate mt-8 pb-24">
+    <div class="section-shell pt-8">
+      {
+        projects.length > 0 ? (
+          <WorkFilter
+            client:visible
+            projects={projects.map((project) => ({
+              slug: project.slug,
+              title: project.title,
+              summary: project.summary,
+              categories: project.categories,
+              featured: project.featured,
+              period: project.period,
+              stack: project.stack,
+            }))}
+          />
+        ) : (
+          <EmptyState
+            title="No published projects"
+            description="Create JSON files in src/content/projects and set published to true to populate this index."
+          />
+        )
+      }
+    </div>
+  </section>
+</BaseLayout>
