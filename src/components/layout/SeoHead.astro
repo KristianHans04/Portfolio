@@ -1,0 +1,63 @@
+---
+import { seoData, siteData, socialsData } from "@/lib/site-data";
+import { hasRealText } from "@/lib/text";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: "website" | "article";
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  image,
+  type = "website",
+  noindex = false,
+} = Astro.props;
+
+const resolvedTitle = title
+  ? seoData.titleTemplate.replace("%s", title)
+  : seoData.defaultTitle;
+const resolvedDescription = description ?? seoData.defaultDescription;
+const resolvedImage = image ?? seoData.defaultOgImage;
+const hasCanonicalBase =
+  hasRealText(seoData.siteUrl) && !seoData.siteUrl.startsWith("TODO:");
+const canonical = hasCanonicalBase
+  ? new URL(Astro.url.pathname, seoData.siteUrl).toString()
+  : null;
+
+const realName = siteData.name.startsWith("TODO:") ? null : siteData.name;
+const firstSocial = socialsData.items[0]?.url ?? null;
+
+const personLd = realName
+  ? {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      name: realName,
+      jobTitle: siteData.role,
+      description: resolvedDescription,
+      url: hasCanonicalBase ? seoData.siteUrl : undefined,
+      sameAs: socialsData.items.map((item) => item.url),
+    }
+  : null;
+---
+<title>{resolvedTitle}</title>
+<meta name="description" content={resolvedDescription} />
+<meta name="twitter:card" content={seoData.twitterCard} />
+<meta name="twitter:title" content={resolvedTitle} />
+<meta name="twitter:description" content={resolvedDescription} />
+<meta name="twitter:image" content={resolvedImage} />
+{firstSocial && <meta name="twitter:site" content={firstSocial} />}
+<meta property="og:type" content={type} />
+<meta property="og:title" content={resolvedTitle} />
+<meta property="og:description" content={resolvedDescription} />
+<meta property="og:image" content={resolvedImage} />
+{canonical && <meta property="og:url" content={canonical} />}
+{canonical && <link rel="canonical" href={canonical} />}
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+{personLd && (
+  <script type="application/ld+json" set:html={JSON.stringify(personLd)} />
+)}

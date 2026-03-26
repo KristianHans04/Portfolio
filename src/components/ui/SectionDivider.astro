@@ -1,0 +1,31 @@
+---
+interface Props {
+  variant?: "wave" | "angle" | "dots" | "gradient" | "space";
+  className?: string;
+}
+
+const { variant = "gradient", className = "" } = Astro.props;
+---
+{variant === "wave" && (
+  <div class:list={["divider-wave", className]} aria-hidden="true"></div>
+)}
+{variant === "angle" && (
+  <div class:list={["divider-angle", className]} aria-hidden="true"></div>
+)}
+{variant === "dots" && (
+  <div class:list={["section-shell divider-dots", className]} aria-hidden="true">
+    <span class="h-1.5 w-1.5 rounded-full bg-accent/40"></span>
+    <span class="h-1.5 w-1.5 rounded-full bg-highlight/40"></span>
+    <span class="h-1.5 w-1.5 rounded-full bg-accent/40"></span>
+  </div>
+)}
+{variant === "gradient" && (
+  <div class:list={["section-shell", className]} aria-hidden="true">
+    <div class="divider-gradient"></div>
+  </div>
+)}
+{variant === "space" && (
+  <div class:list={["divider-space", className]} aria-hidden="true">
+    <span class="relative z-10 h-2 w-2 rounded-full bg-accent/60 shadow-[0_0_8px_rgba(58,184,255,0.4)]"></span>
+  </div>
+)}
