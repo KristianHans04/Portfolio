@@ -1,0 +1,33 @@
+<svg width="800" height="1000" viewBox="0 0 800 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="800" y2="1000" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#132744"/>
+      <stop offset="1" stop-color="#0D172B"/>
+    </linearGradient>
+    <radialGradient id="glowA" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(646 164) rotate(144.95) scale(436 324)">
+      <stop stop-color="#44BFFF" stop-opacity="0.64"/>
+      <stop offset="1" stop-color="#44BFFF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowB" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(146 878) rotate(-34.1) scale(396 292)">
+      <stop stop-color="#42DDB4" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#42DDB4" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.2" fill="#D3E7FF" fill-opacity="0.2"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="1000" rx="24" fill="url(#bg)"/>
+  <rect width="800" height="1000" rx="24" fill="url(#glowA)"/>
+  <rect width="800" height="1000" rx="24" fill="url(#glowB)"/>
+  <rect width="800" height="1000" rx="24" fill="url(#dots)"/>
+
+  <g opacity="0.96">
+    <rect x="104" y="122" width="592" height="664" rx="22" fill="#0F1E34" fill-opacity="0.74" stroke="#88BEE8" stroke-opacity="0.42"/>
+    <rect x="132" y="156" width="536" height="474" rx="18" fill="#0A172A" fill-opacity="0.9" stroke="#A7D2F3" stroke-opacity="0.24"/>
+    <path d="M132 564L248 428L346 506L432 466L668 630V630H132V564Z" fill="#5B9BCF" fill-opacity="0.24"/>
+    <circle cx="558" cy="260" r="44" fill="#8FD5FF" fill-opacity="0.3"/>
+  </g>
+
+  <rect x="104" y="824" width="320" height="54" rx="10" fill="#C5E4FF" fill-opacity="0.28"/>
+  <rect x="104" y="894" width="210" height="30" rx="10" fill="#C5E4FF" fill-opacity="0.2"/>
+</svg>
