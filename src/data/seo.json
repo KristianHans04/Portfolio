@@ -1,0 +1,8 @@
+{
+  "defaultTitle": "Kristian Onjala | Engineer, Educator, Builder",
+  "titleTemplate": "%s | Kristian Onjala",
+  "defaultDescription": "Full-stack engineer and STEM educator who ships products and trains the next generation. Software, IoT, robotics mentorship, and community impact.",
+  "defaultOgImage": "/og-default.svg",
+  "twitterCard": "summary_large_image",
+  "siteUrl": "https://kristianhans.com"
+}

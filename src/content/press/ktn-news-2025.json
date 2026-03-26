@@ -1,0 +1,19 @@
+{
+  "slug": "ktn-news-2025",
+  "published": true,
+  "order": 4,
+  "title": "KTN News Broadcast - Robotics Silver Medal Win",
+  "summary": "Television appearance on KTN News covering Team Kenya's international robotics achievements and Silver Medal win.",
+  "type": "media",
+  "publication": "KTN News",
+  "date": null,
+  "event": null,
+  "image": "https://drive.google.com/uc?export=view&id=10altjOrBsTe5khG0xap63_IJOYJ0BJXM",
+  "details": [
+    "Television feature on KTN News covering Team Kenya's preparation and performance at the international robotics competition.",
+    "Broadcast to a national audience across Kenya."
+  ],
+  "links": [
+    {"label": "Watch Broadcast", "url": "https://youtu.be/PKhWWcU90Ec"}
+  ]
+}

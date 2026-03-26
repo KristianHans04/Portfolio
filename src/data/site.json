@@ -1,0 +1,149 @@
+{
+  "name": "Kristian Onjala",
+  "role": "Full-Stack Engineer / Cofounder / STEM Mentor",
+  "location": "Nairobi, Kenya",
+  "email": "hello@kristianhans.com",
+  "tagline": "The best engineers do not just write code. They build systems that outlast them and teach others to do the same.",
+  "positioningStatement": "I build software that works and teach people who will.",
+  "heroIntro": "17 projects shipped. 11 countries. Full-stack products, market intelligence platforms, scraping infrastructure, and the robotics teams that won silver on the world stage.",
+  "shortBio": "Full-stack engineer with production experience at The Artisans Company and Sidebrief. Cofounder of Venturely, a market intelligence platform tracking 20,000+ startups globally. Technical Mentor for FIRST Global Team Kenya since 2023, coaching teams that have competed across five countries and brought home international awards. Mathematics and Computer Science, JKUAT.",
+  "longBio": "Software is easy to talk about and hard to ship. Education is easy to fund and hard to make stick. I do both, and I do them at the same time.\n\nI have worked as a Full-Stack Software Engineer at The Artisans Company and Sidebrief, building production systems for real users under real constraints. I cofounded Venturely, a market intelligence platform that tracks over 20,000 startups globally and uses AI signals to but not limited to flag funding rounds, bankruptcies, and leadership changes before they hit the news cycle.\n\nOutside of product work, I have shipped 17 projects end-to-end: from Scrapifie, an enterprise web scraping platform with TLS fingerprinting and anti-detection, to the official FIRST Global Team Kenya website, to PhotoMed, a patented AI system that maps medicinal plants to your location and symptoms.\n\nParallel to engineering, I have spent years on competition floors and in classrooms. As Technical Mentor for FIRST Global Team Kenya, I oversaw everything our teams built from scratch to what eventually traveled overseas for competition. Our teams have competed in Geneva, Singapore, Athens, Panama City, and next in Incheon. In 2022 we won the International Enthusiasm Award. In 2025 we took Silver as 1st Runners Up in the Winning Alliances. I have also served as a Peer Mentor in KamiLimu, preparing mentees for pitches, presentations, and professional growth.\n\nI have spoken publicly at iHub, Parklands, and industry events. I have appeared on Citizen TV, KTN News, Nation Media, The Star, Standard Media, and Kass Digital. I contribute to open source, including OpenBB.\n\nThe throughline is simple: build things that matter, and make sure other people can too. Technical depth without human context is just engineering theater. I am not interested in theater.",
+  "credentialHighlights": [
+    "17 shipped projects across full-stack, mobile, IoT, AI, and e-commerce.",
+    "Production engineering experience at The Artisans Company and Sidebrief.",
+    "Silver Medal at FIRST Global 2025: 1st Runners Up in Winning Alliances, Panama City.",
+    "Featured on Citizen TV, KTN News, Nation Media, The Star, Standard Media, and Kass Digital.",
+    "Visited 11 countries through engineering work, mentorship, and international competition."
+  ],
+  "currentFocus": [
+    "Launching Venturely: market intelligence for 20,000+ startups globally.",
+    "Preparing Team Kenya for FIRST Global Challenge 2026 in Incheon, South Korea.",
+    "Scaling Scrapifie into production-grade scraping infrastructure."
+  ],
+  "capabilities": [
+    "End-to-end product delivery: database schema to deployed application to paying users.",
+    "React, Next.js, and Astro frontends with Tailwind, Radix UI, and Three.js.",
+    "Node.js and Express backends with PostgreSQL, Prisma, Redis, and BullMQ.",
+    "Flutter mobile development with Riverpod, PostGIS, and AI integration.",
+    "Scraping infrastructure: Playwright, TLS fingerprinting, anti-detection, distributed queues.",
+    "Technical mentorship that produces award-winning international competition teams."
+  ],
+  "values": [
+    "Ship it, then improve it. Perfection is procrastination.",
+    "Clarity over cleverness. If you cannot explain it simply, you do not understand it.",
+    "Access matters more than prestige. Build doors, not gatekeeps.",
+    "Consistency compounds. Show up, stay sharp, grow long-term."
+  ],
+  "workingStyle": [
+    "Outcome-obsessed. Plans exist to produce results, not to look organized.",
+    "Fluent at every altitude: boardroom strategy to terminal commands.",
+    "Feedback-hungry and mentor-driven. Ego does not ship products.",
+    "Pragmatic scope, relentless quality. Fast does not mean fragile."
+  ],
+  "endorsements": [
+    {
+      "name": "Catherine Kemunto",
+      "role": "Business Analyst, KCB Bank and Professional Peer Mentor, KamiLimu",
+      "quote": "Through KamiLimu, I have witnessed Kristian's adaptability and commitment to continuous growth. He approaches challenges with creativity and strategic thinking."
+    },
+    {
+      "name": "Annette Mwende",
+      "role": "CEO and Founder, CREPTIE School",
+      "quote": "Kristian brought strong technical energy and student-centered mentorship to CREPTIE, helping learners build confidence and curiosity in STEM."
+    },
+    {
+      "name": "Kelvin Gitau",
+      "role": "TME Education Ambassador, Kenya and Mentor, FIRST Global Team Kenya",
+      "quote": "Kristian demonstrates strong teamwork, curiosity, and cross-cultural collaboration, with a clear ability to bring diverse groups together around purpose."
+    }
+  ],
+  "hobbies": [
+    "Puzzle solving and logic games",
+    "Robotics prototyping and hardware tinkering",
+    "Community STEM volunteering and outreach"
+  ],
+  "personalHighlights": [
+    "Mentored 50 students at Thika High School for Kenya Science and Engineering Fair. Results, not participation.",
+    "Taught engineering inside Kamiti Medium Prison through School for a Village. If access is a value, test it.",
+    "Supported technical operations at FIRST Global programs across five countries and counting."
+  ],
+  "contactExpectations": [
+    "This form is for serious inquiries: engineering roles, mentorship, speaking, or strategic collaboration.",
+    "The more specific your brief, the more useful my response. Goals and constraints help.",
+    "I respond by email with a clear next step. No ghosting, no runaround."
+  ],
+  "timeline": [
+    {
+      "title": "Full-Stack Software Engineer",
+      "organization": "The Artisans Company",
+      "period": "2025",
+      "summary": "Built production full-stack systems for a digital services company. Shipped features used by real clients with real deadlines."
+    },
+    {
+      "title": "Full-Stack Software Engineer",
+      "organization": "Sidebrief",
+      "period": "2025 - Present",
+      "summary": "Engineering at a business registration and compliance platform serving companies across Africa."
+    },
+    {
+      "title": "Cofounder and Lead Engineer",
+      "organization": "Venturely",
+      "period": "2024 - Present",
+      "summary": "Cofounded a market intelligence platform tracking 20,000+ startups globally with AI-powered signal detection for investors and founders."
+    },
+    {
+      "title": "Technical Mentor",
+      "organization": "FIRST Global Team Kenya",
+      "period": "2023 - Present",
+      "summary": "Oversaw everything built for international robotics competition. Teams competed in Singapore, Athens, Panama City. Silver Medal 2025."
+    },
+    {
+      "title": "Peer Mentor",
+      "organization": "KamiLimu",
+      "period": "March 2025 - November 2025",
+      "summary": "Prepared mentees for pitches, presentations, speech rehearsals, and essay reviews. Made the program feel human."
+    },
+    {
+      "title": "STEM Educator",
+      "organization": "CREPTIE School",
+      "period": "January 2023 - October 2024",
+      "summary": "Built a robotics and coding program from scratch. Taught students who had never seen a microcontroller to build and program one."
+    },
+    {
+      "title": "BSc. Mathematics and Computer Science",
+      "organization": "Jomo Kenyatta University of Agriculture and Technology",
+      "period": "2022 - 2026",
+      "summary": "Mathematics, algorithms, and computational theory. The foundations that make the engineering rigorous."
+    },
+    {
+      "title": "Mentee, Cohort 8",
+      "organization": "KamiLimu",
+      "period": "March 2024 - November 2024",
+      "summary": "Selected as one of 38 from thousands across 55 Kenyan universities. Professional growth, innovation strategy, community leadership."
+    }
+  ],
+  "now": {
+    "summary": "Building products that solve real problems. Training engineers who will build the next ones. Everything else is noise.",
+    "updatedAt": "2026-03-25",
+    "items": [
+      {
+        "title": "Venturely",
+        "detail": "Launching a market intelligence platform that tracks 20,000+ startups globally with AI signals that flag events before the news cycle catches up.",
+        "linkLabel": "Visit Venturely",
+        "linkUrl": "https://venturely.kristianhans.com"
+      },
+      {
+        "title": "FIRST Global 2026",
+        "detail": "Preparing Team Kenya for the FIRST Global Challenge in Incheon, South Korea. October 7-10, 2026. The goal is gold.",
+        "linkLabel": "Team Kenya website",
+        "linkUrl": "https://fgckenya.kristianhans.com"
+      },
+      {
+        "title": "Scrapifie",
+        "detail": "Scaling enterprise scraping infrastructure with TLS fingerprinting, anti-detection, and distributed job queues into a production SaaS.",
+        "linkLabel": "Visit Scrapifie",
+        "linkUrl": "https://scrapifie.kristianhans.com"
+      }
+    ]
+  }
+}

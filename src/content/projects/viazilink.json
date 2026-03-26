@@ -1,0 +1,55 @@
+{
+  "slug": "viazilink",
+  "published": true,
+  "featured": true,
+  "order": 10,
+  "title": "ViaziLink",
+  "summary": "A mobile platform connecting potato farmers directly with buyers and exposing real-time market prices.",
+  "categories": [
+    "AgriTech",
+    "Mobile",
+    "Marketplace"
+  ],
+  "client": null,
+  "period": "Pilot phase completed",
+  "overview": "ViaziLink was built to reduce reliance on middlemen by giving farmers and buyers a direct digital channel.",
+  "problem": "Potato farmers often lacked direct buyer access and transparent pricing, reducing income reliability.",
+  "role": [
+    "Built Android product flows for farmer and buyer journeys in Kotlin.",
+    "Worked on authentication, cloud-backed data handling, and marketplace interaction design."
+  ],
+  "architecture": [
+    "Jetpack Compose UI for mobile-first farmer and buyer workflows.",
+    "Firebase Authentication and Cloud Firestore for access control and marketplace data.",
+    "Hilt, DataStore, and Coil for dependency injection, local preferences, and image handling."
+  ],
+  "stack": [
+    "Kotlin",
+    "Jetpack Compose",
+    "Firebase Auth",
+    "Cloud Firestore",
+    "Hilt",
+    "DataStore",
+    "Coil"
+  ],
+  "gallery": [],
+  "results": [
+    {
+      "title": "Pilot status",
+      "detail": "Pilot phase completed and currently being refined for wider release."
+    },
+    {
+      "title": "Income projection",
+      "detail": "Projected to improve farmer income by 20 to 30 percent through better market access."
+    }
+  ],
+  "lessonsLearned": [
+    "Farmer-facing products need simple flows and trust-building transparency around price data."
+  ],
+  "links": [
+    {
+      "label": "GitHub repository",
+      "url": "https://github.com/kamilimumobile/viazilink/tree/main"
+    }
+  ]
+}

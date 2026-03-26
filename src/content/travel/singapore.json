@@ -1,0 +1,15 @@
+{
+  "slug": "singapore",
+  "published": true,
+  "country": "Singapore",
+  "city": "Singapore",
+  "year": "2023",
+  "notes": "Fun fact: Singapore is one of only three surviving city-states in the world. It went from third-world to first-world in one generation. The efficiency is not accidental; it is engineered.",
+  "highlights": [
+    "Liked: The public transport system is flawless. Clean, on time, and connected. The food courts (hawker centers) serve world-class food at street prices.",
+    "Did not like: The humidity makes stepping outside feel like walking into a sauna. Also, chewing gum is famously banned."
+  ],
+  "photos": [
+    "/images/travel/singapore.jpg"
+  ]
+}

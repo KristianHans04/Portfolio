@@ -1,0 +1,15 @@
+{
+  "slug": "greece",
+  "published": true,
+  "country": "Greece",
+  "city": "Athens",
+  "year": "2024",
+  "notes": "Fun fact: Greece has more archaeological museums than any other country in the world. Democracy, philosophy, the Olympics, and the gyro. The world owes Greece more than it acknowledges.",
+  "highlights": [
+    "Liked: The Acropolis at sunset is worth the hype. The weight of history is palpable. Athens feels like a city that remembers what it was.",
+    "Did not like: August heat is brutal. 40 degrees Celsius with no shade near ancient ruins is a test of character, not tourism."
+  ],
+  "photos": [
+    "/images/travel/greece.jpg"
+  ]
+}

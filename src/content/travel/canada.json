@@ -1,0 +1,15 @@
+{
+  "slug": "canada",
+  "published": true,
+  "country": "Canada",
+  "city": null,
+  "year": "2024",
+  "notes": "Fun fact: Canada has more lakes than the rest of the world combined. Over 60 percent of all the lakes on Earth are in Canada. Let that sink in.",
+  "highlights": [
+    "Liked: The diversity is genuine, not performative. You hear five languages walking one city block. Multiculturalism done right.",
+    "Did not like: Distances between cities are deceptive. Canada is the second-largest country on Earth, and you feel every kilometer."
+  ],
+  "photos": [
+    "/images/travel/canada.jpg"
+  ]
+}

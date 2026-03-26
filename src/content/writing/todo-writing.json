@@ -1,0 +1,14 @@
+{
+  "slug": "todo-writing-slug",
+  "published": false,
+  "order": 1000,
+  "title": "TODO: Add writing title",
+  "summary": "TODO: Add a concise summary of the piece.",
+  "format": "article",
+  "publishedAt": null,
+  "readTimeMinutes": null,
+  "topics": [],
+  "outlet": null,
+  "sections": [],
+  "links": []
+}

@@ -1,0 +1,15 @@
+{
+  "slug": "egypt",
+  "published": true,
+  "country": "Egypt",
+  "city": "Cairo",
+  "year": "2023",
+  "notes": "Fun fact: The Great Pyramid of Giza was the tallest man-made structure on Earth for over 3,800 years. Nothing else even came close until Lincoln Cathedral in 1311.",
+  "highlights": [
+    "Liked: The scale of ancient Egyptian architecture in person is humbling. Photos do not capture it. You feel small, and that is the point.",
+    "Did not like: Traffic in Cairo is a full-contact sport. No lanes, no rules, just collective momentum and faith."
+  ],
+  "photos": [
+    "/images/travel/egypt.jpg"
+  ]
+}

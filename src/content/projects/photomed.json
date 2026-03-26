@@ -1,0 +1,44 @@
+{
+  "slug": "photomed",
+  "published": true,
+  "featured": true,
+  "order": 4,
+  "title": "PhotoMed",
+  "summary": "Patented AI-powered mobile application that identifies medicinal plants near your location and matches them to your symptoms. Geospatial plant mapping with PostGIS, AI diagnosis via Gemini and PlantNet, and preparation methods for natural remedies.",
+  "categories": ["Mobile", "AI", "HealthTech", "Geospatial"],
+  "client": null,
+  "period": "2023 - Present",
+  "overview": "PhotoMed is a patented mobile application that bridges traditional plant-based medicine with modern technology. Users can photograph a plant or describe their symptoms, and the app uses AI to identify medicinal plants nearby, explain their therapeutic properties, and provide preparation methods. The system combines geospatial mapping with AI-powered plant identification and symptom-to-remedy matching, making traditional medicine accessible and verifiable.",
+  "problem": "Traditional medicinal knowledge is disappearing. The plants still grow, but the people who know which ones cure what are aging out of communities. Meanwhile, people with minor ailments pay for pharmaceuticals when effective natural remedies grow within walking distance. PhotoMed digitizes and geolocalizes this knowledge, making it searchable, verifiable, and accessible to anyone with a phone.",
+  "role": [
+    "Lead Developer and Architect",
+    "Designed and implemented the Flutter mobile application with Riverpod state management",
+    "Built the Node.js and Express backend with TypeScript and PostgreSQL with PostGIS for geospatial queries",
+    "Integrated Gemini AI for symptom analysis and natural language plant identification",
+    "Integrated PlantNet API for visual plant identification from photographs",
+    "Designed the symptom-to-plant-to-remedy mapping engine",
+    "Wrote 187 tests covering the full application stack"
+  ],
+  "architecture": [
+    "Flutter 3.27 mobile application with Riverpod for state management and dependency injection",
+    "Node.js and Express backend with TypeScript for type-safe API development",
+    "PostgreSQL with PostGIS extension for geospatial plant location queries and proximity calculations",
+    "Gemini AI integration for symptom analysis, natural language understanding, and remedy recommendation",
+    "PlantNet API for visual plant identification from user photographs",
+    "Geolocation services for mapping nearby medicinal plants with distance calculations",
+    "Comprehensive test suite with 187 tests across unit, integration, and functional layers"
+  ],
+  "stack": ["Flutter 3.27", "Dart", "Node.js", "Express", "TypeScript", "PostgreSQL", "PostGIS", "Gemini AI", "PlantNet API", "Riverpod"],
+  "gallery": [],
+  "results": [
+    {"title": "Patented System", "detail": "AI-powered medicinal plant identification and geospatial remedy mapping system with formal intellectual property protection."},
+    {"title": "Symptom Matching", "detail": "Natural language symptom input matched to nearby medicinal plants with preparation methods and dosage guidance."},
+    {"title": "187 Tests", "detail": "Comprehensive test coverage across the full stack ensuring reliability for health-adjacent recommendations."}
+  ],
+  "lessonsLearned": [
+    "Health-adjacent applications require exceptional accuracy. A wrong plant identification is not a bug, it is a safety issue. The test suite reflects this.",
+    "PostGIS makes geospatial queries elegant, but the data pipeline for plant locations requires ongoing curation and validation.",
+    "Flutter with Riverpod provides the state management rigor that complex multi-step user flows demand."
+  ],
+  "links": []
+}

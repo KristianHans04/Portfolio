@@ -1,0 +1,15 @@
+{
+  "slug": "switzerland",
+  "published": true,
+  "country": "Switzerland",
+  "city": "Geneva",
+  "year": "2022",
+  "notes": "Fun fact: Switzerland has more banks than dentists. The country is also home to CERN, where the World Wide Web was invented. Not bad for a country smaller than New Jersey.",
+  "highlights": [
+    "Liked: The precision. Everything runs exactly on time. Trains, events, meals. After Kenya, it felt like stepping into a simulation.",
+    "Did not like: The cost of living is staggering. A basic lunch costs what a full week of meals costs back home."
+  ],
+  "photos": [
+    "/images/travel/switzerland.jpg"
+  ]
+}

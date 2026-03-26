@@ -1,0 +1,50 @@
+{
+  "slug": "ipredict",
+  "published": false,
+  "featured": false,
+  "order": 30,
+  "title": "iPredict",
+  "summary": "An IoT-based predictive maintenance system that analyzes machine sensor data to reduce unexpected failures.",
+  "categories": [
+    "IoT",
+    "Predictive Analytics",
+    "Industrial"
+  ],
+  "client": null,
+  "period": null,
+  "overview": "iPredict ingests vibration, temperature, and humidity data to forecast machine risk and extend machine life.",
+  "problem": "Industrial machines often fail unexpectedly when sensor patterns are not monitored and modeled proactively.",
+  "role": [
+    "Built Python-based sensor analysis and forecasting workflows for predictive maintenance.",
+    "Worked across data preprocessing, model experimentation, and maintenance-oriented outputs."
+  ],
+  "architecture": [
+    "Sensor ingestion and preprocessing for vibration, temperature, humidity, and sound data.",
+    "Forecasting pipeline using ARIMA and LSTM models for failure prediction.",
+    "MQTT and HTTP transmission flow with anomaly alerting for maintenance workflows."
+  ],
+  "stack": [
+    "Python",
+    "Pandas",
+    "NumPy",
+    "TensorFlow/Keras",
+    "Statsmodels",
+    "MQTT"
+  ],
+  "gallery": [],
+  "results": [
+    {
+      "title": "Operational objective",
+      "detail": "Increase machine longevity and reduce unplanned downtime through predictive insights."
+    }
+  ],
+  "lessonsLearned": [
+    "Reliable predictive outputs depend on sensor quality, preprocessing discipline, and clear maintenance decision thresholds."
+  ],
+  "links": [
+    {
+      "label": "GitHub repository",
+      "url": "https://github.com/KristianHans04/IoT_Projects/tree/main/Smart_Predictive_Maintenance_System_for_Industrial_Machines"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "slug": "france",
+  "published": true,
+  "country": "France",
+  "city": "Paris",
+  "year": "2024",
+  "notes": "Fun fact: France is the most visited country in the world, receiving more tourists annually than it has citizens. Over 90 million visitors a year. The brand is that strong.",
+  "highlights": [
+    "Liked: The food culture is not about restaurants. It is about how ordinary people eat with intention. A random bakery in any arrondissement outperforms most celebrated restaurants elsewhere.",
+    "Did not like: The Parisian attitude toward tourists is earned but still jarring. The city does not care if you are impressed."
+  ],
+  "photos": [
+    "/images/travel/france.jpg"
+  ]
+}

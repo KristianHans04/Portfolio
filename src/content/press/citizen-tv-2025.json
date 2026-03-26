@@ -1,0 +1,19 @@
+{
+  "slug": "citizen-tv-2025",
+  "published": true,
+  "order": 5,
+  "title": "Citizen TV News - Kenyan Youth Making Waves in International Robotics",
+  "summary": "Featured on Citizen TV, Kenya's most-watched television network, covering the robotics journey and international competition results.",
+  "type": "media",
+  "publication": "Citizen TV",
+  "date": null,
+  "event": null,
+  "image": "https://drive.google.com/uc?export=view&id=1uC7POLmpb8VbMOpU9qIhuBV6-JzlN9_u",
+  "details": [
+    "Featured on Citizen TV, Kenya's most-watched television network.",
+    "National broadcast highlighting the international competition journey and achievements in robotics."
+  ],
+  "links": [
+    {"label": "View Screenshot", "url": "https://drive.google.com/file/d/1uC7POLmpb8VbMOpU9qIhuBV6-JzlN9_u/view?usp=sharing"}
+  ]
+}
