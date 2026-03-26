@@ -1,0 +1,85 @@
+# Operating System Files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# IDE and Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+.classpath
+*.sublime-workspace
+*.sublime-project
+
+# Dependencies and Package Files
+node_modules/
+bower_components/
+vendor/
+
+# Build and Compiled Files
+dist/
+build/
+*.min.css
+*.min.js
+*.map
+
+# Logs and Databases
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.sql
+*.sqlite
+
+# Environment and Config Files
+.env
+.env.local
+.env.*.local
+config.js
+config.json
+
+# Temporary Files
+*.tmp
+*.temp
+*.bak
+*.backup
+*.cache
+tmp/
+temp/
+
+# Personal and Sensitive Files
+*.pem
+*.key
+*.crt
+*.p12
+secrets/
+private/
+
+# Documentation Build Files
+docs/_build/
+site/
+
+# Test Coverage
+coverage/
+.nyc_output/
+
+# Package Manager Lock Files (optional - uncomment if you want to ignore)
+# package-lock.json
+# yarn.lock
+
+# Misc
+*.orig
+.sass-cache/
+*.css.map
+*.js.map
+
+# Custom - Add your own ignores below
+.astro/
+.wrangler/
+.dev.vars
+.env
+.env.*

@@ -1,0 +1,236 @@
+Build me a premium personal portfolio website for a senior full stack software engineer.
+
+This is not a normal portfolio. It should work both as a recruiter-facing portfolio and as a personal biography site. It must showcase professional work, technical depth, mentorship, leadership, public presence, travel, books, hobbies, and selected life moments in a clean, elegant, high-credibility way.
+
+Use this stack:
+- Astro
+- TypeScript
+- Tailwind CSS v4
+- React only where interactivity is needed
+- Motion for animation
+- Cloudflare Pages for deployment
+- Cloudflare Pages Functions for the contact form endpoint
+- Cloudflare Turnstile for spam protection
+- Resend for email sending, structured so Postmark can be swapped in later if needed
+
+Architecture goals:
+- Mostly static site
+- No VPS
+- Content-driven
+- Excellent SEO
+- Fast load times
+- Minimal JavaScript by default
+- Rich interactions only where they add real value
+- Clean file structure
+- JSON as the main content source of truth
+- Strong component reuse
+- Production-ready code only
+
+Site requirements:
+Create 8 primary views plus reusable detail templates.
+
+Views:
+1. Home
+2. Work
+3. About
+4. Impact
+5. Press & Writing
+6. Life
+7. Contact
+8. Optional Now page if it improves the system
+
+Templates:
+- /work/[slug]
+- /press/[slug]
+- /writing/[slug]
+
+Detailed page intent:
+
+Home:
+- premium hero section
+- clear positioning statement
+- featured projects
+- tech stack
+- selected capabilities
+- current focus
+- short biography teaser
+- trust-building CTA
+
+Work:
+- serious project index
+- filterable by category
+- featured projects first
+- each card must lead to a real detail page
+
+Project detail template:
+- overview
+- problem
+- role
+- architecture
+- stack
+- gallery
+- results
+- lessons learned
+- links only if provided
+
+About:
+- long-form biography
+- career timeline
+- values
+- working style
+- authentic photos
+
+Impact:
+- mentorship
+- leadership
+- volunteering
+- awards
+- community work
+- speaking
+
+Press & Writing:
+- published articles
+- media appearances
+- interviews
+- speaking appearances
+- writing archive
+
+Life:
+- countries visited
+- books
+- hobbies
+- photos
+- personal highlights
+- should feel editorial and intentional, not noisy
+
+Contact:
+- elegant contact form
+- clear expectations
+- direct email
+- social links
+- polished success state
+- autoresponder email after submission
+
+Contact form behavior:
+- form submits to /api/contact
+- validate Turnstile token on server
+- send one email notification to site owner
+- send one styled acknowledgment email to sender
+- do not use a traditional backend server
+- use environment variables for secrets
+- return proper success and error states
+
+Animation and interaction rules:
+- design should feel premium, editorial, interactive, and modern
+- use sticky scroll sections where appropriate
+- use layered scroll choreography
+- use tasteful parallax only where it improves storytelling
+- use micro-interactions and refined hover states
+- use section reveals, card transitions, and image motion
+- respect prefers-reduced-motion
+- site must remain usable with reduced motion enabled
+- animation must support the content, not overshadow it
+
+Visual direction:
+- premium typography
+- clean spacing
+- excellent art direction
+- strong hierarchy
+- elegant transitions
+- immersive but still professional
+- inspired by high-end portfolio and interactive websites
+- should feel award-caliber without becoming gimmicky
+- must remain recruiter-friendly, legible, and fast
+
+Data architecture:
+Use JSON for structured content.
+Do not hardcode portfolio items directly in page files.
+Create a scalable content model.
+
+Suggested content folders:
+- src/content/projects/*.json
+- src/content/press/*.json
+- src/content/writing/*.json
+- src/content/mentorship/*.json
+- src/content/travel/*.json
+- src/content/books/*.json
+- src/content/photos/*.json
+- src/data/site.json
+- src/data/navigation.json
+- src/data/seo.json
+- src/data/socials.json
+
+Create schemas or type-safe validation for content.
+
+Important anti-fake rules:
+- do not invent any facts
+- do not invent metrics
+- do not invent years
+- do not invent awards
+- do not invent clients
+- do not invent press appearances
+- do not invent countries
+- do not invent books
+- do not invent testimonials
+- do not invent links
+- do not invent social URLs
+- if content is missing, leave a clear TODO field in JSON or omit the section entirely
+- every button must work
+- every route must exist
+- every card must point somewhere real
+- no placeholder content pretending to be final
+
+Strict anti-vibe-coding rules:
+- no emojis anywhere
+- no em dashes
+- no lorem ipsum
+- no fake counters
+- no fake loading screens
+- no fake dashboards
+- no fake views
+- no dead buttons
+- no dead filters
+- no dead tabs
+- no empty carousels
+- no sections that exist only for visual fluff
+- no meaningless “AI” decorations
+- no overstated copy
+- no made-up stats
+- no stock photos presented as personal photos
+- no giant preloader
+- no hover-only critical actions
+- no autoplay audio
+- no inaccessible motion
+- no poor contrast
+- no non-responsive layouts
+
+Technical expectations:
+- accessible markup
+- semantic HTML
+- mobile-first responsive design
+- good keyboard navigation
+- reduced motion support
+- image optimization strategy
+- clean component boundaries
+- maintainable code
+- file-based routing
+- reusable layout system
+- robust empty states
+- graceful handling when data is missing
+
+Output format:
+1. Start with the proposed file tree
+2. Then create the content schema/types
+3. Then create the layout system
+4. Then build the pages
+5. Then build the reusable components
+6. Then build the animations
+7. Then implement the contact form API route
+8. Then add deployment instructions for Cloudflare Pages
+9. Then list any environment variables needed
+10. Then list which JSON files I need to fill with real data
+
+Do not ask unnecessary clarifying questions.
+Make sensible assumptions from these requirements.
+When information is not available, use empty arrays, null values, or TODO markers in JSON instead of inventing content.
+Produce code that is production-ready, clean, and coherent across the whole system.
