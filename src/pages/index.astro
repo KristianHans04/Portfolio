@@ -8,6 +8,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getImpactEntries, getPhotoEntries, getProjects, getTravelEntries } from "@/lib/content/loaders";
 import { siteData } from "@/lib/site-data";
 import { hasItems, hasRealText, uniqueItems } from "@/lib/text";
+import { getTechLogo } from "@/lib/tech-logos";
 
 import { ScrollParallax } from "@/components/motion/ScrollParallax";
 import { InteractiveCard } from "@/components/motion/InteractiveCard";
@@ -67,8 +68,8 @@ const routeTiles = [
 
     <div class="section-shell">
       <div class="grid grid-cols-1 items-start gap-12 lg:grid-cols-12">
-        <!-- Left content (columns 1-7) -->
-        <div class="flex flex-col pt-6 sm:pt-12 lg:col-span-7">
+        <!-- Text content: shows SECOND on mobile, FIRST on desktop -->
+        <div class="flex flex-col order-2 lg:order-1 lg:col-span-7 pt-6 sm:pt-12">
           <!-- Role label with accent line -->
           <div class="flex items-center gap-3 mb-6">
             <span class="h-px w-8 bg-accent" aria-hidden="true"></span>
@@ -77,15 +78,9 @@ const routeTiles = [
             </span>
           </div>
 
-          <!-- Headline with highlighted words -->
-          <h1 class="home-hero-title">
-            {hasRealText(siteData.positioningStatement) ? (
-              <Fragment>
-                I build software that <span class="text-accent/80">works</span> and teach people who <span class="text-highlight">will.</span>
-              </Fragment>
-            ) : (
-              "Add a strong homepage headline in src/data/site.json."
-            )}
+          <!-- Headline with typewriter effect -->
+          <h1 class="home-hero-title" id="hero-typewriter">
+            <span id="typewriter-text"></span><span class="typewriter-cursor">|</span>
           </h1>
 
           <!-- Subtext -->
@@ -94,16 +89,6 @@ const routeTiles = [
               ? siteData.heroIntro
               : "Add a short supporting line in src/data/site.json to complete the homepage hero."}
           </p>
-
-          <!-- Animated tagline -->
-          <div class="mt-10 h-8 overflow-hidden" id="tagline-rotator">
-            <div class="tagline-track">
-              <p class="tagline-line font-mono text-sm text-ink-muted">I build software that works and teach people who will.</p>
-              <p class="tagline-line font-mono text-sm text-ink-muted">Full-stack engineer. STEM mentor. Relentless builder.</p>
-              <p class="tagline-line font-mono text-sm text-ink-muted">From Nairobi to global stages — shipping code that matters.</p>
-              <p class="tagline-line font-mono text-sm text-ink-muted">Engineering depth. Community impact. No shortcuts.</p>
-            </div>
-          </div>
 
           <!-- CTA cluster -->
           <div class="mt-12 flex flex-wrap items-center gap-5">
@@ -142,8 +127,8 @@ const routeTiles = [
           </div>
         </div>
 
-        <!-- Right profile area (columns 8-12) -->
-        <div class="relative mt-8 lg:col-span-5 lg:col-start-8 lg:mt-0">
+        <!-- Profile photo: shows FIRST on mobile, SECOND on desktop -->
+        <div class="relative order-1 lg:order-2 lg:col-span-5 lg:col-start-8 lg:mt-0">
           <!-- Decorative back plate -->
           <div class="pointer-events-none absolute -top-4 -right-4 h-full w-full rounded-xl border border-accent/15" aria-hidden="true"></div>
 
@@ -281,23 +266,24 @@ const routeTiles = [
                   ]}
                 >
                   <div class="grid gap-6 lg:grid-cols-[auto_1fr_auto] items-center">
-                    <span class="hidden lg:flex h-16 w-16 items-center justify-center rounded-2xl bg-accent/8 font-display text-3xl font-bold text-accent/30">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
+                    {project.logo ? (
+                      <img
+                        src={project.logo}
+                        alt={`${project.title} logo`}
+                        class="hidden lg:block h-14 w-14 shrink-0 rounded-2xl object-contain bg-white/5 p-1.5"
+                      />
+                    ) : (
+                      <span class="hidden lg:flex h-14 w-14 items-center justify-center rounded-2xl bg-accent/8 font-display text-2xl font-bold text-accent/30">
+                        {project.title.charAt(0)}
+                      </span>
+                    )}
                     <div>
-                      <div class="flex flex-wrap items-center gap-3">
-                        <h3 class:list={[
+                      <h3 class:list={[
                           "font-semibold tracking-tight text-ink transition-colors group-hover:text-accent",
                           i === 0 ? "text-3xl sm:text-4xl" : "text-2xl",
                         ]}>
                           {project.title}
-                        </h3>
-                        {project.featured && (
-                          <span class="rounded-md border border-accent/20 bg-accent-soft px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-accent">
-                            Featured
-                          </span>
-                        )}
-                      </div>
+                      </h3>
                       <p class:list={[
                         "mt-3 muted leading-relaxed max-w-2xl",
                         i === 0 ? "text-base" : "text-sm",
@@ -414,4 +400,48 @@ const routeTiles = [
       </div>
     </div>
   </section>
+
+  <script>
+    const sentences = [
+      "I build software that works and teach people who will.",
+      "Full-stack engineer. STEM mentor. Relentless builder.",
+      "From Nairobi to global stages — shipping code that matters.",
+      "Engineering depth. Community impact. No shortcuts.",
+    ];
+    const el = document.getElementById('typewriter-text');
+    if (el) {
+      let sentenceIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      const typeSpeed = 45;
+      const deleteSpeed = 25;
+      const pauseAfterType = 2500;
+      const pauseAfterDelete = 400;
+
+      function tick() {
+        const current = sentences[sentenceIndex];
+        if (!isDeleting) {
+          el.textContent = current.slice(0, charIndex + 1);
+          charIndex++;
+          if (charIndex === current.length) {
+            isDeleting = true;
+            setTimeout(tick, pauseAfterType);
+            return;
+          }
+          setTimeout(tick, typeSpeed);
+        } else {
+          el.textContent = current.slice(0, charIndex - 1);
+          charIndex--;
+          if (charIndex === 0) {
+            isDeleting = false;
+            sentenceIndex = (sentenceIndex + 1) % sentences.length;
+            setTimeout(tick, pauseAfterDelete);
+            return;
+          }
+          setTimeout(tick, deleteSpeed);
+        }
+      }
+      tick();
+    }
+  </script>
 </BaseLayout>

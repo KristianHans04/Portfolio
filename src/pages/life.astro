@@ -50,7 +50,9 @@ const booksByStatus = {
 
         <div class="mt-10 flex flex-wrap gap-6 border-t border-border-subtle/40 pt-8">
           <div class="flex items-center gap-3">
-            <span class="text-2xl">🌍</span>
+            <svg class="h-5 w-5 text-accent/60" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
             <div>
               <p class="text-2xl font-display font-bold tracking-tight text-ink">{countriesVisited.length}</p>
               <p class="text-[10px] uppercase tracking-[0.14em] text-ink-muted">Countries</p>
@@ -58,7 +60,9 @@ const booksByStatus = {
           </div>
           <div class="h-10 w-px bg-border-subtle/40"></div>
           <div class="flex items-center gap-3">
-            <span class="text-2xl">📚</span>
+            <svg class="h-5 w-5 text-highlight/60" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
             <div>
               <p class="text-2xl font-display font-bold tracking-tight text-ink">{books.length}</p>
               <p class="text-[10px] uppercase tracking-[0.14em] text-ink-muted">Books</p>
@@ -66,7 +70,9 @@ const booksByStatus = {
           </div>
           <div class="h-10 w-px bg-border-subtle/40"></div>
           <div class="flex items-center gap-3">
-            <span class="text-2xl">🎯</span>
+            <svg class="h-5 w-5 text-accent/60" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
             <div>
               <p class="text-2xl font-display font-bold tracking-tight text-ink">{siteData.hobbies?.length ?? 0}</p>
               <p class="text-[10px] uppercase tracking-[0.14em] text-ink-muted">Hobbies</p>
@@ -80,24 +86,25 @@ const booksByStatus = {
   <SectionDivider variant="gradient" />
 
   <!-- TRAVEL -->
-  <section class="section-shell py-14">
+  <section class="section-shell py-14" id="travel-section">
     <div class="grid gap-10 lg:grid-cols-[0.4fr_1fr]">
-      <!-- Sticky countries sidebar with clickable links -->
+      <!-- Sticky countries sidebar -->
       <div class="lg:sticky lg:top-28 lg:self-start">
         <div class="rounded-2xl border border-border-subtle/50 bg-gradient-to-b from-panel-strong/50 to-panel/30 p-6">
           <h2 class="text-xl font-semibold tracking-tight text-ink mb-4">Countries</h2>
           {countriesVisited.length > 0 ? (
-            <div class="flex flex-col gap-1">
+            <nav class="flex flex-col gap-0.5" id="country-nav">
               {countriesVisited.map((country) => (
                 <a
                   href={`#country-${country.toLowerCase().replace(/\s+/g, '-')}`}
-                  class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-ink-muted transition-all hover:bg-accent/10 hover:text-accent"
+                  class="country-nav-link flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-ink-muted transition-all hover:bg-accent/10 hover:text-accent"
+                  data-country={country.toLowerCase().replace(/\s+/g, '-')}
                 >
-                  <span class="text-lg">{countryFlags[country] ?? "🏳️"}</span>
+                  <span class="text-base">{countryFlags[country] ?? "🏳️"}</span>
                   <span>{country}</span>
                 </a>
               ))}
-            </div>
+            </nav>
           ) : (
             <p class="muted text-sm">Add published travel entries in src/content/travel.</p>
           )}
@@ -113,7 +120,7 @@ const booksByStatus = {
               <ScrollParallax client:visible offset={4 + (i * 1.5)}>
                 <article
                   id={`country-${entry.country.toLowerCase().replace(/\s+/g, '-')}`}
-                  class="overflow-hidden rounded-xl border border-border-subtle/50 bg-panel-strong/40 transition-all duration-300 hover:border-accent/30 hover:shadow-[0_8px_24px_rgba(3,12,26,0.3)] scroll-mt-32"
+                  class="travel-card overflow-hidden rounded-xl border border-border-subtle/50 bg-panel-strong/40 transition-all duration-300 hover:border-accent/30 hover:shadow-[0_8px_24px_rgba(3,12,26,0.3)] scroll-mt-32"
                 >
                   {entry.photos.length > 0 && (
                     <div class="relative h-48 sm:h-56 overflow-hidden">
@@ -126,7 +133,7 @@ const booksByStatus = {
                       />
                       <div class="absolute inset-0 bg-gradient-to-t from-panel-strong/80 to-transparent"></div>
                       <div class="absolute bottom-4 left-5 flex items-center gap-3">
-                        <span class="text-xl">{countryFlags[entry.country] ?? "🏳️"}</span>
+                        <span class="text-lg">{countryFlags[entry.country] ?? "🏳️"}</span>
                         <span class="rounded-full bg-accent/90 px-3 py-1 text-xs font-bold text-[#04111e]">{entry.country}</span>
                         {entry.year && <span class="text-xs text-ink/80">{entry.year}</span>}
                       </div>
@@ -136,7 +143,7 @@ const booksByStatus = {
                     {entry.photos.length === 0 && (
                       <div class="flex items-start justify-between gap-4 mb-3">
                         <div class="flex items-center gap-3">
-                          <span class="text-2xl">{countryFlags[entry.country] ?? "🏳️"}</span>
+                          <span class="text-xl">{countryFlags[entry.country] ?? "🏳️"}</span>
                           <div>
                             <h3 class="text-xl font-semibold tracking-tight text-ink">{entry.country}</h3>
                             <p class="text-sm text-ink-muted">{entry.city ?? ""}</p>
@@ -150,24 +157,23 @@ const booksByStatus = {
                     )}
                     {entry.notes && <p class="text-sm muted leading-relaxed">{entry.notes}</p>}
 
-                    {/* Better highlights UI — split into categories */}
                     {entry.highlights.length > 0 && (
-                      <div class="mt-4 flex flex-wrap gap-2">
+                      <div class="mt-4 space-y-1.5">
                         {entry.highlights.map((highlight) => {
                           const isPositive = highlight.toLowerCase().startsWith("liked");
                           const isNegative = highlight.toLowerCase().startsWith("did not") || highlight.toLowerCase().startsWith("didn't");
+                          const cleanText = highlight.replace(/^(Liked:|Did not like:|Didn't like:)\s*/i, "");
                           return (
-                            <span class:list={[
-                              "inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium",
-                              isPositive
-                                ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
-                                : isNegative
-                                ? "bg-amber-500/10 text-amber-400 border border-amber-500/20"
-                                : "bg-accent/10 text-accent border border-accent/20",
-                            ]}>
-                              {isPositive ? "👍" : isNegative ? "👎" : "📌"}
-                              {highlight.replace(/^(Liked:|Did not like:|Didn't like:)\s*/i, "")}
-                            </span>
+                            <div class="flex items-start gap-2.5 text-sm text-ink-muted">
+                              {isPositive ? (
+                                <svg class="mt-0.5 h-4 w-4 shrink-0 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                              ) : isNegative ? (
+                                <svg class="mt-0.5 h-4 w-4 shrink-0 text-ink-muted/50" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                              ) : (
+                                <span class="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-accent/40"></span>
+                              )}
+                              <span>{cleanText}</span>
+                            </div>
                           );
                         })}
                       </div>
@@ -190,7 +196,10 @@ const booksByStatus = {
   <section class="section-wash-amber py-16">
     <div class="section-shell">
       <h2 class="flex items-center gap-3 text-3xl font-semibold tracking-tight text-ink">
-        📚 Books
+        <svg class="h-6 w-6 text-highlight" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+        </svg>
+        Books
       </h2>
       {books.length > 0 ? (
         <div class="mt-8 grid gap-8 lg:grid-cols-3">
@@ -264,8 +273,8 @@ const booksByStatus = {
     <div class="grid gap-8 lg:grid-cols-2">
       <ScrollParallax client:visible offset={15}>
         <div class="h-full rounded-2xl border border-accent/15 bg-gradient-to-br from-accent/5 to-transparent p-7">
-          <h2 class="flex items-center gap-2 text-2xl font-semibold tracking-tight text-ink">
-            🎯 Hobbies
+          <h2 class="text-2xl font-semibold tracking-tight text-ink">
+            Hobbies
           </h2>
           {hasItems(siteData.hobbies) ? (
             <div class="mt-5 flex flex-wrap gap-2">
@@ -283,8 +292,8 @@ const booksByStatus = {
 
       <ScrollParallax client:visible offset={-10}>
         <div class="h-full rounded-2xl border border-highlight/15 bg-gradient-to-br from-highlight/5 to-transparent p-7">
-          <h2 class="flex items-center gap-2 text-2xl font-semibold tracking-tight text-ink">
-            ✨ Personal highlights
+          <h2 class="text-2xl font-semibold tracking-tight text-ink">
+            Personal highlights
           </h2>
           {hasItems(siteData.personalHighlights) ? (
             <ul class="mt-5 space-y-3">
@@ -302,4 +311,30 @@ const booksByStatus = {
       </ScrollParallax>
     </div>
   </section>
+
+  <!-- Scroll-highlight script for country sidebar -->
+  <script>
+    const navLinks = document.querySelectorAll('.country-nav-link');
+    const cards = document.querySelectorAll('.travel-card');
+    if (navLinks.length && cards.length) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            navLinks.forEach((link) => {
+              const el = link as HTMLElement;
+              if (el.dataset.country === id.replace('country-', '')) {
+                el.classList.add('bg-accent/10', 'text-accent', 'font-medium');
+                el.classList.remove('text-ink-muted');
+              } else {
+                el.classList.remove('bg-accent/10', 'text-accent', 'font-medium');
+                el.classList.add('text-ink-muted');
+              }
+            });
+          }
+        });
+      }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
+      cards.forEach((card) => observer.observe(card));
+    }
+  </script>
 </BaseLayout>

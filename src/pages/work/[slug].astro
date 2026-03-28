@@ -3,6 +3,7 @@ import PillList from "@/components/ui/PillList.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getProjects } from "@/lib/content/loaders";
 import { hasItems, hasRealText } from "@/lib/text";
+import { getTechLogo } from "@/lib/tech-logos";
 
 export function getStaticPaths() {
   return getProjects().map((project) => ({
@@ -19,38 +20,6 @@ const previousProject = projectIndex > 0 ? projects[projectIndex - 1] : null;
 const nextProject = projectIndex >= 0 && projectIndex < projects.length - 1 ? projects[projectIndex + 1] : null;
 const primaryLink = project.links[0] ?? null;
 
-const techMarkMap: Record<string, string> = {
-  Kotlin: "Kt",
-  "Jetpack Compose": "JC",
-  "Firebase Auth": "FA",
-  "Cloud Firestore": "CF",
-  Hilt: "Hi",
-  DataStore: "DS",
-  Coil: "Co",
-  Python: "Py",
-  Pandas: "Pd",
-  NumPy: "NP",
-  "TensorFlow/Keras": "TF",
-  Statsmodels: "SM",
-  MQTT: "MQ",
-  "Computer Vision": "CV",
-  "Image Classification": "IC",
-  "Mobile UX": "UX",
-  "AI Guidance": "AI",
-};
-
-const getTechMark = (label: string) => {
-  if (techMarkMap[label]) {
-    return techMarkMap[label];
-  }
-
-  return label
-    .split(/[\s/+-]+/)
-    .map((part: string) => part[0] ?? "")
-    .join("")
-    .slice(0, 2)
-    .toUpperCase();
-};
 
 const sectionLinks = [
   hasRealText(project.overview) ? { id: "overview", label: "Overview" } : null,
@@ -107,12 +76,19 @@ const sectionLinks = [
             <section class="rounded-xl border border-border-subtle/35 bg-panel/40 p-5">
               <p class="eyebrow mb-3">Tech Stack</p>
               <div class="flex flex-wrap gap-2">
-                {project.stack.map((item) => (
-                  <span class="inline-flex items-center gap-1.5 rounded-lg border border-border-subtle/35 bg-canvas/40 px-3 py-1.5 text-xs font-medium text-ink">
-                    <span class="font-mono text-[10px] font-bold text-accent">{getTechMark(item)}</span>
-                    {item}
-                  </span>
-                ))}
+                {project.stack.map((item) => {
+                  const logo = getTechLogo(item);
+                  return (
+                    <span class="inline-flex items-center gap-2 rounded-lg border border-border-subtle/35 bg-canvas/40 px-3 py-1.5 text-xs font-medium text-ink">
+                      {logo ? (
+                        <img src={logo} alt="" class="h-4 w-4 object-contain" loading="lazy" />
+                      ) : (
+                        <span class="flex h-4 w-4 items-center justify-center rounded bg-accent/15 text-[8px] font-bold text-accent">{item.charAt(0)}</span>
+                      )}
+                      {item}
+                    </span>
+                  );
+                })}
               </div>
             </section>
           )}
