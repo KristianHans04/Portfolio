@@ -677,16 +677,16 @@ a {
 }
 
 /* Morph text transition */
-.morph-text {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  width: 100%;
+.morph-sizer {
+  display: block;
+  height: auto;
 }
 
-#hero-morph {
-  min-height: 1.2em;
+.morph-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
 #morph-b {
