@@ -32,7 +32,7 @@ const contactSchema = z.object({
   subject: z.string().trim().min(2).max(180),
   message: z.string().trim().min(8).max(5000),
   companyWebsite: z.string().trim().max(200).optional().default(""),
-  turnstileToken: z.string().trim().min(1),
+  turnstileToken: z.string().trim().optional().default(""),
 });
 
 function jsonResponse(body: unknown, status = 200): Response {
@@ -77,12 +77,9 @@ async function verifyTurnstile(token: string, secret: string, remoteIp: string |
 }
 
 async function handleContact(request: Request, env: Env): Promise<Response> {
-  if (!env.TURNSTILE_SECRET_KEY || !env.CONTACT_TO_EMAIL || !env.CONTACT_FROM_EMAIL) {
+  if (!env.CONTACT_TO_EMAIL || !env.CONTACT_FROM_EMAIL) {
     return jsonResponse(
-      {
-        ok: false,
-        error: "Server configuration incomplete. Set TURNSTILE_SECRET_KEY, CONTACT_TO_EMAIL, and CONTACT_FROM_EMAIL.",
-      },
+      { ok: false, error: "Server configuration incomplete. Set CONTACT_TO_EMAIL and CONTACT_FROM_EMAIL." },
       500,
     );
   }
@@ -106,10 +103,12 @@ async function handleContact(request: Request, env: Env): Promise<Response> {
     return jsonResponse({ ok: true, message: "Message received." });
   }
 
-  const remoteIp = request.headers.get("CF-Connecting-IP");
-  const turnstileOk = await verifyTurnstile(data.turnstileToken, env.TURNSTILE_SECRET_KEY, remoteIp);
-  if (!turnstileOk) {
-    return jsonResponse({ ok: false, error: "Spam check failed. Please retry." }, 400);
+  if (env.TURNSTILE_SECRET_KEY && data.turnstileToken) {
+    const remoteIp = request.headers.get("CF-Connecting-IP");
+    const turnstileOk = await verifyTurnstile(data.turnstileToken, env.TURNSTILE_SECRET_KEY, remoteIp);
+    if (!turnstileOk) {
+      return jsonResponse({ ok: false, error: "Spam check failed. Please retry." }, 400);
+    }
   }
 
   let provider;
