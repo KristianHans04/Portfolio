@@ -8,8 +8,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "cf:dev": "wrangler pages dev",
-    "cf:deploy": "wrangler pages deploy"
+    "cf:dev": "wrangler dev",
+    "cf:deploy": "wrangler deploy"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.1",
