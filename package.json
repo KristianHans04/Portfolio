@@ -8,8 +8,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "cf:dev": "wrangler pages dev dist --functions ./functions --compatibility-date=2026-03-07",
-    "cf:deploy": "wrangler pages deploy dist --project-name YOUR_PAGES_PROJECT_NAME"
+    "cf:dev": "wrangler pages dev",
+    "cf:deploy": "wrangler pages deploy"
   },
   "dependencies": {
     "@astrojs/react": "^5.0.1",

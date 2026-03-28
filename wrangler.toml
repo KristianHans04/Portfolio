@@ -1,5 +1,3 @@
 name = "premium-engineering-portfolio"
 compatibility_date = "2026-03-07"
-
-[assets]
-directory = "./dist"
+pages_build_output_dir = "./dist"
