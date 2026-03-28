@@ -14,6 +14,10 @@
     "Broadcast to a national audience across Kenya."
   ],
   "links": [
-    {"label": "Watch Broadcast", "url": "https://youtu.be/PKhWWcU90Ec"}
-  ]
+    {
+      "label": "Watch Broadcast",
+      "url": "https://youtu.be/PKhWWcU90Ec"
+    }
+  ],
+  "logo": "/images/logos/ktn-news.svg"
 }

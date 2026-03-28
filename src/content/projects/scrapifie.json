@@ -5,9 +5,14 @@
   "order": 3,
   "title": "Scrapifie",
   "summary": "Enterprise web scraping platform with TLS fingerprinting, CAPTCHA solving, residential proxy rotation, headless stealth browsers, honeypot avoidance, and bot bypass. API key access for scraping the web without getting blocked.",
-  "categories": ["Full-Stack", "SaaS", "Infrastructure", "Security"],
+  "categories": [
+    "Full-Stack",
+    "SaaS",
+    "Infrastructure",
+    "Security"
+  ],
   "client": null,
-  "period": "2024 - Present",
+  "period": null,
   "overview": "Scrapifie is a web scraping infrastructure platform built for engineers who need reliable, undetectable data extraction at scale. The platform provides API keys that give users access to enterprise-grade scraping capabilities including TLS fingerprinting, browser fingerprint generation and injection, CAPTCHA solving, residential proxy rotation, stealth browser automation, honeypot detection and avoidance, and anti-bot bypass. Jobs are processed through a distributed queue system with full observability.",
   "problem": "Modern websites deploy increasingly sophisticated anti-bot measures: TLS fingerprint analysis, behavioral fingerprinting, CAPTCHA walls, honeypot traps, and IP reputation systems. Building and maintaining scraping infrastructure that can reliably bypass these defenses requires deep expertise in browser internals, network protocols, and anti-detection techniques. Scrapifie packages this expertise into an API that any developer can use.",
   "role": [
@@ -28,12 +33,33 @@
     "Credit-based billing system with subscription tiers, abuse detection, and per-job budget controls",
     "Residential proxy rotation with IP reputation management"
   ],
-  "stack": ["TypeScript", "Playwright", "Puppeteer Extra", "BullMQ", "Redis", "OpenTelemetry", "Sentry", "Prometheus", "TOTP 2FA", "Express", "PostgreSQL"],
+  "stack": [
+    "TypeScript",
+    "Playwright",
+    "Puppeteer Extra",
+    "BullMQ",
+    "Redis",
+    "OpenTelemetry",
+    "Sentry",
+    "Prometheus",
+    "TOTP 2FA",
+    "Express",
+    "PostgreSQL"
+  ],
   "gallery": [],
   "results": [
-    {"title": "Anti-Detection Engine", "detail": "TLS fingerprinting, browser fingerprint injection, stealth automation, and honeypot avoidance that bypasses modern bot detection systems."},
-    {"title": "Distributed Processing", "detail": "BullMQ job queue with Redis backing for reliable, horizontally scalable scraping job execution."},
-    {"title": "Full Observability", "detail": "OpenTelemetry, Sentry, and Prometheus providing end-to-end visibility into job execution, errors, and system performance."}
+    {
+      "title": "Anti-Detection Engine",
+      "detail": "TLS fingerprinting, browser fingerprint injection, stealth automation, and honeypot avoidance that bypasses modern bot detection systems."
+    },
+    {
+      "title": "Distributed Processing",
+      "detail": "BullMQ job queue with Redis backing for reliable, horizontally scalable scraping job execution."
+    },
+    {
+      "title": "Full Observability",
+      "detail": "OpenTelemetry, Sentry, and Prometheus providing end-to-end visibility into job execution, errors, and system performance."
+    }
   ],
   "lessonsLearned": [
     "Anti-detection is an arms race. What works today may not work in three months. The architecture must make detection bypass modules replaceable.",
@@ -41,6 +67,10 @@
     "Abuse detection is harder than it sounds. Legitimate high-volume usage looks identical to abuse without careful heuristic design."
   ],
   "links": [
-    {"label": "Live Platform", "url": "https://scrapifie.kristianhans.com"}
-  ]
+    {
+      "label": "Live Platform",
+      "url": "https://scrapifie.kristianhans.com"
+    }
+  ],
+  "logo": "/images/projects/scrapifie.svg"
 }

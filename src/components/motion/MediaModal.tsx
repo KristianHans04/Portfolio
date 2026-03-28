@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import { createPortal } from "react-dom";
 
 interface MediaModalProps {
   url: string;
@@ -40,6 +41,62 @@ export function MediaModal({ url, label, type, publication }: MediaModalProps) {
     };
   }, [isOpen]);
 
+  const modal = isOpen ? (
+    <div
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-8"
+      onClick={(e) => { if (e.target === e.currentTarget) setIsOpen(false); }}
+      role="dialog"
+      aria-modal="true"
+      aria-label={`${publication ? publication + ": " : ""}${label}`}
+    >
+      <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
+
+      <div className="relative z-10 flex w-full max-w-5xl flex-col rounded-2xl border border-white/10 bg-[#0c1424] shadow-2xl overflow-hidden" style={{ maxHeight: "90vh" }}>
+        <div className="flex items-center justify-between border-b border-white/10 px-5 py-3">
+          <div className="flex items-center gap-3">
+            {publication && (
+              <span className="text-sm font-semibold text-white">{publication}</span>
+            )}
+            <span className="text-xs text-[#8fa3c4]">{label}</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-white/15 px-3 py-1.5 text-xs font-medium text-[#8fa3c4] transition-colors hover:border-white/30 hover:text-white no-underline"
+            >
+              Open in new tab
+              <svg className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+            <button
+              onClick={() => setIsOpen(false)}
+              className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/15 text-[#8fa3c4] transition-colors hover:border-white/30 hover:text-white cursor-pointer"
+              aria-label="Close modal"
+            >
+              <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div className="flex-1 overflow-hidden" style={{ minHeight: "60vh" }}>
+          <iframe
+            src={getEmbedUrl()}
+            className="h-full w-full border-0"
+            style={{ minHeight: "60vh" }}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            title={label}
+          />
+        </div>
+      </div>
+    </div>
+  ) : null;
+
   return (
     <>
       <button
@@ -64,62 +121,7 @@ export function MediaModal({ url, label, type, publication }: MediaModalProps) {
         )}
         {label}
       </button>
-
-      {isOpen && (
-        <div
-          className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-8"
-          onClick={(e) => { if (e.target === e.currentTarget) setIsOpen(false); }}
-          role="dialog"
-          aria-modal="true"
-          aria-label={`${publication ? publication + ": " : ""}${label}`}
-        >
-          <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
-
-          <div className="relative z-10 flex w-full max-w-5xl flex-col rounded-2xl border border-white/10 bg-[#0c1424] shadow-2xl overflow-hidden" style={{ maxHeight: "90vh" }}>
-            <div className="flex items-center justify-between border-b border-white/10 px-5 py-3">
-              <div className="flex items-center gap-3">
-                {publication && (
-                  <span className="text-sm font-semibold text-white">{publication}</span>
-                )}
-                <span className="text-xs text-[#8fa3c4]">{label}</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <a
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 rounded-lg border border-white/15 px-3 py-1.5 text-xs font-medium text-[#8fa3c4] transition-colors hover:border-white/30 hover:text-white no-underline"
-                >
-                  Open in new tab
-                  <svg className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                </a>
-                <button
-                  onClick={() => setIsOpen(false)}
-                  className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/15 text-[#8fa3c4] transition-colors hover:border-white/30 hover:text-white cursor-pointer"
-                  aria-label="Close modal"
-                >
-                  <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-              </div>
-            </div>
-
-            <div className="flex-1 overflow-hidden" style={{ minHeight: "60vh" }}>
-              <iframe
-                src={getEmbedUrl()}
-                className="h-full w-full border-0"
-                style={{ minHeight: "60vh" }}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                title={label}
-              />
-            </div>
-          </div>
-        </div>
-      )}
+      {typeof document !== "undefined" && createPortal(modal, document.body)}
     </>
   );
 }

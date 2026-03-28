@@ -69,12 +69,12 @@ const sectionLinks = [
       <div class="relative z-10 grid gap-8 xl:grid-cols-[1.2fr_0.8fr]">
         <div>
           <div class="flex flex-wrap items-center gap-3">
-            <p class="eyebrow">Project</p>
-            {project.featured && (
-              <span class="data-chip border-accent/20 bg-accent/8 text-accent">Featured</span>
-            )}
-            {project.period && (
-              <span class="data-chip border-highlight/20 bg-highlight/8 text-highlight">{project.period}</span>
+            {project.logo ? (
+              <img src={project.logo} alt={`${project.title} logo`} class="h-8 w-auto rounded-lg" />
+            ) : (
+              <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-accent/10 text-lg font-bold text-accent">
+                {project.title.charAt(0)}
+              </span>
             )}
           </div>
 

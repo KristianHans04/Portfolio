@@ -5,9 +5,14 @@
   "order": 4,
   "title": "PhotoMed",
   "summary": "Patented AI-powered mobile application that identifies medicinal plants near your location and matches them to your symptoms. Geospatial plant mapping with PostGIS, AI diagnosis via Gemini and PlantNet, and preparation methods for natural remedies.",
-  "categories": ["Mobile", "AI", "HealthTech", "Geospatial"],
+  "categories": [
+    "Mobile",
+    "AI",
+    "HealthTech",
+    "Geospatial"
+  ],
   "client": null,
-  "period": "2023 - Present",
+  "period": null,
   "overview": "PhotoMed is a patented mobile application that bridges traditional plant-based medicine with modern technology. Users can photograph a plant or describe their symptoms, and the app uses AI to identify medicinal plants nearby, explain their therapeutic properties, and provide preparation methods. The system combines geospatial mapping with AI-powered plant identification and symptom-to-remedy matching, making traditional medicine accessible and verifiable.",
   "problem": "Traditional medicinal knowledge is disappearing. The plants still grow, but the people who know which ones cure what are aging out of communities. Meanwhile, people with minor ailments pay for pharmaceuticals when effective natural remedies grow within walking distance. PhotoMed digitizes and geolocalizes this knowledge, making it searchable, verifiable, and accessible to anyone with a phone.",
   "role": [
@@ -28,12 +33,32 @@
     "Geolocation services for mapping nearby medicinal plants with distance calculations",
     "Comprehensive test suite with 187 tests across unit, integration, and functional layers"
   ],
-  "stack": ["Flutter 3.27", "Dart", "Node.js", "Express", "TypeScript", "PostgreSQL", "PostGIS", "Gemini AI", "PlantNet API", "Riverpod"],
+  "stack": [
+    "Flutter 3.27",
+    "Dart",
+    "Node.js",
+    "Express",
+    "TypeScript",
+    "PostgreSQL",
+    "PostGIS",
+    "Gemini AI",
+    "PlantNet API",
+    "Riverpod"
+  ],
   "gallery": [],
   "results": [
-    {"title": "Patented System", "detail": "AI-powered medicinal plant identification and geospatial remedy mapping system with formal intellectual property protection."},
-    {"title": "Symptom Matching", "detail": "Natural language symptom input matched to nearby medicinal plants with preparation methods and dosage guidance."},
-    {"title": "187 Tests", "detail": "Comprehensive test coverage across the full stack ensuring reliability for health-adjacent recommendations."}
+    {
+      "title": "Patented System",
+      "detail": "AI-powered medicinal plant identification and geospatial remedy mapping system with formal intellectual property protection."
+    },
+    {
+      "title": "Symptom Matching",
+      "detail": "Natural language symptom input matched to nearby medicinal plants with preparation methods and dosage guidance."
+    },
+    {
+      "title": "187 Tests",
+      "detail": "Comprehensive test coverage across the full stack ensuring reliability for health-adjacent recommendations."
+    }
   ],
   "lessonsLearned": [
     "Health-adjacent applications require exceptional accuracy. A wrong plant identification is not a bug, it is a safety issue. The test suite reflects this.",

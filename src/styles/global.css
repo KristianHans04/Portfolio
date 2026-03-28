@@ -676,19 +676,23 @@ a {
   -webkit-backdrop-filter: blur(20px);
 }
 
-.hero-signal-chip {
-  display: inline-flex;
+/* Tagline rotation animation */
+.tagline-track {
+  animation: tagline-rotate 12s ease-in-out infinite;
+}
+
+.tagline-line {
+  height: 2rem;
+  display: flex;
   align-items: center;
-  padding: 0.4rem 1rem;
-  border: 1px solid color-mix(in srgb, var(--color-border-subtle) 30%, transparent);
-  border-radius: 0.25rem;
-  background: color-mix(in srgb, var(--color-panel-strong) 50%, transparent);
-  font-family: var(--font-display);
-  font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--color-highlight);
+}
+
+@keyframes tagline-rotate {
+  0%, 20% { transform: translateY(0); }
+  25%, 45% { transform: translateY(-2rem); }
+  50%, 70% { transform: translateY(-4rem); }
+  75%, 95% { transform: translateY(-6rem); }
+  100% { transform: translateY(0); }
 }
 
 .home-hero-title {

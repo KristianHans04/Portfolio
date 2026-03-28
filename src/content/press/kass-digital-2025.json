@@ -14,6 +14,10 @@
     "Highlighted the team's journey from preparation in Kenya to winning on the international stage."
   ],
   "links": [
-    {"label": "Read Article", "url": "https://kassdigital.co.ke/business/kenya-makes-history-at-the-2025-first-global-robotics-olympiad-in-panama-city/"}
-  ]
+    {
+      "label": "Read Article",
+      "url": "https://kassdigital.co.ke/business/kenya-makes-history-at-the-2025-first-global-robotics-olympiad-in-panama-city/"
+    }
+  ],
+  "logo": "/images/logos/kass-digital.svg"
 }

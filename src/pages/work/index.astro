@@ -1,25 +1,20 @@
 ---
-import WorkFilter from "@/components/work/WorkFilter";
 import EmptyState from "@/components/ui/EmptyState.astro";
-import SectionHeading from "@/components/ui/SectionHeading.astro";
 import SectionDivider from "@/components/ui/SectionDivider.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { getProjects } from "@/lib/content/loaders";
 import { uniqueItems } from "@/lib/text";
 
 import { CounterUp } from "@/components/motion/CounterUp";
-import { ScrollParallax } from "@/components/motion/ScrollParallax";
 
 const projects = getProjects();
-const allCategories = uniqueItems(projects.flatMap((project) => project.categories));
 const allStack = uniqueItems(projects.flatMap((project) => project.stack));
-const featuredCount = projects.filter((project) => project.featured).length;
 ---
 <BaseLayout
   title="Work"
   description="Shipped products with full technical breakdowns, implementation notes, and live repositories."
 >
-  <!-- HERO: Full-width editorial with stats bar -->
+  <!-- HERO -->
   <section class="section-wash-blue pt-14 pb-6 sm:pt-18">
     <div class="section-shell">
       <div class="scene-panel p-8 sm:p-10 lg:p-12" data-tone="blue">
@@ -30,24 +25,18 @@ const featuredCount = projects.filter((project) => project.featured).length;
           </p>
           <h1 class="headline mt-5 text-ink">The work</h1>
           <p class="mt-5 max-w-2xl text-lg leading-relaxed muted">
-            Every project here solved a real problem for real people. Filter by category, open any project, and see the engineering behind it.
+            Every project here solved a real problem for real people. Open any project to see the engineering behind it.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- STATS BAR: Horizontal counters strip -->
+  <!-- STATS BAR -->
   <section class="section-shell pb-8">
-    <div class="grid grid-cols-2 gap-4 sm:grid-cols-4">
+    <div class="grid grid-cols-2 gap-4 sm:grid-cols-2">
       <div class="rounded-xl border border-border-subtle/50 bg-panel/30 p-5 text-center transition-colors hover:border-accent/30">
-        <CounterUp client:visible target={projects.length} className="flex flex-col items-center" label="Published" />
-      </div>
-      <div class="rounded-xl border border-border-subtle/50 bg-panel/30 p-5 text-center transition-colors hover:border-highlight/30">
-        <CounterUp client:visible target={featuredCount} className="flex flex-col items-center" label="Featured" />
-      </div>
-      <div class="rounded-xl border border-border-subtle/50 bg-panel/30 p-5 text-center transition-colors hover:border-accent/30">
-        <CounterUp client:visible target={allCategories.length} className="flex flex-col items-center" label="Categories" />
+        <CounterUp client:visible target={projects.length} className="flex flex-col items-center" label="Projects" />
       </div>
       <div class="rounded-xl border border-border-subtle/50 bg-panel/30 p-5 text-center transition-colors hover:border-highlight/30">
         <CounterUp client:visible target={allStack.length} className="flex flex-col items-center" label="Technologies" />
@@ -55,39 +44,57 @@ const featuredCount = projects.filter((project) => project.featured).length;
     </div>
   </section>
 
-  <!-- CATEGORIES: Horizontal scrolling pills -->
-  {allCategories.length > 0 && (
-    <section class="section-shell pb-6">
-      <div class="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-hide">
-        <span class="shrink-0 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-muted">Categories:</span>
-        {allCategories.slice(0, 12).map((category) => (
-          <span class="shrink-0 rounded-full border border-border-subtle/60 bg-canvas/50 px-4 py-1.5 text-[11px] font-mono tracking-wider text-ink-muted uppercase whitespace-nowrap">
-            {category}
-          </span>
-        ))}
-      </div>
-    </section>
-  )}
-
   <SectionDivider variant="gradient" />
 
-  <!-- PROJECT GRID: Filter + animated cards -->
+  <!-- PROJECT GRID -->
   <section class="section-wash-slate mt-8 pb-24">
     <div class="section-shell pt-8">
       {
         projects.length > 0 ? (
-          <WorkFilter
-            client:visible
-            projects={projects.map((project) => ({
-              slug: project.slug,
-              title: project.title,
-              summary: project.summary,
-              categories: project.categories,
-              featured: project.featured,
-              period: project.period,
-              stack: project.stack,
-            }))}
-          />
+          <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {projects.map((project) => (
+              <a
+                href={`/work/${project.slug}`}
+                class="group rounded-xl border border-border-subtle/50 bg-panel-strong/40 p-5 transition-all duration-300 hover:border-accent/30 hover:shadow-[0_8px_24px_rgba(3,12,26,0.3)] hover:-translate-y-0.5"
+              >
+                {/* Logo if available */}
+                <div class="flex items-start gap-4">
+                  {project.logo ? (
+                    <img
+                      src={project.logo}
+                      alt={`${project.title} logo`}
+                      class="h-10 w-10 shrink-0 rounded-lg object-contain bg-white/5 p-1"
+                    />
+                  ) : (
+                    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-lg font-bold text-accent">
+                      {project.title.charAt(0)}
+                    </span>
+                  )}
+                  <div class="min-w-0">
+                    <h3 class="text-lg font-semibold tracking-tight text-ink group-hover:text-accent transition-colors truncate">
+                      {project.title}
+                    </h3>
+                    <p class="mt-1 text-sm text-ink-muted line-clamp-2">{project.summary}</p>
+                  </div>
+                </div>
+                {/* Stack pills */}
+                {project.stack.length > 0 && (
+                  <div class="mt-4 flex flex-wrap gap-1.5">
+                    {project.stack.slice(0, 4).map((tech) => (
+                      <span class="rounded-full bg-accent/8 px-2.5 py-0.5 text-[10px] font-mono text-accent/70">
+                        {tech}
+                      </span>
+                    ))}
+                    {project.stack.length > 4 && (
+                      <span class="rounded-full bg-panel px-2.5 py-0.5 text-[10px] font-mono text-ink-muted">
+                        +{project.stack.length - 4}
+                      </span>
+                    )}
+                  </div>
+                )}
+              </a>
+            ))}
+          </div>
         ) : (
           <EmptyState
             title="No published projects"

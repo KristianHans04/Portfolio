@@ -5,9 +5,13 @@
   "order": 5,
   "title": "MWC Advocates",
   "summary": "Professional website for MWC Advocates law firm with custom inbuilt mailers using Resend, Google Sheets integration for lead management, and multiple email service adapters. Clean, professional digital presence for a legal practice.",
-  "categories": ["Full-Stack", "Client Work", "Professional Services"],
+  "categories": [
+    "Full-Stack",
+    "Client Work",
+    "Professional Services"
+  ],
   "client": "MWC Advocates",
-  "period": "2024",
+  "period": null,
   "overview": "A professional digital presence for MWC Advocates, a law firm that needed a website reflecting the seriousness of their practice. The platform includes custom email systems for client communication, Google Sheets integration for lead tracking and management, and a clean, responsive design that communicates credibility and competence.",
   "problem": "The firm needed a professional online presence that could handle client inquiries reliably, integrate with their existing workflow tools, and present their services with the gravitas their practice demands. Off-the-shelf templates could not provide the custom email infrastructure and integration requirements.",
   "role": [
@@ -24,12 +28,31 @@
     "Google Sheets API integration for automated lead tracking and management workflows",
     "Deployed on Render with automated CI/CD pipeline"
   ],
-  "stack": ["React 19", "Vite", "Express", "Prisma", "PostgreSQL", "Resend", "Google Sheets API", "Tailwind CSS", "Render"],
+  "stack": [
+    "React 19",
+    "Vite",
+    "Express",
+    "Prisma",
+    "PostgreSQL",
+    "Resend",
+    "Google Sheets API",
+    "Tailwind CSS",
+    "Render"
+  ],
   "gallery": [],
   "results": [
-    {"title": "Professional Presence", "detail": "Clean, credible digital presence that reflects the caliber of the legal practice."},
-    {"title": "Custom Mailers", "detail": "Resend-powered email system with multiple service adapters ensuring reliable client communication."},
-    {"title": "Lead Pipeline", "detail": "Automated Google Sheets integration for lead tracking without disrupting existing workflows."}
+    {
+      "title": "Professional Presence",
+      "detail": "Clean, credible digital presence that reflects the caliber of the legal practice."
+    },
+    {
+      "title": "Custom Mailers",
+      "detail": "Resend-powered email system with multiple service adapters ensuring reliable client communication."
+    },
+    {
+      "title": "Lead Pipeline",
+      "detail": "Automated Google Sheets integration for lead tracking without disrupting existing workflows."
+    }
   ],
   "lessonsLearned": [
     "Legal clients have high expectations for reliability and professionalism. Every detail matters, from email deliverability to page load speed.",
@@ -37,6 +60,10 @@
     "Multiple email service adapters provide the redundancy that client-facing communication demands."
   ],
   "links": [
-    {"label": "Live Website", "url": "https://mwcadvocates.kristianhans.com"}
-  ]
+    {
+      "label": "Live Website",
+      "url": "https://mwcadvocates.kristianhans.com"
+    }
+  ],
+  "logo": "/images/projects/mwcadvocates.svg"
 }

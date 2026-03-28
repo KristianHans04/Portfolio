@@ -5,9 +5,13 @@
   "order": 8,
   "title": "OpenBB - Open Source Contribution",
   "summary": "Contributed to OpenBB, an open-source financial data platform. Fixed a cross-browser compatibility bug that caused the application to crash in certain browsers due to unsupported API calls and inconsistent DOM handling.",
-  "categories": ["Open Source", "Frontend", "Bug Fix"],
+  "categories": [
+    "Open Source",
+    "Frontend",
+    "Bug Fix"
+  ],
   "client": null,
-  "period": "2024",
+  "period": null,
   "overview": "OpenBB is an open-source investment research platform that provides access to financial data, analysis tools, and market insights. The platform experienced crashes in certain browsers due to cross-browser compatibility issues in the frontend codebase.",
   "problem": "The OpenBB web application was crashing in some browsers, including Microsoft Edge (Bing-integrated). The issue stemmed from the use of browser APIs that were not universally supported and inconsistent DOM event handling across rendering engines. This created a poor user experience for a significant portion of the user base who did not use Chrome as their primary browser.",
   "role": [
@@ -18,17 +22,30 @@
     "Submitted a pull request with the fix and supporting documentation"
   ],
   "architecture": [],
-  "stack": ["JavaScript", "React", "Browser APIs"],
+  "stack": [
+    "JavaScript",
+    "React",
+    "Browser APIs"
+  ],
   "gallery": [],
   "results": [
-    {"title": "Cross-Browser Fix", "detail": "Resolved crashes affecting Edge and other non-Chrome browsers by implementing proper feature detection and API fallbacks."},
-    {"title": "User Impact", "detail": "Restored access for users on affected browsers, expanding the platform's effective reach."}
+    {
+      "title": "Cross-Browser Fix",
+      "detail": "Resolved crashes affecting Edge and other non-Chrome browsers by implementing proper feature detection and API fallbacks."
+    },
+    {
+      "title": "User Impact",
+      "detail": "Restored access for users on affected browsers, expanding the platform's effective reach."
+    }
   ],
   "lessonsLearned": [
     "Cross-browser compatibility issues are almost always about assumptions. The fix is rarely the hard part. Finding which assumption broke is.",
     "Open-source contribution teaches you to read unfamiliar codebases fast and communicate intent clearly in PRs."
   ],
   "links": [
-    {"label": "OpenBB Platform", "url": "https://openbb.co"}
+    {
+      "label": "OpenBB Platform",
+      "url": "https://openbb.co"
+    }
   ]
 }

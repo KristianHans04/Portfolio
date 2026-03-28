@@ -5,9 +5,14 @@
   "order": 1,
   "title": "Venturely",
   "summary": "Market intelligence platform tracking 20,000+ startups globally. AI-powered signals detect funding rounds, bankruptcies, leadership changes, and layoffs before they hit the news cycle. Built for VCs, founders, and anyone who needs to move before consensus forms.",
-  "categories": ["Full-Stack", "AI", "SaaS", "Data Intelligence"],
+  "categories": [
+    "Full-Stack",
+    "AI",
+    "SaaS",
+    "Data Intelligence"
+  ],
   "client": null,
-  "period": "2024 - Present",
+  "period": null,
   "overview": "Venturely is an ecosystem of intelligence products designed for investors, startup founders, CTOs, and anyone who needs accurate, real-time data on the global startup landscape. The platform aggregates and analyzes information on over 20,000 startups, providing workspace tools for research and a proprietary signal engine that uses AI to detect events like funding rounds, company distress, cofounder disagreements, and market shifts before they surface in mainstream reporting.",
   "problem": "The startup data market is fragmented, expensive, and slow. By the time a funding round makes headlines, the opportunity has already closed. Investors and founders need intelligence that moves ahead of the news cycle, not behind it. Venturely solves this by building a signal layer on top of comprehensive startup data, turning noise into actionable intelligence.",
   "role": [
@@ -27,12 +32,33 @@
     "Socket.io for real-time workspace collaboration and notification delivery",
     "Tiered subscription model with Paystack payment processing and webhook handling"
   ],
-  "stack": ["React 19", "Express 5", "PostgreSQL", "Puppeteer Stealth", "Socket.io", "Paystack", "Cheerio", "JSDOM", "Node-cron", "JWT", "Tailwind CSS"],
+  "stack": [
+    "React 19",
+    "Express 5",
+    "PostgreSQL",
+    "Puppeteer Stealth",
+    "Socket.io",
+    "Paystack",
+    "Cheerio",
+    "JSDOM",
+    "Node-cron",
+    "JWT",
+    "Tailwind CSS"
+  ],
   "gallery": [],
   "results": [
-    {"title": "20,000+ Startups", "detail": "Indexed and tracked with structured data covering funding, team, market, and operational metrics."},
-    {"title": "Signal Engine", "detail": "AI-powered detection system that flags funding rounds, bankruptcies, layoffs, and leadership changes before mainstream coverage."},
-    {"title": "Workspace Ecosystem", "detail": "Full research toolkit: briefs, dossiers, watchlists, signals, saved entities, team collaboration, and notes."}
+    {
+      "title": "20,000+ Startups",
+      "detail": "Indexed and tracked with structured data covering funding, team, market, and operational metrics."
+    },
+    {
+      "title": "Signal Engine",
+      "detail": "AI-powered detection system that flags funding rounds, bankruptcies, layoffs, and leadership changes before mainstream coverage."
+    },
+    {
+      "title": "Workspace Ecosystem",
+      "detail": "Full research toolkit: briefs, dossiers, watchlists, signals, saved entities, team collaboration, and notes."
+    }
   ],
   "lessonsLearned": [
     "Data quality compounds. A well-structured scraping pipeline saves months of manual cleanup downstream.",
@@ -40,6 +66,10 @@
     "Real-time collaboration requires careful state management. Socket.io event architecture needs to be as well-planned as the REST API."
   ],
   "links": [
-    {"label": "Live Platform", "url": "https://venturely.kristianhans.com"}
-  ]
+    {
+      "label": "Live Platform",
+      "url": "https://venturely.kristianhans.com"
+    }
+  ],
+  "logo": "/images/projects/venturely.svg"
 }

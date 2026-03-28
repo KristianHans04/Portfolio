@@ -5,9 +5,13 @@
   "order": 2,
   "title": "FIRST Global Team Kenya",
   "summary": "Official website for FIRST Global Team Kenya. Complete organizational platform with team history, achievements, impact stories, student application system with admin review, OTP authentication, push notifications, and Pesapal payment integration.",
-  "categories": ["Full-Stack", "Non-Profit", "Education"],
+  "categories": [
+    "Full-Stack",
+    "Non-Profit",
+    "Education"
+  ],
   "client": "FIRST Global Team Kenya",
-  "period": "2024 - Present",
+  "period": null,
   "overview": "The official digital home for FIRST Global Team Kenya, built to serve three audiences: prospective students applying to represent Kenya at the FIRST Global Challenge, supporters and sponsors looking to fund the program, and the broader community following Team Kenya's journey across international competitions. The platform handles everything from student applications and admin review workflows to organizational storytelling and payment processing.",
   "problem": "Team Kenya had no centralized digital presence. Applications were handled through scattered forms, organizational history was undocumented, and there was no way for supporters to engage or contribute directly. The team needed a professional platform that reflected the caliber of their international competition performance.",
   "role": [
@@ -28,12 +32,33 @@
     "shadcn/ui component library with Kenyan flag-inspired design identity",
     "Recharts for data visualization of organizational metrics and impact"
   ],
-  "stack": ["Next.js 16", "PostgreSQL", "Prisma", "Supabase", "Tailwind CSS v4", "shadcn/ui", "Pesapal", "Web Push", "Tiptap", "Recharts", "TypeScript"],
+  "stack": [
+    "Next.js 16",
+    "PostgreSQL",
+    "Prisma",
+    "Supabase",
+    "Tailwind CSS v4",
+    "shadcn/ui",
+    "Pesapal",
+    "Web Push",
+    "Tiptap",
+    "Recharts",
+    "TypeScript"
+  ],
   "gallery": [],
   "results": [
-    {"title": "Centralized Platform", "detail": "Single source of truth for Team Kenya's history, achievements, applications, and community engagement."},
-    {"title": "Application System", "detail": "End-to-end student application pipeline with admin review, status tracking, and automated notifications."},
-    {"title": "Payment Integration", "detail": "Pesapal integration supporting mobile money and card payments for supporters and sponsors."}
+    {
+      "title": "Centralized Platform",
+      "detail": "Single source of truth for Team Kenya's history, achievements, applications, and community engagement."
+    },
+    {
+      "title": "Application System",
+      "detail": "End-to-end student application pipeline with admin review, status tracking, and automated notifications."
+    },
+    {
+      "title": "Payment Integration",
+      "detail": "Pesapal integration supporting mobile money and card payments for supporters and sponsors."
+    }
   ],
   "lessonsLearned": [
     "Non-profit platforms need to balance storytelling with utility. The history pages drive engagement, but the application system drives organizational operations.",
@@ -41,6 +66,10 @@
     "Push notifications have surprisingly low opt-in rates. Email remains the reliable fallback for critical communications."
   ],
   "links": [
-    {"label": "Live Website", "url": "https://fgckenya.kristianhans.com"}
-  ]
+    {
+      "label": "Live Website",
+      "url": "https://fgckenya.kristianhans.com"
+    }
+  ],
+  "logo": "/images/projects/fgckenya.svg"
 }

@@ -14,6 +14,10 @@
     "Highlighted the significance of Kenyan students competing at the highest level of international robotics."
   ],
   "links": [
-    {"label": "Read Article", "url": "https://www.standardmedia.co.ke/health/tech-innovation/article/2001533317/team-kenya-scoops-silver-at-the-global-robotics-arena"}
-  ]
+    {
+      "label": "Read Article",
+      "url": "https://www.standardmedia.co.ke/health/tech-innovation/article/2001533317/team-kenya-scoops-silver-at-the-global-robotics-arena"
+    }
+  ],
+  "logo": "/images/logos/standard-media.svg"
 }

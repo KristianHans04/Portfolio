@@ -14,6 +14,10 @@
     "Featured the team's journey and achievements in international robotics competition."
   ],
   "links": [
-    {"label": "View Article", "url": "https://drive.google.com/file/d/1a2KlaHjEqL9CVmRJAvqBmjWL7wkMx9uV/view?usp=sharing"}
-  ]
+    {
+      "label": "View Article",
+      "url": "https://drive.google.com/file/d/1a2KlaHjEqL9CVmRJAvqBmjWL7wkMx9uV/view?usp=sharing"
+    }
+  ],
+  "logo": "/images/logos/the-star.svg"
 }

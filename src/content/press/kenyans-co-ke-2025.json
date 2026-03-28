@@ -14,6 +14,10 @@
     "Documented the achievement of winning the Silver Medal in the Winning Alliances category."
   ],
   "links": [
-    {"label": "Read Article", "url": "https://www.kenyans.co.ke/news/117666-kenyan-high-school-students-emerge-second-first-global-robotics-challenge-2025"}
-  ]
+    {
+      "label": "Read Article",
+      "url": "https://www.kenyans.co.ke/news/117666-kenyan-high-school-students-emerge-second-first-global-robotics-challenge-2025"
+    }
+  ],
+  "logo": "/images/logos/kenyans.svg"
 }

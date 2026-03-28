@@ -54,14 +54,21 @@ function getMediaType(item: typeof pressEntries[0]): "article" | "video" | "imag
         <div class="mt-10 border-t border-border-subtle/30 pt-8">
           <p class="text-[10px] font-mono uppercase tracking-[0.25em] text-ink-muted mb-5">Featured In</p>
           <div class="flex flex-wrap items-center gap-4">
-            {uniquePublications.map((name) => (
-              <div class="flex items-center gap-2 rounded-lg border border-border-subtle/40 bg-panel/40 px-4 py-2.5 transition-colors hover:border-accent/30 hover:bg-panel/60">
-                <span class="flex h-7 w-7 items-center justify-center rounded-md bg-accent/10 text-[10px] font-bold text-accent font-mono">
-                  {name!.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase()}
-                </span>
-                <span class="text-sm font-medium text-ink">{name}</span>
-              </div>
-            ))}
+            {uniquePublications.map((name) => {
+              const entry = pressEntries.find(e => e.publication === name);
+              return (
+                <div class="flex items-center gap-2 rounded-lg border border-border-subtle/40 bg-panel/40 px-3 py-2 transition-colors hover:border-accent/30 hover:bg-panel/60">
+                  {entry?.logo ? (
+                    <img src={entry.logo} alt={`${name} logo`} class="h-6 w-auto" />
+                  ) : (
+                    <span class="flex h-7 w-7 items-center justify-center rounded-md bg-accent/10 text-[10px] font-bold text-accent font-mono">
+                      {name!.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase()}
+                    </span>
+                  )}
+                  <span class="text-sm font-medium text-ink">{name}</span>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -76,9 +83,13 @@ function getMediaType(item: typeof pressEntries[0]): "article" | "video" | "imag
             <article class="group flex h-full flex-col rounded-2xl border border-border-subtle/50 bg-gradient-to-br from-panel-strong/60 to-panel/30 overflow-hidden transition-all duration-300 hover:border-accent/30 hover:shadow-[0_12px_32px_rgba(3,12,26,0.3)]">
               <div class="flex-1 p-6">
                 <div class="flex items-center gap-2.5 mb-4">
-                  <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-accent/10 text-[10px] font-bold text-accent font-mono">
-                    {item.publication ? item.publication.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase() : "PR"}
-                  </span>
+                  {item.logo ? (
+                    <img src={item.logo} alt={`${item.publication} logo`} class="h-7 w-auto rounded" />
+                  ) : (
+                    <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-accent/10 text-[10px] font-bold text-accent font-mono">
+                      {item.publication ? item.publication.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase() : "PR"}
+                    </span>
+                  )}
                   <div class="flex-1 min-w-0">
                     <p class="text-sm font-semibold text-ink truncate">{item.publication ?? "Publication"}</p>
                   </div>

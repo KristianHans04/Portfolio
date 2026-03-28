@@ -1,23 +1,25 @@
 ---
-import ParallaxPhotoStrip from "@/components/motion/ParallaxPhotoStrip";
-import PhotoPlaceholder from "@/components/ui/PhotoPlaceholder.astro";
 import SectionHeading from "@/components/ui/SectionHeading.astro";
 import SectionDivider from "@/components/ui/SectionDivider.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { getBookEntries, getPhotoEntries, getTravelEntries } from "@/lib/content/loaders";
+import { getBookEntries, getTravelEntries } from "@/lib/content/loaders";
 import { siteData } from "@/lib/site-data";
 import { hasItems } from "@/lib/text";
 
 import { ScrollParallax } from "@/components/motion/ScrollParallax";
-import { CounterUp } from "@/components/motion/CounterUp";
 import { StaggeredReveal } from "@/components/motion/StaggeredReveal";
 
 const travelEntries = getTravelEntries();
 const books = getBookEntries();
-const lifePhotos = getPhotoEntries().filter((photo) =>
-  ["life", "travel", "hobby"].includes(photo.category),
-);
 const countriesVisited = [...new Set(travelEntries.map((entry) => entry.country))];
+
+const countryFlags: Record<string, string> = {
+  "Kenya": "🇰🇪", "Egypt": "🇪🇬", "Switzerland": "🇨🇭", "Greece": "🇬🇷",
+  "Canada": "🇨🇦", "France": "🇫🇷", "Rwanda": "🇷🇼", "Singapore": "🇸🇬",
+  "Netherlands": "🇳🇱", "Panama": "🇵🇦", "Tanzania": "🇹🇿", "Uganda": "🇺🇬",
+  "USA": "🇺🇸", "UK": "🇬🇧", "Germany": "🇩🇪", "Japan": "🇯🇵",
+  "South Africa": "🇿🇦", "Nigeria": "🇳🇬", "India": "🇮🇳", "Brazil": "🇧🇷",
+};
 
 const booksByStatus = {
   read: books.filter((book) => book.status === "read"),
@@ -29,7 +31,7 @@ const booksByStatus = {
   title="Life"
   description="The person behind the engineer. Travel, reading, interests, and the context that shapes the work."
 >
-  <!-- HERO: Warm, personal opening with stats -->
+  <!-- HERO -->
   <section class="section-wash-rose pt-14 pb-6 sm:pt-18">
     <div class="section-shell">
       <div class="scene-panel p-8 sm:p-10 lg:p-12" data-tone="rose">
@@ -46,12 +48,9 @@ const booksByStatus = {
           </p>
         </div>
 
-        <!-- Quick stats in a horizontal strip -->
         <div class="mt-10 flex flex-wrap gap-6 border-t border-border-subtle/40 pt-8">
           <div class="flex items-center gap-3">
-            <svg class="h-5 w-5 text-accent/60" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+            <span class="text-2xl">🌍</span>
             <div>
               <p class="text-2xl font-display font-bold tracking-tight text-ink">{countriesVisited.length}</p>
               <p class="text-[10px] uppercase tracking-[0.14em] text-ink-muted">Countries</p>
@@ -59,9 +58,7 @@ const booksByStatus = {
           </div>
           <div class="h-10 w-px bg-border-subtle/40"></div>
           <div class="flex items-center gap-3">
-            <svg class="h-5 w-5 text-highlight/60" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-            </svg>
+            <span class="text-2xl">📚</span>
             <div>
               <p class="text-2xl font-display font-bold tracking-tight text-ink">{books.length}</p>
               <p class="text-[10px] uppercase tracking-[0.14em] text-ink-muted">Books</p>
@@ -69,9 +66,7 @@ const booksByStatus = {
           </div>
           <div class="h-10 w-px bg-border-subtle/40"></div>
           <div class="flex items-center gap-3">
-            <svg class="h-5 w-5 text-accent/60" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-            </svg>
+            <span class="text-2xl">🎯</span>
             <div>
               <p class="text-2xl font-display font-bold tracking-tight text-ink">{siteData.hobbies?.length ?? 0}</p>
               <p class="text-[10px] uppercase tracking-[0.14em] text-ink-muted">Hobbies</p>
@@ -84,48 +79,42 @@ const booksByStatus = {
 
   <SectionDivider variant="gradient" />
 
-  <!-- TRAVEL: Split layout with countries cloud + notes -->
+  <!-- TRAVEL -->
   <section class="section-shell py-14">
-    <div class="grid gap-10 lg:grid-cols-[0.45fr_1fr]">
-      <!-- Sticky countries sidebar -->
+    <div class="grid gap-10 lg:grid-cols-[0.4fr_1fr]">
+      <!-- Sticky countries sidebar with clickable links -->
       <div class="lg:sticky lg:top-28 lg:self-start">
         <div class="rounded-2xl border border-border-subtle/50 bg-gradient-to-b from-panel-strong/50 to-panel/30 p-6">
-          <h2 class="flex items-center gap-2 text-2xl font-semibold tracking-tight text-ink">
-            <svg class="h-5 w-5 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            Countries
-          </h2>
+          <h2 class="text-xl font-semibold tracking-tight text-ink mb-4">Countries</h2>
           {countriesVisited.length > 0 ? (
-            <div class="mt-4 flex flex-wrap gap-2">
-              {countriesVisited.map((country, i) => (
-                <span class:list={[
-                  "rounded-full px-3 py-1.5 text-xs font-medium transition-colors",
-                  i % 3 === 0
-                    ? "border border-accent/20 bg-accent/8 text-accent"
-                    : i % 3 === 1
-                    ? "border border-highlight/20 bg-highlight/8 text-highlight"
-                    : "border border-border-subtle bg-panel text-ink-muted",
-                ]}>
-                  {country}
-                </span>
+            <div class="flex flex-col gap-1">
+              {countriesVisited.map((country) => (
+                <a
+                  href={`#country-${country.toLowerCase().replace(/\s+/g, '-')}`}
+                  class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-ink-muted transition-all hover:bg-accent/10 hover:text-accent"
+                >
+                  <span class="text-lg">{countryFlags[country] ?? "🏳️"}</span>
+                  <span>{country}</span>
+                </a>
               ))}
             </div>
           ) : (
-            <p class="mt-4 muted text-sm">Add published travel entries in src/content/travel.</p>
+            <p class="muted text-sm">Add published travel entries in src/content/travel.</p>
           )}
         </div>
       </div>
 
-      <!-- Travel notes - card list with inline photos -->
+      <!-- Travel cards -->
       <div>
         <h2 class="text-2xl font-semibold tracking-tight text-ink mb-6">Travel notes</h2>
         {travelEntries.length > 0 ? (
           <div class="space-y-5">
             {travelEntries.map((entry, i) => (
-              <ScrollParallax client:visible offset={6 + (i * 2)}>
-                <article class="overflow-hidden rounded-xl border border-border-subtle/50 bg-panel-strong/40 transition-all duration-300 hover:border-accent/30 hover:shadow-[0_8px_24px_rgba(3,12,26,0.3)]">
-                  {/* Photo at the top of the card if available */}
+              <ScrollParallax client:visible offset={4 + (i * 1.5)}>
+                <article
+                  id={`country-${entry.country.toLowerCase().replace(/\s+/g, '-')}`}
+                  class="overflow-hidden rounded-xl border border-border-subtle/50 bg-panel-strong/40 transition-all duration-300 hover:border-accent/30 hover:shadow-[0_8px_24px_rgba(3,12,26,0.3)] scroll-mt-32"
+                >
                   {entry.photos.length > 0 && (
                     <div class="relative h-48 sm:h-56 overflow-hidden">
                       <img
@@ -134,10 +123,10 @@ const booksByStatus = {
                         alt={`${entry.country} travel photo`}
                         loading="lazy"
                         referrerpolicy="no-referrer"
-                        crossorigin="anonymous"
                       />
                       <div class="absolute inset-0 bg-gradient-to-t from-panel-strong/80 to-transparent"></div>
                       <div class="absolute bottom-4 left-5 flex items-center gap-3">
+                        <span class="text-xl">{countryFlags[entry.country] ?? "🏳️"}</span>
                         <span class="rounded-full bg-accent/90 px-3 py-1 text-xs font-bold text-[#04111e]">{entry.country}</span>
                         {entry.year && <span class="text-xs text-ink/80">{entry.year}</span>}
                       </div>
@@ -147,9 +136,7 @@ const booksByStatus = {
                     {entry.photos.length === 0 && (
                       <div class="flex items-start justify-between gap-4 mb-3">
                         <div class="flex items-center gap-3">
-                          <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent/8 font-mono text-sm font-bold text-accent/40">
-                            {String(i + 1).padStart(2, "0")}
-                          </span>
+                          <span class="text-2xl">{countryFlags[entry.country] ?? "🏳️"}</span>
                           <div>
                             <h3 class="text-xl font-semibold tracking-tight text-ink">{entry.country}</h3>
                             <p class="text-sm text-ink-muted">{entry.city ?? ""}</p>
@@ -162,14 +149,27 @@ const booksByStatus = {
                       <p class="text-sm text-ink-muted mb-2">{entry.city}</p>
                     )}
                     {entry.notes && <p class="text-sm muted leading-relaxed">{entry.notes}</p>}
+
+                    {/* Better highlights UI — split into categories */}
                     {entry.highlights.length > 0 && (
-                      <div class="mt-3 space-y-2">
-                        {entry.highlights.map((highlight) => (
-                          <p class:list={[
-                            "rounded-lg border px-3 py-2 text-xs leading-relaxed",
-                            highlight.startsWith("Liked") ? "border-highlight/20 bg-highlight/5 text-highlight" : "border-[#ff9f6a]/20 bg-[#ff9f6a]/5 text-[#ff9f6a]",
-                          ]}>{highlight}</p>
-                        ))}
+                      <div class="mt-4 flex flex-wrap gap-2">
+                        {entry.highlights.map((highlight) => {
+                          const isPositive = highlight.toLowerCase().startsWith("liked");
+                          const isNegative = highlight.toLowerCase().startsWith("did not") || highlight.toLowerCase().startsWith("didn't");
+                          return (
+                            <span class:list={[
+                              "inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium",
+                              isPositive
+                                ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
+                                : isNegative
+                                ? "bg-amber-500/10 text-amber-400 border border-amber-500/20"
+                                : "bg-accent/10 text-accent border border-accent/20",
+                            ]}>
+                              {isPositive ? "👍" : isNegative ? "👎" : "📌"}
+                              {highlight.replace(/^(Liked:|Did not like:|Didn't like:)\s*/i, "")}
+                            </span>
+                          );
+                        })}
                       </div>
                     )}
                   </div>
@@ -186,18 +186,14 @@ const booksByStatus = {
 
   <SectionDivider variant="dots" />
 
-  <!-- BOOKS: Shelf-like display with reading status -->
+  <!-- BOOKS -->
   <section class="section-wash-amber py-16">
     <div class="section-shell">
       <h2 class="flex items-center gap-3 text-3xl font-semibold tracking-tight text-ink">
-        <svg class="h-6 w-6 text-highlight" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-        </svg>
-        Books
+        📚 Books
       </h2>
       {books.length > 0 ? (
         <div class="mt-8 grid gap-8 lg:grid-cols-3">
-          {/* Currently Reading - highlighted */}
           <div>
             <div class="flex items-center gap-2 mb-4">
               <span class="h-2 w-2 rounded-full bg-accent animate-pulse"></span>
@@ -217,7 +213,6 @@ const booksByStatus = {
             )}
           </div>
 
-          {/* Read - clean list */}
           <div>
             <h3 class="text-sm font-semibold uppercase tracking-[0.14em] text-highlight mb-4">Finished</h3>
             {booksByStatus.read.length > 0 ? (
@@ -237,7 +232,6 @@ const booksByStatus = {
             )}
           </div>
 
-          {/* Wishlist - subtle style */}
           <div>
             <h3 class="text-sm font-semibold uppercase tracking-[0.14em] text-ink-muted mb-4">Wishlist</h3>
             {booksByStatus.wishlist.length > 0 ? (
@@ -265,16 +259,13 @@ const booksByStatus = {
 
   <SectionDivider variant="space" />
 
-  <!-- HOBBIES & HIGHLIGHTS: Side-by-side cards with distinct styling -->
+  <!-- HOBBIES & HIGHLIGHTS -->
   <section class="section-shell py-14">
     <div class="grid gap-8 lg:grid-cols-2">
       <ScrollParallax client:visible offset={15}>
         <div class="h-full rounded-2xl border border-accent/15 bg-gradient-to-br from-accent/5 to-transparent p-7">
           <h2 class="flex items-center gap-2 text-2xl font-semibold tracking-tight text-ink">
-            <svg class="h-5 w-5 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            Hobbies
+            🎯 Hobbies
           </h2>
           {hasItems(siteData.hobbies) ? (
             <div class="mt-5 flex flex-wrap gap-2">
@@ -293,10 +284,7 @@ const booksByStatus = {
       <ScrollParallax client:visible offset={-10}>
         <div class="h-full rounded-2xl border border-highlight/15 bg-gradient-to-br from-highlight/5 to-transparent p-7">
           <h2 class="flex items-center gap-2 text-2xl font-semibold tracking-tight text-ink">
-            <svg class="h-5 w-5 text-highlight" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-            </svg>
-            Personal highlights
+            ✨ Personal highlights
           </h2>
           {hasItems(siteData.personalHighlights) ? (
             <ul class="mt-5 space-y-3">
@@ -312,50 +300,6 @@ const booksByStatus = {
           )}
         </div>
       </ScrollParallax>
-    </div>
-  </section>
-
-  <SectionDivider variant="gradient" />
-
-  <!-- PHOTOS: Full-width parallax strip -->
-  <section class="section-shell pb-24 pt-8">
-    <SectionHeading eyebrow="Photos" title="Moments that matter" />
-    <div class="mt-8">
-      {lifePhotos.length > 0 ? (
-        <ParallaxPhotoStrip
-          client:visible
-          photos={lifePhotos.map((photo) => ({
-            slug: photo.slug,
-            src: photo.src,
-            alt: photo.alt,
-            caption: photo.caption,
-          }))}
-        />
-      ) : (
-        <div class="space-y-4">
-          <div class="grid gap-4 md:grid-cols-3">
-            <PhotoPlaceholder
-              shape="rect"
-              alt="Life photo placeholder rectangle"
-              label="Travel slot"
-              caption="Add a travel or international event moment"
-            />
-            <PhotoPlaceholder
-              shape="square"
-              alt="Life photo placeholder square"
-              label="Daily slot"
-              caption="Add a candid daily life photo"
-            />
-            <PhotoPlaceholder
-              shape="rect"
-              alt="Life photo placeholder rectangle"
-              label="Hobby slot"
-              caption="Add a hobby, build, or creative moment"
-            />
-          </div>
-          <p class="text-sm muted">Add life photos in src/content/photos when ready.</p>
-        </div>
-      )}
     </div>
   </section>
 </BaseLayout>

@@ -3,15 +3,13 @@ import ContactForm from "@/components/contact/ContactForm";
 import SectionDivider from "@/components/ui/SectionDivider.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { siteData, socialsData } from "@/lib/site-data";
-import { hasItems, hasRealText } from "@/lib/text";
-
-import { ScrollParallax } from "@/components/motion/ScrollParallax";
+import { hasRealText } from "@/lib/text";
 
 const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
 ---
 <BaseLayout
   title="Contact"
-  description="Reach out for engineering roles, mentorship, speaking, or strategic collaboration."
+  description="Reach out for engineering roles, mentorship, speaking, or collaboration."
 >
   {
     turnstileSiteKey && (
@@ -19,20 +17,20 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
     )
   }
 
-  <!-- HERO: Minimal with gradient accent -->
+  <!-- HERO -->
   <section class="section-wash-blue pt-14 pb-6 sm:pt-18">
     <div class="section-shell">
       <div class="scene-panel p-8 sm:p-10 lg:p-12" data-tone="blue">
         <div class="max-w-2xl">
           <p class="eyebrow inline-flex items-center gap-2">
             <span class="h-px w-8 bg-accent/70" aria-hidden="true"></span>
-            Contact
+            Say hello
           </p>
           <h1 class="headline mt-5 text-ink">
-            Let us <span class="gradient-text">talk</span>
+            I would love to <span class="gradient-text">hear from you</span>
           </h1>
           <p class="mt-5 text-lg muted leading-relaxed">
-            Serious inquiries only. Engineering roles, strategic collaboration, mentorship, or speaking. Be specific and I will be useful.
+            Whether it is about a role, a collaboration, mentorship, or just something you found interesting here — drop a message. I read everything and reply personally.
           </p>
         </div>
       </div>
@@ -41,91 +39,70 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY;
 
   <SectionDivider variant="gradient" />
 
-  <!-- MAIN CONTENT: Sidebar info + form -->
+  <!-- MAIN CONTENT -->
   <section class="section-wash-slate pb-24 pt-8">
     <div class="section-shell">
     <div class="grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
-      <!-- Left: Info cards with different styles -->
       <aside class="space-y-6">
-        <!-- Expectations - glass card -->
-        <ScrollParallax client:visible offset={10}>
-          <div class="glass-card p-6">
-            <div class="flex items-center gap-3 mb-4">
-              <svg class="h-5 w-5 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <h2 class="text-xl font-semibold tracking-tight text-ink">Before you write</h2>
-            </div>
-            {hasItems(siteData.contactExpectations) ? (
-              <ul class="space-y-2">
-                {siteData.contactExpectations.map((item) => (
-                  <li class="flex items-start gap-2 text-sm text-ink-muted">
-                    <span class="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent/50"></span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p class="text-sm muted">Add contactExpectations in src/data/site.json.</p>
-            )}
+        <!-- Direct email -->
+        <div class="glass-card p-6">
+          <div class="flex items-center gap-3 mb-3">
+            <svg class="h-5 w-5 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            <h2 class="text-xl font-semibold tracking-tight text-ink">Email directly</h2>
           </div>
-        </ScrollParallax>
-
-        <!-- Direct email - outline card -->
-        <ScrollParallax client:visible offset={-8}>
-          <div class="outline-card p-6 hover:bg-panel/30">
-            <div class="flex items-center gap-3 mb-3">
-              <svg class="h-5 w-5 text-highlight" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-              <h2 class="text-xl font-semibold tracking-tight text-ink">Direct line</h2>
-            </div>
-            {hasRealText(siteData.email) ? (
-              <a class="text-sm font-medium text-accent transition-colors hover:text-[#80d5ff]" href={`mailto:${siteData.email}`}>
-                {siteData.email}
-              </a>
-            ) : (
-              <p class="text-sm muted">Add email in src/data/site.json.</p>
-            )}
-          </div>
-        </ScrollParallax>
-
-        <!-- Social links - gradient border -->
-        <ScrollParallax client:visible offset={12}>
-          <div class="rounded-xl border border-accent/15 bg-gradient-to-br from-accent/5 to-transparent p-6">
-            <div class="flex items-center gap-3 mb-4">
-              <svg class="h-5 w-5 text-accent" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-              </svg>
-              <h2 class="text-xl font-semibold tracking-tight text-ink">Elsewhere</h2>
-            </div>
-            {socialsData.items.length > 0 ? (
-              <div class="flex flex-wrap gap-2">
-                {socialsData.items.map((social) => (
-                  <a
-                    class="inline-flex items-center gap-1 rounded-full border border-accent/20 bg-accent/5 px-4 py-2 text-sm text-accent transition-all hover:bg-accent/15 hover:border-accent/40"
-                    href={social.url}
-                  >
-                    {social.label}
-                    <svg class="h-3 w-3 opacity-50" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                  </a>
-                ))}
-              </div>
-            ) : (
-              <p class="text-sm muted">Add socials in src/data/socials.json.</p>
-            )}
-          </div>
-        </ScrollParallax>
-
-        <!-- Response info - subtle -->
-        <div class="rounded-xl border border-border-subtle/30 bg-canvas-soft/30 p-5">
-          <p class="text-xs uppercase tracking-[0.14em] text-ink-muted mb-2">What happens next</p>
-          <p class="text-sm muted leading-relaxed">
-            Your message is verified through Turnstile, delivered directly to my inbox, and you receive an acknowledgment. I respond with a clear next step, not a template.
-          </p>
+          {hasRealText(siteData.email) ? (
+            <a class="text-sm font-medium text-accent transition-colors hover:text-[#80d5ff]" href={`mailto:${siteData.email}`}>
+              {siteData.email}
+            </a>
+          ) : (
+            <p class="text-sm muted">Add email in src/data/site.json.</p>
+          )}
+          <p class="mt-2 text-xs text-ink-muted">Prefer email? Skip the form entirely.</p>
         </div>
+
+        <!-- Social links -->
+        <div class="outline-card p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <svg class="h-5 w-5 text-highlight" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+            </svg>
+            <h2 class="text-xl font-semibold tracking-tight text-ink">Find me elsewhere</h2>
+          </div>
+          {socialsData.items.length > 0 ? (
+            <div class="flex flex-wrap gap-2">
+              {socialsData.items.map((social) => (
+                <a
+                  class="inline-flex items-center gap-1 rounded-full border border-accent/20 bg-accent/5 px-4 py-2 text-sm text-accent transition-all hover:bg-accent/15 hover:border-accent/40"
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {social.label}
+                  <svg class="h-3 w-3 opacity-50" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              ))}
+            </div>
+          ) : (
+            <p class="text-sm muted">Add socials in src/data/socials.json.</p>
+          )}
+        </div>
+
+        <!-- Location -->
+        {siteData.location && (
+          <div class="rounded-xl border border-border-subtle/30 bg-canvas-soft/30 p-5">
+            <div class="flex items-center gap-3">
+              <svg class="h-5 w-5 text-ink-muted" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" /></svg>
+              <div>
+                <p class="text-xs uppercase tracking-[0.14em] text-ink-muted">Based in</p>
+                <p class="text-sm font-medium text-ink">{siteData.location}</p>
+              </div>
+            </div>
+          </div>
+        )}
       </aside>
 
       <!-- Right: Contact form -->

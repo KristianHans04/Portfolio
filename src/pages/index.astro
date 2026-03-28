@@ -12,7 +12,6 @@ import { hasItems, hasRealText, uniqueItems } from "@/lib/text";
 import { ScrollParallax } from "@/components/motion/ScrollParallax";
 import { InteractiveCard } from "@/components/motion/InteractiveCard";
 import { CounterUp } from "@/components/motion/CounterUp";
-import { StaggeredReveal } from "@/components/motion/StaggeredReveal";
 
 const projects = getProjects();
 const impactEntries = getImpactEntries();
@@ -24,8 +23,6 @@ const projectSpotlight = featuredProjects.length > 0 ? featuredProjects : projec
 const stack = uniqueItems(projects.flatMap((project) => project.stack)).slice(0, 12);
 
 const hasBio = hasRealText(siteData.shortBio);
-const capabilities = siteData.capabilities.slice(0, 6);
-const currentFocus = siteData.currentFocus.slice(0, 4);
 const credentialHighlights = siteData.credentialHighlights.slice(0, 4);
 
 const profilePhoto = photos.find((item) => item.category === "about") ?? null;
@@ -55,13 +52,6 @@ const routeTiles = [
     description: "Context beyond the terminal. Travel, reading, and the things that make the work sustainable.",
     icon: "M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z",
   },
-];
-
-const heroSignals = [
-  "Full-stack delivery",
-  "Market intelligence",
-  "Scraping infrastructure",
-  "STEM mentorship",
 ];
 ---
 <BaseLayout
@@ -105,13 +95,14 @@ const heroSignals = [
               : "Add a short supporting line in src/data/site.json to complete the homepage hero."}
           </p>
 
-          <!-- Signal chips -->
-          <div class="mt-10 flex flex-wrap gap-3">
-            {heroSignals.map((item) => (
-              <span class="hero-signal-chip">
-                {item}
-              </span>
-            ))}
+          <!-- Animated tagline -->
+          <div class="mt-10 h-8 overflow-hidden" id="tagline-rotator">
+            <div class="tagline-track">
+              <p class="tagline-line font-mono text-sm text-ink-muted">I build software that works and teach people who will.</p>
+              <p class="tagline-line font-mono text-sm text-ink-muted">Full-stack engineer. STEM mentor. Relentless builder.</p>
+              <p class="tagline-line font-mono text-sm text-ink-muted">From Nairobi to global stages — shipping code that matters.</p>
+              <p class="tagline-line font-mono text-sm text-ink-muted">Engineering depth. Community impact. No shortcuts.</p>
+            </div>
           </div>
 
           <!-- CTA cluster -->
@@ -181,19 +172,19 @@ const heroSignals = [
               <div class="grid grid-cols-4 gap-2 text-center">
                 <div>
                   <p class="font-display text-2xl font-extrabold tracking-tight text-accent sm:text-3xl">{projects.length}</p>
-                  <p class="text-[9px] font-mono uppercase tracking-[0.2em] text-ink-muted">PRJ</p>
+                  <p class="text-[9px] font-mono uppercase tracking-[0.2em] text-ink-muted">Projects</p>
                 </div>
                 <div>
                   <p class="font-display text-2xl font-extrabold tracking-tight text-highlight sm:text-3xl">{travelEntries.length}</p>
-                  <p class="text-[9px] font-mono uppercase tracking-[0.2em] text-ink-muted">CTR</p>
+                  <p class="text-[9px] font-mono uppercase tracking-[0.2em] text-ink-muted">Countries</p>
                 </div>
                 <div>
                   <p class="font-display text-2xl font-extrabold tracking-tight text-[#9f92ff] sm:text-3xl">{impactEntries.length}</p>
-                  <p class="text-[9px] font-mono uppercase tracking-[0.2em] text-ink-muted">IMP</p>
+                  <p class="text-[9px] font-mono uppercase tracking-[0.2em] text-ink-muted">Impact</p>
                 </div>
                 <div>
                   <p class="font-display text-2xl font-extrabold tracking-tight text-[#ff9f6a] sm:text-3xl">{stack.length}</p>
-                  <p class="text-[9px] font-mono uppercase tracking-[0.2em] text-ink-muted">TEC</p>
+                  <p class="text-[9px] font-mono uppercase tracking-[0.2em] text-ink-muted">Stack</p>
                 </div>
               </div>
               <!-- Stat bar visualization -->
@@ -345,89 +336,32 @@ const heroSignals = [
 
   <SectionDivider variant="gradient" />
 
-  <!-- CAPABILITIES: Sticky scroll layout -->
-  <section class="section-wash-teal py-20">
+  <!-- STACK & BIO: Compact overview -->
+  <section class="section-wash-teal py-16">
     <div class="section-shell">
-      <div class="grid gap-8 lg:grid-cols-[1fr_1fr]">
-        <!-- Sticky left side -->
-        <div class="hidden lg:block">
-          <div class="sticky top-28 space-y-8">
-            <div>
-              <p class="eyebrow inline-flex items-center gap-2">
-                <span class="h-px w-8 bg-accent/70" aria-hidden="true"></span>
-                Capabilities
-              </p>
-              <h2 class="headline-sm mt-3 text-ink">What I ship, end to end</h2>
-              <p class="mt-4 text-[1rem] muted">Not a list of buzzwords. These are the things I have actually done, repeatedly, under real constraints.</p>
-            </div>
-
-            <div class="glass-card p-6">
-              <p class="eyebrow">Stack</p>
-              <h3 class="mt-2 text-xl font-semibold tracking-tight text-ink">Tools of the trade</h3>
-              <div class="mt-4">
-                {stack.length > 0 ? <PillList items={stack} /> : <p class="muted text-sm">Publish projects with stack entries to render this list.</p>}
-              </div>
-            </div>
-
-            <div class="outline-card p-6">
-              <p class="eyebrow">Biography</p>
-              <h3 class="mt-2 text-xl font-semibold tracking-tight text-ink">The short version</h3>
-              <p class="mt-3 text-sm muted leading-relaxed">
-                {hasBio ? siteData.shortBio : "Add shortBio in src/data/site.json to populate this section."}
-              </p>
-              <a class="mt-4 inline-flex items-center text-sm font-semibold text-accent transition-colors hover:text-[#80d5ff] group" href="/about">
-                Read full biography <span class="ml-2 transition-transform group-hover:translate-x-1">→</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Mobile: show heading -->
-        <div class="lg:hidden">
+      <div class="grid gap-10 lg:grid-cols-[1.2fr_1fr] items-start">
+        <!-- Stack -->
+        <div>
           <p class="eyebrow inline-flex items-center gap-2">
             <span class="h-px w-8 bg-accent/70" aria-hidden="true"></span>
-            Capabilities
+            Stack
           </p>
-          <h2 class="headline-sm mt-3 text-ink">What I ship, end to end</h2>
+          <h2 class="headline-sm mt-3 text-ink">Tools I ship with</h2>
+          <div class="mt-6">
+            {stack.length > 0 ? <PillList items={stack} /> : <p class="muted text-sm">Publish projects with stack entries to render this list.</p>}
+          </div>
         </div>
 
-        <!-- Scrolling right side - capability items -->
-        <div>
-          {hasItems(capabilities) ? (
-            <StaggeredReveal client:visible className="space-y-4" direction="up" staggerDelay={0.1}>
-              {capabilities.map((item, index) => (
-                <div class="glass-card p-6 sm:p-8">
-                  <div class="flex items-start gap-4">
-                    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent/10 font-mono text-sm font-bold text-accent">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <p class="pt-2 text-base leading-relaxed text-ink-muted">{item}</p>
-                  </div>
-                </div>
-              ))}
-            </StaggeredReveal>
-          ) : (
-            <p class="muted">Add capabilities in src/data/site.json.</p>
-          )}
-
-          <!-- Mobile: show stack and bio -->
-          <div class="mt-8 space-y-6 lg:hidden">
-            <div class="glass-card p-6">
-              <p class="eyebrow">Stack</p>
-              <div class="mt-3">
-                {stack.length > 0 ? <PillList items={stack} /> : <p class="muted text-sm">Publish projects with stack entries.</p>}
-              </div>
-            </div>
-            <div class="outline-card p-6">
-              <p class="eyebrow">Biography</p>
-              <p class="mt-3 text-sm muted leading-relaxed">
-                {hasBio ? siteData.shortBio : "Add shortBio in src/data/site.json."}
-              </p>
-              <a class="mt-4 inline-flex items-center text-sm font-semibold text-accent group" href="/about">
-                Read full biography <span class="ml-2 transition-transform group-hover:translate-x-1">→</span>
-              </a>
-            </div>
-          </div>
+        <!-- Bio -->
+        <div class="outline-card p-6 sm:p-8">
+          <p class="eyebrow">Biography</p>
+          <h3 class="mt-2 text-xl font-semibold tracking-tight text-ink">The short version</h3>
+          <p class="mt-3 text-sm muted leading-relaxed">
+            {hasBio ? siteData.shortBio : "Add shortBio in src/data/site.json to populate this section."}
+          </p>
+          <a class="mt-4 inline-flex items-center text-sm font-semibold text-accent transition-colors hover:text-[#80d5ff] group" href="/about">
+            Read full biography <span class="ml-2 transition-transform group-hover:translate-x-1">→</span>
+          </a>
         </div>
       </div>
     </div>

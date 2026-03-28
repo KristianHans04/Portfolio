@@ -5,9 +5,13 @@
   "order": 6,
   "title": "OwnTheJoke.com",
   "summary": "E-commerce platform printing custom humor on apparels, wall hangings, and accessories. Features interactive 3D product mockups with Three.js, Paystack payments, flash sales, an affiliate system, and a content blog with Tiptap editor.",
-  "categories": ["Full-Stack", "E-Commerce", "3D"],
+  "categories": [
+    "Full-Stack",
+    "E-Commerce",
+    "3D"
+  ],
   "client": null,
-  "period": "2024 - Present",
+  "period": null,
   "overview": "OwnTheJoke is a humor-driven e-commerce platform where customers can browse and purchase printed items including apparel, wall hangings, and various accessories. The standout technical feature is interactive 3D product mockups powered by Three.js and React Three Fiber, allowing customers to rotate, zoom, and inspect products before purchasing. The platform includes a full e-commerce backend with inventory management, a flash sale system, an affiliate program, and a blog for content marketing.",
   "problem": "Standard e-commerce platforms cannot deliver the interactive product visualization that physical humor products demand. Customers need to see how a joke will look on a shirt or wall hanging before committing. Static images fail to capture the experience. The platform needed 3D product mockups alongside a robust e-commerce backend.",
   "role": [
@@ -28,12 +32,33 @@
     "Tiptap rich text editor for blog content creation and management",
     "ULID-based identifiers for URL-safe, chronologically sortable entity references"
   ],
-  "stack": ["React 19", "Vite", "Three.js", "React Three Fiber", "Express", "PostgreSQL", "Prisma", "Paystack", "Zustand", "Tiptap", "Tailwind CSS"],
+  "stack": [
+    "React 19",
+    "Vite",
+    "Three.js",
+    "React Three Fiber",
+    "Express",
+    "PostgreSQL",
+    "Prisma",
+    "Paystack",
+    "Zustand",
+    "Tiptap",
+    "Tailwind CSS"
+  ],
   "gallery": [],
   "results": [
-    {"title": "3D Product Mockups", "detail": "Interactive Three.js visualization allowing customers to rotate, zoom, and inspect printed products in real time."},
-    {"title": "Flash Sales", "detail": "Time-based promotional engine with automatic pricing adjustments, countdown timers, and inventory lock management."},
-    {"title": "Affiliate Program", "detail": "Referral tracking system with unique codes, commission calculation, and payout management."}
+    {
+      "title": "3D Product Mockups",
+      "detail": "Interactive Three.js visualization allowing customers to rotate, zoom, and inspect printed products in real time."
+    },
+    {
+      "title": "Flash Sales",
+      "detail": "Time-based promotional engine with automatic pricing adjustments, countdown timers, and inventory lock management."
+    },
+    {
+      "title": "Affiliate Program",
+      "detail": "Referral tracking system with unique codes, commission calculation, and payout management."
+    }
   ],
   "lessonsLearned": [
     "3D product visualization significantly increases time-on-page and conversion intent, but requires careful optimization for mobile devices.",
@@ -41,6 +66,9 @@
     "Humor products have unpredictable demand curves. The inventory system needs to handle sudden viral spikes."
   ],
   "links": [
-    {"label": "Live Store", "url": "https://ownthejoke.kristianhans.com"}
+    {
+      "label": "Live Store",
+      "url": "https://ownthejoke.kristianhans.com"
+    }
   ]
 }
