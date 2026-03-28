@@ -54,9 +54,13 @@ function emailShell(title: string, content: string): string {
 <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="padding:40px 16px;">
 <tr><td align="center">
 <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="max-width:580px;">
-  <!-- Logo -->
+  <!-- Header -->
   <tr><td style="padding:0 0 24px;">
-    <span class="em-accent" style="font-size:32px;font-weight:700;color:#1478c2;letter-spacing:-1px;">K</span>
+    <a href="https://kristianhans.com" style="text-decoration:none;">
+      <span class="em-text" style="display:block;font-size:17px;font-weight:600;letter-spacing:-0.3px;color:#1e293b;">Kristian Hans Onjala</span>
+      <span class="em-muted" style="display:block;margin-top:2px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1.8px;color:#64748b;">Full-Stack Engineer</span>
+    </a>
+    <div class="em-divider" style="margin-top:16px;border-bottom:1px solid #e2e8f0;"></div>
   </td></tr>
   ${content}
   <!-- Footer -->
