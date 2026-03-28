@@ -3,32 +3,50 @@ import type { APIRoute } from "astro";
 import { getPressEntries, getProjects, getWritingEntries } from "@/lib/content/loaders";
 import { seoData } from "@/lib/site-data";
 
-const STATIC_ROUTES = [
-  "/",
-  "/work",
-  "/about",
-  "/impact",
-  "/press",
-  "/life",
-  "/now",
-  "/contact",
+interface SitemapEntry {
+  loc: string;
+  priority: string;
+  changefreq: string;
+}
+
+const STATIC_ROUTES: SitemapEntry[] = [
+  { loc: "/", priority: "1.0", changefreq: "weekly" },
+  { loc: "/about", priority: "0.9", changefreq: "monthly" },
+  { loc: "/work", priority: "0.9", changefreq: "weekly" },
+  { loc: "/impact", priority: "0.8", changefreq: "monthly" },
+  { loc: "/press", priority: "0.8", changefreq: "monthly" },
+  { loc: "/life", priority: "0.6", changefreq: "monthly" },
+  { loc: "/now", priority: "0.7", changefreq: "weekly" },
+  { loc: "/contact", priority: "0.7", changefreq: "yearly" },
 ];
 
 function resolveSiteUrl(): string {
   if (!seoData.siteUrl.startsWith("TODO:")) {
     return seoData.siteUrl;
   }
-  return "https://example.com";
+  return "https://kristianhans.com";
 }
 
 export const GET: APIRoute = () => {
   const siteUrl = resolveSiteUrl();
   const now = new Date().toISOString();
 
-  const dynamicRoutes = [
-    ...getProjects().map((item) => `/work/${item.slug}`),
-    ...getPressEntries().map((item) => `/press/${item.slug}`),
-    ...getWritingEntries().map((item) => `/writing/${item.slug}`),
+  const dynamicRoutes: SitemapEntry[] = [
+    ...getProjects().map((item) => ({
+      loc: `/work/${item.slug}`,
+      priority: "0.7",
+      changefreq: "monthly",
+    })),
+    ...getPressEntries().map((item) => ({
+      loc: `/press/${item.slug}`,
+      priority: "0.6",
+      changefreq: "monthly",
+    })),
+    ...getWritingEntries().map((item) => ({
+      loc: `/writing/${item.slug}`,
+      priority: "0.6",
+      changefreq: "monthly",
+    })),
   ];
 
   const allRoutes = [...STATIC_ROUTES, ...dynamicRoutes];
@@ -38,8 +56,10 @@ export const GET: APIRoute = () => {
 ${allRoutes
   .map(
     (route) => `  <url>
-    <loc>${new URL(route, siteUrl).toString()}</loc>
+    <loc>${new URL(route.loc, siteUrl).toString()}</loc>
     <lastmod>${now}</lastmod>
+    <changefreq>${route.changefreq}</changefreq>
+    <priority>${route.priority}</priority>
   </url>`,
   )
   .join("\n")}

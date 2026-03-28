@@ -14,7 +14,7 @@ export function getStaticPaths() {
 const { item } = Astro.props;
 const formattedDate = formatOptionalDate(item.publishedAt);
 ---
-<BaseLayout title={item.title} description={item.summary} type="article">
+<BaseLayout title={item.title} description={item.summary} type="article" breadcrumbs={[{ name: "Home", href: "/" }, { name: "Press", href: "/press" }, { name: "Writing", href: `/writing/${item.slug}` }]} pageKeywords={[`Kristian Hans Onjala ${item.format}`, ...item.topics]}>
   <article class="section-shell py-14 sm:py-16">
     <!-- Editorial header -->
     <header class="max-w-3xl pb-10 border-b border-border-subtle/40">

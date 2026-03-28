@@ -57,7 +57,9 @@ const routeTiles = [
 ---
 <BaseLayout
   title="Home"
-  description="Full stack software engineer portfolio with technical depth, leadership context, and personal narrative."
+  description="Kristian Hans Onjala — Full-stack software engineer, STEM educator, and cofounder based in Nairobi, Kenya. 17 shipped projects, 11 countries, robotics mentorship, and production engineering."
+  breadcrumbs={[{ name: "Home", href: "/" }]}
+  pageKeywords={["Kristian Hans Onjala portfolio", "Kristian Onjala engineer", "Nairobi software engineer portfolio"]}
 >
   <!-- HERO -->
   <section class="hero-section relative min-h-screen overflow-hidden pt-24 pb-12">
@@ -403,6 +405,47 @@ const routeTiles = [
       </div>
     </div>
   </section>
+
+  <!-- Semantic content for search engines and AI crawlers (visually hidden, fully crawlable) -->
+  <aside class="sr-only" aria-label="About Kristian Hans Onjala" itemscope itemtype="https://schema.org/Person">
+    <h2>About <span itemprop="name">Kristian Hans Onjala</span></h2>
+    <p itemprop="description">{siteData.shortBio}</p>
+    <dl>
+      <dt>Full Name</dt>
+      <dd itemprop="name">Kristian Hans Onjala</dd>
+      <dt>Also Known As</dt>
+      <dd itemprop="alternateName">Kristian Onjala</dd>
+      <dd itemprop="alternateName">Kristian Hans</dd>
+      <dd itemprop="alternateName">Hans Onjala</dd>
+      <dd itemprop="alternateName">Kristian H. Onjala</dd>
+      <dd itemprop="alternateName">K. Hans Onjala</dd>
+      <dt>Job Title</dt>
+      <dd itemprop="jobTitle">{siteData.role}</dd>
+      <dt>Location</dt>
+      <dd itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+        <span itemprop="addressLocality">Nairobi</span>, <span itemprop="addressCountry">Kenya</span>
+      </dd>
+      <dt>Email</dt>
+      <dd><a itemprop="email" href={`mailto:${siteData.email}`}>{siteData.email}</a></dd>
+      <dt>Website</dt>
+      <dd><a itemprop="url" href="https://kristianhans.com">kristianhans.com</a></dd>
+      <dt>Education</dt>
+      <dd itemprop="alumniOf" itemscope itemtype="https://schema.org/EducationalOrganization">
+        BSc Mathematics and Computer Science, <span itemprop="name">Jomo Kenyatta University of Agriculture and Technology (JKUAT)</span>
+      </dd>
+    </dl>
+    <nav aria-label="Site sections">
+      <ul>
+        <li><a href="/about">About Kristian Hans Onjala</a></li>
+        <li><a href="/work">Projects and Portfolio</a></li>
+        <li><a href="/impact">Community Impact and Mentorship</a></li>
+        <li><a href="/press">Press and Media Features</a></li>
+        <li><a href="/life">Travel, Reading, and Personal Life</a></li>
+        <li><a href="/now">Current Projects and Focus</a></li>
+        <li><a href="/contact">Contact Kristian Hans Onjala</a></li>
+      </ul>
+    </nav>
+  </aside>
 
   <script>
     const sentences = [

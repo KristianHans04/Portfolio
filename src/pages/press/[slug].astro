@@ -26,7 +26,7 @@ function getMediaType(link: { url: string }): "article" | "video" | "image" {
   return "article";
 }
 ---
-<BaseLayout title={item.title} description={item.summary} type="article">
+<BaseLayout title={item.title} description={item.summary} type="article" breadcrumbs={[{ name: "Home", href: "/" }, { name: "Press", href: "/press" }, { name: item.title, href: `/press/${item.slug}` }]} pageKeywords={[`Kristian Hans Onjala ${item.publication ?? "press"}`, item.publication ?? "media"].filter(Boolean) as string[]}>
   <article class="section-shell py-14 sm:py-16">
     <header class="max-w-4xl pb-10 border-b border-border-subtle/40">
       <div class="flex items-center gap-3 mb-4">

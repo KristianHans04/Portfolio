@@ -29,7 +29,7 @@ const sectionLinks = [
   hasItems(project.links) ? { id: "links", label: "Links" } : null,
 ].filter(Boolean) as Array<{ id: string; label: string }>;
 ---
-<BaseLayout title={project.title} description={project.summary} type="article">
+<BaseLayout title={project.title} description={project.summary} type="article" breadcrumbs={[{ name: "Home", href: "/" }, { name: "Work", href: "/work" }, { name: project.title, href: `/work/${project.slug}` }]} pageKeywords={[`Kristian Hans Onjala ${project.title}`, ...project.categories, ...project.stack.slice(0, 5)]}>
   <article class="section-shell py-12 sm:py-16">
     <header class="relative overflow-hidden rounded-[2rem] border border-border-subtle/40 bg-[linear-gradient(145deg,_var(--color-panel)_0%,_var(--color-canvas)_100%)] p-6 sm:p-8 lg:p-10">
       <div class="absolute inset-0 opacity-20 [background-image:linear-gradient(to_right,rgba(131,161,202,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(131,161,202,0.08)_1px,transparent_1px)] [background-size:30px_30px]"></div>
