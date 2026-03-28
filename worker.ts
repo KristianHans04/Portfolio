@@ -103,7 +103,10 @@ async function handleContact(request: Request, env: Env): Promise<Response> {
     return jsonResponse({ ok: true, message: "Message received." });
   }
 
-  if (env.TURNSTILE_SECRET_KEY && data.turnstileToken) {
+  if (env.TURNSTILE_SECRET_KEY) {
+    if (!data.turnstileToken) {
+      return jsonResponse({ ok: false, error: "Verification required. Please complete the captcha." }, 400);
+    }
     const remoteIp = request.headers.get("CF-Connecting-IP");
     const turnstileOk = await verifyTurnstile(data.turnstileToken, env.TURNSTILE_SECRET_KEY, remoteIp);
     if (!turnstileOk) {
@@ -154,7 +157,9 @@ async function handleContact(request: Request, env: Env): Promise<Response> {
         html: acknowledgmentTemplate.html,
       }),
     ]);
-  } catch {
+  } catch (err) {
+    const detail = err instanceof Error ? err.message : String(err);
+    console.error("Email send failed:", detail);
     return jsonResponse({ ok: false, error: "Unable to send email right now. Please try again." }, 502);
   }
 

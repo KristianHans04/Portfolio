@@ -1,4 +1,4 @@
-import { type FormEvent, useState } from "react";
+import { type FormEvent, useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 
 type FormState =
@@ -17,11 +17,63 @@ type ContactApiResponse = {
   error?: string;
 };
 
+declare global {
+  interface Window {
+    turnstile?: {
+      render: (container: HTMLElement, options: Record<string, unknown>) => string;
+      reset: (widgetId?: string) => void;
+      getResponse: (widgetId?: string) => string | undefined;
+      remove: (widgetId?: string) => void;
+    };
+  }
+}
+
 export default function ContactForm({ turnstileSiteKey }: ContactFormProps) {
   const prefersReducedMotion = useReducedMotion();
   const [state, setState] = useState<FormState>({ kind: "idle" });
+  const [turnstileToken, setTurnstileToken] = useState<string>("");
+  const turnstileRef = useRef<HTMLDivElement>(null);
+  const widgetIdRef = useRef<string | null>(null);
 
   const hasTurnstileKey = Boolean(turnstileSiteKey);
+
+  const renderWidget = useCallback(() => {
+    if (!turnstileSiteKey || !turnstileRef.current || !window.turnstile) return;
+    if (widgetIdRef.current) return;
+
+    widgetIdRef.current = window.turnstile.render(turnstileRef.current, {
+      sitekey: turnstileSiteKey,
+      callback: (token: string) => setTurnstileToken(token),
+      "expired-callback": () => setTurnstileToken(""),
+      "error-callback": () => setTurnstileToken(""),
+      theme: "auto",
+    });
+  }, [turnstileSiteKey]);
+
+  useEffect(() => {
+    if (!hasTurnstileKey) return;
+
+    if (window.turnstile) {
+      renderWidget();
+      return;
+    }
+
+    // Poll for turnstile script to load (loaded async in the page head)
+    const interval = setInterval(() => {
+      if (window.turnstile) {
+        clearInterval(interval);
+        renderWidget();
+      }
+    }, 200);
+
+    return () => {
+      clearInterval(interval);
+      if (widgetIdRef.current && window.turnstile) {
+        window.turnstile.remove(widgetIdRef.current);
+        widgetIdRef.current = null;
+      }
+    };
+  }, [hasTurnstileKey, renderWidget]);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -29,15 +81,12 @@ export default function ContactForm({ turnstileSiteKey }: ContactFormProps) {
     const form = event.currentTarget;
     const formData = new FormData(form);
 
-    if (hasTurnstileKey) {
-      const turnstileToken = String(formData.get("cf-turnstile-response") ?? "");
-      if (!turnstileToken) {
-        setState({
-          kind: "error",
-          message: "Please complete the verification below before sending.",
-        });
-        return;
-      }
+    if (hasTurnstileKey && !turnstileToken) {
+      setState({
+        kind: "error",
+        message: "Please complete the verification before sending.",
+      });
+      return;
     }
 
     const payload = {
@@ -47,9 +96,7 @@ export default function ContactForm({ turnstileSiteKey }: ContactFormProps) {
       subject: String(formData.get("subject") ?? ""),
       message: String(formData.get("message") ?? ""),
       companyWebsite: String(formData.get("companyWebsite") ?? ""),
-      ...(hasTurnstileKey && {
-        turnstileToken: String(formData.get("cf-turnstile-response") ?? ""),
-      }),
+      turnstileToken: turnstileToken || "",
     };
 
     setState({ kind: "loading" });
@@ -71,7 +118,10 @@ export default function ContactForm({ turnstileSiteKey }: ContactFormProps) {
         message: data.message ?? "Message sent! I will get back to you soon.",
       });
       form.reset();
-      window.turnstile?.reset();
+      setTurnstileToken("");
+      if (widgetIdRef.current && window.turnstile) {
+        window.turnstile.reset(widgetIdRef.current);
+      }
     } catch (error) {
       setState({
         kind: "error",
@@ -128,9 +178,7 @@ export default function ContactForm({ turnstileSiteKey }: ContactFormProps) {
       </div>
 
       {hasTurnstileKey && (
-        <div className="mt-5">
-          <div className="cf-turnstile" data-sitekey={turnstileSiteKey} />
-        </div>
+        <div className="mt-5" ref={turnstileRef} />
       )}
 
       <button

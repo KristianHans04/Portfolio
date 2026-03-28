@@ -1,3 +1,4 @@
+import { connect } from "cloudflare:sockets";
 import type { EmailMessage, EmailProvider } from "../types";
 
 type SmtpConfig = {
