@@ -58,7 +58,7 @@ function emailShell(title: string, content: string): string {
   <tr><td style="padding:0 0 24px;">
     <a href="https://kristianhans.com" style="text-decoration:none;">
       <span class="em-text" style="display:block;font-size:17px;font-weight:600;letter-spacing:-0.3px;color:#1e293b;">Kristian Hans Onjala</span>
-      <span class="em-muted" style="display:block;margin-top:2px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1.8px;color:#64748b;">Full-Stack Engineer</span>
+      <span class="em-muted" style="display:block;margin-top:2px;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1.8px;color:#64748b;">The work speaks. I just make sure it ships.</span>
     </a>
     <div class="em-divider" style="margin-top:16px;border-bottom:1px solid #e2e8f0;"></div>
   </td></tr>
