@@ -676,16 +676,21 @@ a {
   -webkit-backdrop-filter: blur(20px);
 }
 
-/* Typewriter cursor blink */
-.typewriter-cursor {
-  animation: blink-cursor 0.75s step-end infinite;
-  color: var(--color-accent);
-  font-weight: 300;
+/* Morph text transition */
+.morph-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 
-@keyframes blink-cursor {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+#hero-morph {
+  min-height: 1.2em;
+}
+
+#morph-b {
+  opacity: 0;
 }
 
 .home-hero-title {

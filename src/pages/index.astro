@@ -78,9 +78,11 @@ const routeTiles = [
             </span>
           </div>
 
-          <!-- Headline with typewriter effect -->
-          <h1 class="home-hero-title" id="hero-typewriter">
-            <span id="typewriter-text"></span><span class="typewriter-cursor">|</span>
+          <!-- Headline with morph text -->
+          <h1 class="home-hero-title relative" id="hero-morph">
+            <span class="morph-text" id="morph-a" aria-hidden="true"></span>
+            <span class="morph-text" id="morph-b" aria-hidden="true"></span>
+            <span class="sr-only" id="morph-sr">I build software that works and teach people who will.</span>
           </h1>
 
           <!-- Subtext -->
@@ -408,40 +410,75 @@ const routeTiles = [
       "From Nairobi to global stages — shipping code that matters.",
       "Engineering depth. Community impact. No shortcuts.",
     ];
-    const el = document.getElementById('typewriter-text');
-    if (el) {
-      let sentenceIndex = 0;
-      let charIndex = 0;
-      let isDeleting = false;
-      const typeSpeed = 45;
-      const deleteSpeed = 25;
-      const pauseAfterType = 2500;
-      const pauseAfterDelete = 400;
 
-      function tick() {
-        const current = sentences[sentenceIndex];
-        if (!isDeleting) {
-          el.textContent = current.slice(0, charIndex + 1);
-          charIndex++;
-          if (charIndex === current.length) {
-            isDeleting = true;
-            setTimeout(tick, pauseAfterType);
-            return;
-          }
-          setTimeout(tick, typeSpeed);
-        } else {
-          el.textContent = current.slice(0, charIndex - 1);
-          charIndex--;
-          if (charIndex === 0) {
-            isDeleting = false;
-            sentenceIndex = (sentenceIndex + 1) % sentences.length;
-            setTimeout(tick, pauseAfterDelete);
-            return;
-          }
-          setTimeout(tick, deleteSpeed);
-        }
+    const elA = document.getElementById("morph-a");
+    const elB = document.getElementById("morph-b");
+    const sr = document.getElementById("morph-sr");
+
+    if (elA && elB && sr) {
+      let index = 0;
+      let morph = 0;
+      let cooldown = 3;
+      let animFrame: number;
+      const morphTime = 1.2;
+      const cooldownTime = 3;
+
+      elA.textContent = sentences[0];
+      elB.textContent = sentences[1];
+      sr.textContent = sentences[0];
+
+      function setMorph(fraction: number) {
+        elB!.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
+        elB!.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
+        elA!.style.filter = `blur(${Math.min(8 / (1 - fraction) - 8, 100)}px)`;
+        elA!.style.opacity = `${Math.pow(1 - fraction, 0.4) * 100}%`;
       }
-      tick();
+
+      function doMorph() {
+        morph -= cooldown;
+        cooldown = 0;
+        let fraction = morph / morphTime;
+        if (fraction > 1) {
+          cooldown = cooldownTime;
+          fraction = 1;
+        }
+        setMorph(fraction);
+      }
+
+      function doCooldown() {
+        morph = 0;
+        elA!.style.filter = "";
+        elA!.style.opacity = "100%";
+        elB!.style.filter = "";
+        elB!.style.opacity = "0%";
+      }
+
+      let lastTime = performance.now();
+
+      function animate(time: number) {
+        const dt = (time - lastTime) / 1000;
+        lastTime = time;
+
+        cooldown -= dt;
+        if (cooldown <= 0) {
+          doMorph();
+          if (morph / morphTime >= 1) {
+            // Swap: current B becomes A, advance to next
+            index = (index + 1) % sentences.length;
+            elA!.textContent = sentences[index];
+            elB!.textContent = sentences[(index + 1) % sentences.length];
+            sr!.textContent = sentences[index];
+            cooldown = cooldownTime;
+            morph = 0;
+            doCooldown();
+          }
+        } else {
+          doCooldown();
+        }
+        animFrame = requestAnimationFrame(animate);
+      }
+
+      animFrame = requestAnimationFrame(animate);
     }
   </script>
 </BaseLayout>
