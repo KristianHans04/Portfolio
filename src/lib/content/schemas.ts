@@ -170,6 +170,10 @@ export const endorsementSchema = z.object({
 
 export const siteDataSchema = z.object({
   name: z.string().min(1),
+  givenName: z.string().nullable().default(null),
+  additionalName: z.string().nullable().default(null),
+  familyName: z.string().nullable().default(null),
+  alternateNames: z.array(z.string().min(1)).default([]),
   role: z.string().min(1),
   location: z.string().nullable().default(null),
   email: z.string().email().nullable().default(null),
@@ -217,6 +221,9 @@ export const seoDataSchema = z.object({
   defaultOgImage: z.string().min(1),
   twitterCard: z.string().min(1),
   siteUrl: z.string().min(1),
+  author: z.string().nullable().default(null),
+  keywords: z.array(z.string().min(1)).default([]),
+  locale: z.string().nullable().default(null),
 });
 
 export const socialItemSchema = z.object({

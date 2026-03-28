@@ -15,7 +15,8 @@
         {"label": "Work", "href": "/work"},
         {"label": "Impact", "href": "/impact"},
         {"label": "Press", "href": "/press"},
-        {"label": "Life", "href": "/life"}
+        {"label": "Life", "href": "/life"},
+        {"label": "Now", "href": "/now"}
       ]
     },
     {

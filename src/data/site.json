@@ -1,5 +1,16 @@
 {
-  "name": "Kristian Onjala",
+  "name": "Kristian Hans Onjala",
+  "givenName": "Kristian",
+  "additionalName": "Hans",
+  "familyName": "Onjala",
+  "alternateNames": [
+    "Kristian Onjala",
+    "Kristian Hans",
+    "Kristian Hans Onjala",
+    "Hans Onjala",
+    "Kristian H. Onjala",
+    "K. Hans Onjala"
+  ],
   "role": "Full-Stack Engineer / Cofounder / STEM Mentor",
   "location": "Nairobi, Kenya",
   "email": "hello@kristianhans.com",

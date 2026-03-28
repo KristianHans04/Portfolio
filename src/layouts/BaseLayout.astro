@@ -10,9 +10,11 @@ interface Props {
   image?: string;
   type?: "website" | "article";
   noindex?: boolean;
+  breadcrumbs?: Array<{ name: string; href: string }>;
+  pageKeywords?: string[];
 }
 
-const { title, description, image, type, noindex } = Astro.props;
+const { title, description, image, type, noindex, breadcrumbs, pageKeywords } = Astro.props;
 ---
 <!doctype html>
 <html lang="en" class="scroll-smooth">
@@ -20,10 +22,21 @@ const { title, description, image, type, noindex } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#04111e" />
+    <meta name="color-scheme" content="dark light" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <script is:inline>
       (function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)})();
     </script>
-    <SeoHead title={title} description={description} image={image} type={type} noindex={noindex} />
+    <SeoHead
+      title={title}
+      description={description}
+      image={image}
+      type={type}
+      noindex={noindex}
+      breadcrumbs={breadcrumbs}
+      pageKeywords={pageKeywords}
+    />
   </head>
   <body>
     <a href="#main-content" class="skip-link">Skip to content</a>
