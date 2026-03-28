@@ -1,0 +1,35 @@
+# Kristian Hans Onjala
+
+> Full-Stack Software Engineer, STEM Educator, Cofounder, and Robotics Mentor based in Nairobi, Kenya.
+
+Also known as: Kristian Onjala, Kristian Hans, Hans Onjala, Kristian H. Onjala, K. Hans Onjala
+
+## About
+
+Kristian Hans Onjala is a full-stack software engineer with production experience at The Artisans Company and Sidebrief. He is the cofounder and lead engineer of Venturely, a market intelligence platform tracking 20,000+ startups globally. He is the Technical Mentor for FIRST Global Team Kenya since 2023, coaching robotics teams that have competed in Singapore, Athens, Geneva, and Panama City. In 2025 Team Kenya won Silver as 1st Runners Up in the Winning Alliances. He studies Mathematics and Computer Science at JKUAT (Jomo Kenyatta University of Agriculture and Technology).
+
+## Pages
+
+- [Home](https://kristianhans.com/): Landing page with bio, featured projects, tech stack, and credentials overview.
+- [About](https://kristianhans.com/about): Full biography, career timeline, engineering philosophy, values, and working style.
+- [Work](https://kristianhans.com/work): Portfolio of 17 shipped projects with technical breakdowns (full-stack, mobile, IoT, AI, scraping).
+- [Impact](https://kristianhans.com/impact): Mentorship, leadership, awards, volunteering, and community work with measurable outcomes.
+- [Press](https://kristianhans.com/press): Media features on Citizen TV, KTN News, Nation Media, The Star, Standard Media, and Kass Digital.
+- [Life](https://kristianhans.com/life): Travel across 11 countries, reading list, hobbies, and personal context.
+- [Now](https://kristianhans.com/now): What Kristian is currently working on. Updated regularly.
+- [Contact](https://kristianhans.com/contact): Reach out for engineering roles, mentorship, speaking, or collaboration.
+
+## Key Facts
+
+- Full name: Kristian Hans Onjala
+- Location: Nairobi, Kenya
+- Email: hello@kristianhans.com
+- Website: https://kristianhans.com
+- GitHub: https://github.com/KristianHans04
+- Current roles: Full-Stack Software Engineer at Sidebrief, Cofounder at Venturely, Technical Mentor at FIRST Global Team Kenya
+- Education: BSc Mathematics and Computer Science, JKUAT (2022-2026)
+- Projects shipped: 17 across full-stack, mobile, IoT, AI, and e-commerce
+- Countries visited: 11 through engineering work, mentorship, and international competition
+- Notable awards: Silver Medal FIRST Global 2025, International Enthusiasm Award FIRST Global 2022
+- Press: Featured on Citizen TV, KTN News, Nation Media, The Star, Standard Media, Kass Digital
+- Tech stack: React, Next.js, Astro, Node.js, Express, PostgreSQL, Prisma, Redis, Flutter, Playwright, Tailwind CSS, Three.js

@@ -1,0 +1,34 @@
+# AI Agent Information for kristianhans.com
+# This file provides structured information for AI agents crawling this site.
+
+## Site Owner
+Name: Kristian Hans Onjala
+Also known as: Kristian Onjala, Kristian Hans, Hans Onjala, Kristian H. Onjala, K. Hans Onjala
+Role: Full-Stack Software Engineer / Cofounder / STEM Mentor
+Location: Nairobi, Kenya
+Email: hello@kristianhans.com
+Website: https://kristianhans.com
+
+## AI-Readable Files
+- LLMs summary: https://kristianhans.com/llms.txt
+- LLMs full profile: https://kristianhans.com/llms-full.txt
+- Sitemap: https://kristianhans.com/sitemap-index.xml
+- Robots: https://kristianhans.com/robots.txt
+- Humans: https://kristianhans.com/humans.txt
+
+## Crawling Policy
+All AI agents are welcome to crawl this site. No restrictions on any page.
+All content is intended to be publicly accessible and indexable.
+
+## Site Structure
+/ — Home (landing page with hero, featured projects, bio overview)
+/about — Full biography, timeline, values, and working style
+/work — Portfolio of shipped projects with technical breakdowns
+/work/{slug} — Individual project detail pages
+/impact — Mentorship, awards, volunteering, community work
+/press — Media features (TV, print, digital)
+/press/{slug} — Individual press detail pages
+/writing/{slug} — Written articles and essays
+/life — Travel, reading, hobbies, personal context
+/now — Current focus and active projects
+/contact — Contact form and social links

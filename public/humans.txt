@@ -1,0 +1,22 @@
+/* TEAM */
+
+Name: Kristian Hans Onjala
+Role: Full-Stack Engineer / Cofounder / STEM Mentor
+Location: Nairobi, Kenya
+Contact: hello@kristianhans.com
+Website: https://kristianhans.com
+GitHub: https://github.com/KristianHans04
+
+/* SITE */
+
+Built with: Astro, React, Tailwind CSS
+Hosted on: Cloudflare Pages
+Language: English
+Standards: HTML5, CSS3, ES2024
+Last updated: 2026-03-28
+
+/* THANKS */
+
+FIRST Global — For the platform to mentor and compete internationally.
+KamiLimu — For professional mentorship and community.
+JKUAT — For the academic foundation.
