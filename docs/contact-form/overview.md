@@ -6,7 +6,7 @@ The contact form allows visitors to send messages directly from the site. The sy
 
 1. **Client-side form** (React component in the browser)
 2. **Server-side API** (Cloudflare Pages Function on the edge)
-3. **Email delivery** (Resend or Postmark)
+3. **Email delivery** (SMTP via Zoho Mail by default, with Resend and Postmark as alternatives)
 
 ## Flow
 

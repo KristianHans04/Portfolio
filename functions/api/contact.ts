@@ -9,6 +9,10 @@ type Env = {
   CONTACT_FROM_EMAIL?: string;
   CONTACT_ACK_FROM_EMAIL?: string;
   EMAIL_PROVIDER?: string;
+  SMTP_HOST?: string;
+  SMTP_PORT?: string;
+  SMTP_USER?: string;
+  SMTP_PASS?: string;
   RESEND_API_KEY?: string;
   POSTMARK_SERVER_TOKEN?: string;
 };

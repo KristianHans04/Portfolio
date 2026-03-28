@@ -17,10 +17,14 @@ These are used by the contact form API at request time. Set them in the Cloudfla
 |----------|----------|-------------|
 | `TURNSTILE_SECRET_KEY` | Yes | Server-side secret for Cloudflare Turnstile verification. Get this from the Turnstile section of the Cloudflare dashboard |
 | `CONTACT_TO_EMAIL` | Yes | The email address that receives contact form submissions |
-| `CONTACT_FROM_EMAIL` | Yes | The sender address for notification emails (e.g., `noreply@yourdomain.com`). Must be verified with your email provider |
+| `CONTACT_FROM_EMAIL` | Yes | The sender address for notification emails (e.g., `noreply@yourdomain.com`). Must be verified with your email provider. For Zoho SMTP, this must match your `SMTP_USER` address |
 | `CONTACT_ACK_FROM_EMAIL` | No | Sender address for acknowledgment emails sent to the person who submitted the form. Falls back to `CONTACT_FROM_EMAIL` if not set |
-| `EMAIL_PROVIDER` | No | Which email service to use. Either `resend` (default) or `postmark` |
-| `RESEND_API_KEY` | Conditional | Required when `EMAIL_PROVIDER` is `resend` or not set |
+| `EMAIL_PROVIDER` | No | Which email service to use: `smtp` (default), `resend`, or `postmark` |
+| `SMTP_HOST` | Conditional | SMTP server hostname (e.g., `smtp.zoho.com`). Required when `EMAIL_PROVIDER` is `smtp` |
+| `SMTP_PORT` | No | SMTP server port. Defaults to `465` (implicit TLS). Only change if your provider uses a different port |
+| `SMTP_USER` | Conditional | SMTP login username, typically your email address. Required when `EMAIL_PROVIDER` is `smtp` |
+| `SMTP_PASS` | Conditional | SMTP login password. Use an app-specific password, not your main account password. Required when `EMAIL_PROVIDER` is `smtp` |
+| `RESEND_API_KEY` | Conditional | Required when `EMAIL_PROVIDER` is `resend` |
 | `POSTMARK_SERVER_TOKEN` | Conditional | Required when `EMAIL_PROVIDER` is `postmark` |
 
 ## Client-Side Variables
@@ -47,8 +51,11 @@ Create a `.dev.vars` file in the project root (this file is gitignored):
 ```
 TURNSTILE_SECRET_KEY=your_secret_key
 CONTACT_TO_EMAIL=you@example.com
-CONTACT_FROM_EMAIL=noreply@example.com
-RESEND_API_KEY=re_your_api_key
+CONTACT_FROM_EMAIL=you@zoho.com
+SMTP_HOST=smtp.zoho.com
+SMTP_PORT=465
+SMTP_USER=you@zoho.com
+SMTP_PASS=your_app_specific_password
 ```
 
 These are picked up by `wrangler pages dev` when running `npm run cf:dev`.
@@ -57,5 +64,6 @@ These are picked up by `wrangler pages dev` when running `npm run cf:dev`.
 
 - Never commit environment variable values to the repository
 - The `.dev.vars` file should be in `.gitignore`
-- Use separate API keys for development and production environments
-- Rotate keys periodically
+- For SMTP, always use an app-specific password rather than your main account password
+- Use separate credentials for development and production environments
+- Rotate passwords periodically
