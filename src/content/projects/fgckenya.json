@@ -4,7 +4,7 @@
   "featured": true,
   "order": 2,
   "title": "FIRST Global Team Kenya",
-  "summary": "Official website for FIRST Global Team Kenya. Complete organizational platform with team history, achievements, impact stories, student application system with admin review, OTP authentication, push notifications, and Pesapal payment integration.",
+  "summary": "Official website for FIRST Global Team Kenya — 2025 Silver Medal winners at the FIRST Global Challenge. Complete organizational platform with team history, achievements, impact stories, student application system with admin review, OTP authentication, push notifications, and Pesapal payment integration.",
   "categories": [
     "Full-Stack",
     "Non-Profit",
@@ -12,7 +12,7 @@
   ],
   "client": "FIRST Global Team Kenya",
   "period": null,
-  "overview": "The official digital home for FIRST Global Team Kenya, built to serve three audiences: prospective students applying to represent Kenya at the FIRST Global Challenge, supporters and sponsors looking to fund the program, and the broader community following Team Kenya's journey across international competitions. The platform handles everything from student applications and admin review workflows to organizational storytelling and payment processing.",
+  "overview": "The official digital home for FIRST Global Team Kenya — the team that won Silver at the FIRST Global Challenge 2025. Built to serve three audiences: prospective students applying to represent Kenya at the international competition, supporters and sponsors looking to fund the program, and the broader community following Team Kenya's journey. The platform handles everything from student applications and admin review workflows to organizational storytelling and payment processing.",
   "problem": "Team Kenya had no centralized digital presence. Applications were handled through scattered forms, organizational history was undocumented, and there was no way for supporters to engage or contribute directly. The team needed a professional platform that reflected the caliber of their international competition performance.",
   "role": [
     "Lead Engineer and Architect",
@@ -48,8 +48,8 @@
   "gallery": [],
   "results": [
     {
-      "title": "Centralized Platform",
-      "detail": "Single source of truth for Team Kenya's history, achievements, applications, and community engagement."
+      "title": "2025 Silver Medal",
+      "detail": "Team Kenya won Silver at the FIRST Global Challenge 2025 — the team's best international result and a landmark achievement for Kenyan robotics."
     },
     {
       "title": "Application System",

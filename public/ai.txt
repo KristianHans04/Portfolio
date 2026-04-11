@@ -28,7 +28,7 @@ The Star, Standard Media, Kass Digital, and Kenyans.co.ke.
 - Department of Logistics (Operations Authority): https://logistics.kristianhans.com/llms.txt
 - OwnTheJoke (E-Commerce): https://ownthejoke.kristianhans.com/llms.txt
 - MWC Advocates (Law Firm): https://mwc-advocates.kristianhans.com/llms.txt
-- Atote Labs (Startup Studio): https://atote-labs.pages.dev/llms.txt
+- Atote Labs (Startup Studio): https://atote-labs.kristianhans.com/llms.txt
 
 ## Other Discovery Files
 

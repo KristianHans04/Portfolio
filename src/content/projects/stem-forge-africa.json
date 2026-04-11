@@ -1,0 +1,69 @@
+{
+  "slug": "stem-forge-africa",
+  "published": true,
+  "featured": false,
+  "order": 9,
+  "title": "STEM Forge Africa",
+  "summary": "Official website for STEM Forge Africa Ltd, an organization advancing STEM education across the continent through competitions, programs, and international exposure. Built with Django 5.2, PostgreSQL, Tailwind CSS v4, and Gunicorn, deployed to production with full accessibility compliance.",
+  "categories": [
+    "Full-Stack",
+    "Non-Profit",
+    "Education"
+  ],
+  "client": "STEM Forge Africa Ltd",
+  "period": null,
+  "overview": "STEM Forge Africa is a global organization dedicated to developing the next generation of African scientists, technologists, engineers, and mathematicians. The website serves as the organization's primary digital presence — communicating its mission, showcasing its programs and competitions, and handling inbound inquiries from students, schools, and partners. The platform is built on Django with a PostgreSQL backend, served via Gunicorn with WhiteNoise for static files, and uses a modern Tailwind CSS v4 frontend with Google Fonts typography.",
+  "problem": "Educational organizations operating across multiple African countries need websites that project credibility to international partners, are accessible to students on low-bandwidth connections, and are maintainable by non-technical staff. A complex JavaScript-heavy SPA would have introduced unnecessary failure points. A Django-based architecture with server-rendered pages offered reliability, performance, and straightforward content management.",
+  "role": [
+    "Lead Engineer",
+    "Designed and built the full Django application with custom models, views, and templates",
+    "Implemented the responsive Tailwind CSS v4 frontend with mobile-first layout and Google Fonts integration",
+    "Built the contact form with server-side validation and email integration",
+    "Configured production deployment with Gunicorn, WhiteNoise for static file serving, and PostgreSQL",
+    "Ensured WCAG 2.1 Level AA accessibility compliance throughout"
+  ],
+  "architecture": [
+    "Django 5.2.8 with a pages app handling four routes: home, about, programs, and contact",
+    "PostgreSQL in production with dj-database-url for environment-based configuration",
+    "Gunicorn WSGI server with WhiteNoise for zero-dependency static file serving",
+    "Tailwind CSS v4 compiled via the standalone CLI and Node.js build toolchain",
+    "Server-side rendered HTML templates with Django's template engine for fast initial load",
+    "Email-integrated contact form with server-side validation and CSRF protection"
+  ],
+  "stack": [
+    "Django 5.2",
+    "PostgreSQL",
+    "Gunicorn",
+    "WhiteNoise",
+    "Tailwind CSS v4",
+    "Python 3.12",
+    "JavaScript"
+  ],
+  "gallery": [],
+  "results": [
+    {
+      "title": "Production-Grade Deployment",
+      "detail": "Gunicorn + WhiteNoise + PostgreSQL stack deployed with proper environment separation, CSRF protection, and static asset optimization."
+    },
+    {
+      "title": "Accessibility Compliant",
+      "detail": "WCAG 2.1 Level AA compliance throughout, ensuring the site is usable by students and educators regardless of device or ability."
+    },
+    {
+      "title": "Mobile-First Design",
+      "detail": "Responsive, fast-loading layout optimized for mobile users across African markets where mobile-first browsing is the norm."
+    }
+  ],
+  "lessonsLearned": [
+    "Django's batteries-included approach is genuinely well-suited for content-driven organizational websites. The admin, ORM, form validation, and template system remove a significant amount of boilerplate.",
+    "WhiteNoise makes static file serving in Django production deployments substantially simpler than configuring a separate CDN or nginx static handler.",
+    "Tailwind CSS v4 with Django requires running the standalone CLI as part of the build process — not a complex step, but it needs to be baked into the deployment pipeline from the start."
+  ],
+  "links": [
+    {
+      "label": "Live Site",
+      "url": "https://stemforgeafrica.com"
+    }
+  ],
+  "logo": "/images/projects/stem-forge-africa.svg"
+}

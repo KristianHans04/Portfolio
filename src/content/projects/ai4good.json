@@ -1,0 +1,69 @@
+{
+  "slug": "ai4good",
+  "published": true,
+  "featured": true,
+  "order": 4,
+  "title": "Agriculture Robot — RFGYC 2025-2026",
+  "summary": "Autonomous agricultural robot built for the Robotics for Good Youth Challenge 2025-2026. ROS2 Jazzy codebase with computer vision for crop detection, autonomous navigation, and precision manipulation. Designed for cultivation, irrigation, harvesting, and sorting missions on a competition field.",
+  "categories": [
+    "Robotics",
+    "Computer Vision",
+    "AI"
+  ],
+  "client": "Robotics for Good Youth Challenge",
+  "period": "2025-2026",
+  "overview": "A ROS2 Jazzy Jalisco codebase implementing an autonomous agricultural robot for the RFGYC 2025-2026 Agriculture Edition. The robot is designed to perform four mission types on a 2362mm x 1143mm competition field: cultivation, irrigation, harvesting, and sorting. The system uses computer vision powered by OpenCV and YOLO for crop and plot detection, with a state machine for match-level mission control. The codebase runs on a HP ZBook 15 G6 (64GB RAM, Quadro T2000 GPU) and is architected for both Gazebo simulation and deployment on physical robotic hardware.",
+  "problem": "Agricultural robotics at the competition level requires a system that can operate reliably under time pressure with no manual intervention. Each mission phase — detecting where to plant, irrigating specific plots, identifying ripe fruit, and sorting harvested items — requires its own sensing and actuation pipeline, all orchestrated by a single state machine that executes the correct sequence without ambiguity. The architecture had to be modular enough that individual subsystems could be debugged in simulation independently of the full match flow.",
+  "role": [
+    "Lead Engineer and Architect",
+    "Designed the ROS2 package structure with clear separation between sensing, navigation, manipulation, mission control, and simulation",
+    "Implemented the computer vision pipeline using OpenCV for fruit and plot detection with YOLO for inference on the Quadro T2000 GPU",
+    "Built the mission control state machine for match-level sequencing of all four mission types",
+    "Developed Gazebo simulation world for testing autonomous behaviors without physical hardware",
+    "Authored hardware deployment guides for cameras, ultrasonic sensors, encoders, and actuator systems"
+  ],
+  "architecture": [
+    "ROS2 Jazzy Jalisco as the middleware layer for node communication, message passing, and lifecycle management",
+    "Five ROS2 packages: sensing (computer vision), navigation (odometry and motion), manipulation (seed planting and picking), mission_control (state machine), simulation (Gazebo world)",
+    "OpenCV and YOLO for real-time fruit detection and plot identification, leveraging the Quadro T2000 GPU for inference",
+    "State machine in mission_control coordinating the full match sequence across cultivation, irrigation, harvesting, and sorting phases",
+    "Gazebo simulation environment for development and testing without physical hardware dependency",
+    "Designed for adaptability: real hardware deployment via cameras, ultrasonic sensors, encoders, and mechanical actuators"
+  ],
+  "stack": [
+    "ROS2 Jazzy",
+    "Python 3",
+    "OpenCV",
+    "YOLO",
+    "Gazebo",
+    "Ubuntu 24.04",
+    "C++"
+  ],
+  "gallery": [],
+  "results": [
+    {
+      "title": "Full Mission Coverage",
+      "detail": "State machine implementing all four RFGYC mission phases: cultivation, irrigation, harvesting, and sorting — with autonomous sequencing and no manual intervention."
+    },
+    {
+      "title": "GPU-Accelerated Vision",
+      "detail": "YOLO inference on the Quadro T2000 GPU enables real-time crop detection at the speed required for competition operation."
+    },
+    {
+      "title": "Simulation-First Architecture",
+      "detail": "Full Gazebo simulation environment allowing each subsystem to be developed, tested, and debugged independently before integration on physical hardware."
+    }
+  ],
+  "lessonsLearned": [
+    "ROS2 package boundaries matter enormously for debuggability. Keeping sensing, navigation, and manipulation as independent packages means any one can be run in isolation against a bag file or simulator without pulling in the whole system.",
+    "Computer vision performance on robotics hardware is highly environment-dependent. Models that work perfectly in controlled lab lighting can fail in competition lighting conditions. Test in the actual environment as early as possible.",
+    "State machine design for robotics requires explicit handling of failure modes. A robot that freezes when a mission step fails is worse than one that gracefully transitions to a safe fallback state."
+  ],
+  "links": [
+    {
+      "label": "GitHub Repository",
+      "url": "https://github.com/KristianHans04/ai4good"
+    }
+  ],
+  "logo": "/images/projects/ai4good.svg"
+}

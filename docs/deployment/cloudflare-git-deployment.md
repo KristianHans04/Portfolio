@@ -1,170 +1,80 @@
-# Cloudflare Pages: Full Deployment Guide with Git Integration
+# Deploying to Cloudflare Pages with Git Integration
 
-This document covers how all personal projects are deployed to Cloudflare Pages with native GitHub Git integration, what went wrong the first time, how it was fixed, and the exact steps to deploy any future project correctly. It also documents the domain convention and every project-specific configuration.
+This document is written for an LLM agent with zero prior context. It documents exactly how all projects in this portfolio are deployed to Cloudflare Pages with native GitHub Git integration, what the correct process is, what went wrong in previous attempts, and what to do differently.
+
+Read this entirely before touching anything.
 
 ---
 
-## Domain Convention
+## What You Are Deploying
 
-All personal projects follow the convention:
+There are 8 projects deployed as Cloudflare Pages sites. Each follows the domain convention:
 
 ```
 [project-name].kristianhans.com
 ```
 
-For example:
-- `logistics.kristianhans.com`
-- `scrapifie.kristianhans.com`
-- `fgckenya.kristianhans.com`
+The DNS zone for `kristianhans.com` is managed in Cloudflare. When you add a custom domain to a Pages project and the zone is in the same Cloudflare account, the CNAME record is created automatically.
 
-Some projects also have secondary custom domains (e.g., `logistics.ownthejoke.com`, `scrapifie.com`). The primary subdomain is always on `kristianhans.com`.
+---
 
-All DNS records for `kristianhans.com` are managed in Cloudflare. Adding a custom domain to a Pages project automatically creates the CNAME record if the zone is in the same Cloudflare account.
+## Credentials You Will Need
+
+Before doing anything, confirm you have these. Do not proceed without them.
+
+```
+CF_ACCOUNT_ID=YOUR_CF_ACCOUNT_ID
+CF_API_TOKEN=YOUR_CF_API_TOKEN
+GITHUB_APP_INSTALLATION_ID=YOUR_GITHUB_APP_INSTALLATION_ID
+```
+
+- `CF_ACCOUNT_ID`: The Cloudflare account ID. Found in the Cloudflare dashboard URL or Account Home.
+- `CF_API_TOKEN`: A Cloudflare API token with `Cloudflare Pages: Edit` permissions. Create one at dash.cloudflare.com > Profile > API Tokens.
+- `GITHUB_APP_INSTALLATION_ID`: The GitHub App installation ID for the Cloudflare Pages GitHub integration.
+
+Verify the token works before proceeding:
+```bash
+curl -s "https://api.cloudflare.com/client/v4/user/tokens/verify" \
+  -H "Authorization: Bearer YOUR_CF_API_TOKEN"
+```
+
+Expected response includes `"status": "active"`.
+
+---
+
+## The Critical Mistake: Do Not Use `wrangler pages deploy`
+
+The first deployment attempt used `wrangler pages deploy` to upload build artifacts directly. This creates a **direct-upload** Pages project with no Git connection. That means:
+
+- No automatic deployments on push
+- No branch preview deployments
+- The Cloudflare dashboard shows "No Git connection"
+- You cannot see which branch is deployed
+- Fixing it requires deleting and recreating the project
+
+**Do not use `wrangler pages deploy` for initial project setup.** That command is only for one-off manual uploads.
 
 ---
 
 ## The Correct Way to Deploy a New Project
 
-> Always follow this process for any new project. Never use `wrangler pages deploy` for initial setup — it creates a direct-upload project with no Git connection.
+### Option A: Cloudflare Dashboard (Simplest)
 
-### Step 1 — Create the Cloudflare Pages project via the dashboard (recommended)
+1. Go to dash.cloudflare.com > Workers & Pages > Create > Pages > Connect to Git
+2. Authorize GitHub
+3. Select the repository and branch
+4. Configure build settings (see per-project table below)
+5. Save and Deploy
 
-1. Go to [dash.cloudflare.com](https://dash.cloudflare.com)
-2. Navigate to **Workers & Pages** > **Create** > **Pages** > **Connect to Git**
-3. Authorize GitHub if not already done
-4. Select the repository and branch to deploy from
-5. Configure the build settings (see the project table below for per-project settings)
-6. Click **Save and Deploy**
+Every push to the configured branch then triggers an automatic build and deployment.
 
-This creates a native Git-connected project. Every push to the configured branch triggers a new build and deployment automatically.
+### Option B: Cloudflare API (Terminal)
 
-### Step 2 — Set environment variables
-
-After the project is created, go to **Settings** > **Environment Variables** and add any required secrets (API keys, database URLs, etc.). These apply to both Production and Preview environments unless configured separately.
-
-For Node.js version requirements, set:
-```
-NODE_VERSION = <version>
-```
-
-For example, the portfolio (Astro) requires Node.js 22+:
-```
-NODE_VERSION = 22
-```
-
-### Step 3 — Add the custom domain
-
-1. Go to the project > **Custom domains** > **Set up a custom domain**
-2. Enter `[project-name].kristianhans.com`
-3. If the DNS zone for `kristianhans.com` is in the same Cloudflare account, the CNAME is added automatically
-4. If on an external registrar, add a CNAME record pointing to `[project-name].pages.dev`
-
----
-
-## The Mistake: Deploying via Wrangler (Direct Upload)
-
-### What happened
-
-Initially, all eight projects were deployed using the Wrangler CLI:
+**Step 1 - Create the Pages project with Git connection:**
 
 ```bash
-npx wrangler pages deploy ./dist --project-name my-project
-```
-
-This command creates a **direct-upload** Pages project. Direct-upload projects:
-- Have **no Git connection**
-- Show "No Git connection" in the Cloudflare dashboard
-- Do not auto-deploy on push to GitHub
-- Cannot be changed to a Git-connected project after creation via the PATCH API (returns error `8000069: Deployments source type cannot be changed`)
-- Do not show which branch is deployed or what commit is live
-
-The CI/CD pipelines (GitHub Actions) were running wrangler on every push, which did deploy the code — but it was a manual file upload, not a native build. There was no branch tracking, no commit visibility, and no way to know from the dashboard what state was deployed.
-
-### Why it cannot be fixed in-place
-
-Cloudflare's API does not allow changing the source type from `direct_upload` to `github` on an existing project:
-
-```json
-{
-  "errors": [{ "code": 8000069, "message": "Deployments source type cannot be changed" }]
-}
-```
-
-The only fix is to delete the project and recreate it with the correct source configuration.
-
-### The fix
-
-The fix required:
-1. Removing all custom domains from each project (Cloudflare blocks deletion of projects with active custom domains, error `8000028`)
-2. Deleting each project via the API
-3. Recreating each project via the API with `source.type: "github"` and the correct build configuration
-4. Re-adding all custom domains
-
-This was done for all eight projects using the Cloudflare REST API. See the API process section below for the exact calls used.
-
-### Consequences of the mistake
-
-- All projects previously showed "No Git connection" in the dashboard
-- Auto-deploy on push did not work at the platform level (only through the GitHub Actions wrangler step)
-- Removing the wrangler deploy step from CI was required after fixing, otherwise pushes would trigger both a native Cloudflare build AND a wrangler direct upload (double deploys)
-- All CI workflows were updated to be build-verification-only after the Git connection was established
-
----
-
-## API Process for Creating Git-Connected Projects
-
-This section documents the exact API calls used to fix the deployment issue. It is useful if you ever need to automate project creation or recreate a project.
-
-### Prerequisites
-
-You need:
-- A Cloudflare API token with Pages edit permissions
-- Your Cloudflare account ID
-- The GitHub App installation ID for your account
-
-```bash
-CF_ACCOUNT="e09b484534b3f30aa8e395372065c4f6"
-CF_TOKEN="<your-api-token>"
-```
-
-### Step 1 — Find the GitHub App installation ID
-
-```bash
-curl "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT/pages/connections" \
-  -H "Authorization: Bearer $CF_TOKEN"
-```
-
-The response includes a `settings_url` like:
-```
-https://github.com/settings/installations/114717473
-```
-
-The number at the end (`114717473`) is the installation ID. You need this when creating projects with Git source.
-
-### Step 2 — Remove custom domains before deleting
-
-```bash
-curl -X DELETE \
-  "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT/pages/projects/PROJECT_NAME/domains/DOMAIN_NAME" \
-  -H "Authorization: Bearer $CF_TOKEN"
-```
-
-Repeat for every custom domain on the project. The API returns error `8000028` if you try to delete a project that still has active custom domains.
-
-### Step 3 — Delete the project
-
-```bash
-curl -X DELETE \
-  "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT/pages/projects/PROJECT_NAME" \
-  -H "Authorization: Bearer $CF_TOKEN"
-```
-
-### Step 4 — Create the project with Git source
-
-```bash
-curl -X POST \
-  "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT/pages/projects" \
-  -H "Authorization: Bearer $CF_TOKEN" \
+curl -s -X POST "https://api.cloudflare.com/client/v4/accounts/YOUR_CF_ACCOUNT_ID/pages/projects" \
+  -H "Authorization: Bearer YOUR_CF_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
     "name": "PROJECT_NAME",
@@ -175,260 +85,205 @@ curl -X POST \
         "owner": "KristianHans04",
         "repo_name": "REPO_NAME",
         "production_branch": "main",
-        "pr_comments_enabled": false,
-        "deployments_enabled": true
+        "pr_comments_enabled": true,
+        "deployments_enabled": true,
+        "preview_deployment_setting": "custom",
+        "preview_branch_includes": ["dev", "staging"],
+        "installations_id": YOUR_GITHUB_APP_INSTALLATION_ID
       }
     },
     "build_config": {
-      "build_command": "npm run build",
-      "destination_dir": "dist",
+      "build_command": "BUILD_COMMAND",
+      "destination_dir": "DIST_DIR",
       "root_dir": ""
     }
   }'
 ```
 
-Key fields:
-- `source.config.owner` — GitHub username or org
-- `source.config.repo_name` — exact repository name on GitHub (case-sensitive)
-- `build_config.root_dir` — if the frontend lives in a subdirectory (e.g., `client`), set this to that path. Cloudflare runs `npm install` in this directory automatically.
-- `build_config.destination_dir` — relative to `root_dir`, where the build outputs go (usually `dist`)
+Replace PROJECT_NAME, REPO_NAME, BUILD_COMMAND, DIST_DIR with values from the table below.
 
-### Step 5 — Set environment variables
+**Step 2 - Set environment variables:**
 
 ```bash
-curl -X PATCH \
-  "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT/pages/projects/PROJECT_NAME" \
-  -H "Authorization: Bearer $CF_TOKEN" \
+curl -s -X PATCH "https://api.cloudflare.com/client/v4/accounts/YOUR_CF_ACCOUNT_ID/pages/projects/PROJECT_NAME" \
+  -H "Authorization: Bearer YOUR_CF_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
     "deployment_configs": {
       "production": {
         "env_vars": {
-          "NODE_VERSION": { "value": "22" }
+          "VARIABLE_NAME": {"type": "plain_text", "value": "VALUE"}
         }
       }
     }
   }'
 ```
 
-### Step 6 — Re-add custom domains
+Use `plain_text` type for variables that need to be visible and editable in the CF dashboard.
+
+**Step 3 - Add the custom domain:**
 
 ```bash
-curl -X POST \
-  "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT/pages/projects/PROJECT_NAME/domains" \
-  -H "Authorization: Bearer $CF_TOKEN" \
+curl -s -X POST \
+  "https://api.cloudflare.com/client/v4/accounts/YOUR_CF_ACCOUNT_ID/pages/projects/PROJECT_NAME/domains" \
+  -H "Authorization: Bearer YOUR_CF_API_TOKEN" \
   -H "Content-Type: application/json" \
-  -d '{ "name": "project.kristianhans.com" }'
+  -d '{"name": "PROJECT_NAME.kristianhans.com"}'
 ```
 
 ---
 
-## Project Configuration Reference
+## How to Fix a Project That Has No Git Connection
 
-This table documents the exact build configuration for all eight deployed projects.
+If a project shows "No Git connection", you must delete it and recreate it.
 
-| Project | Pages Name | GitHub Repo | Branch | root_dir | build_command | dest_dir | Custom Domains |
-|---------|-----------|-------------|--------|----------|---------------|----------|----------------|
-| Department of Logistics | `logistics-hq` | `Logistics` | `main` | `site` | `npm install && npm run build` | `dist` | `logistics.kristianhans.com`, `logistics.ownthejoke.com` |
-| Scrapifie | `scrapifie` | `ScraperX` | `master` | *(root)* | `npm run build:frontend` | `dist/frontend` | `scrapifie.com`, `scrapifie.kristianhans.com` |
-| Atote Labs | `atote-labs` | `Atote-Labs` | `main` | `client` | `npm install && npm run build` | `dist` | *(none, accessible at atote-labs.pages.dev)* |
-| Venturely | `atote` | `atote` | `main` | `client` | `npm install && npm run build` | `dist` | `atotee.kristianhans.com`, `venturely.kristianhans.com` |
-| OwnTheJoke | `ownthejoke` | `OwnTheJoke.com` | `main` | `client` | `npm install && npm run build` | `dist` | `ownthejoke.kristianhans.com` |
-| MWC Advocates | `mwc-advocates` | `mwc-advocates` | `PERN` | `client` | `npm install && npm run build` | `dist` | `mwc-advocates.kristianhans.com`, `mwcadvocates.kristianhans.com` |
-| Portfolio | `kristian-portfolio` | `Portfolio` | `main` | *(root)* | `npm run build` | `dist` | *(points to kristianhans.com separately)* |
-| FGC Kenya | `fgc-kenya` | `FGC_Kenya` | `main` | *(root)* | `npm run build` | `out` | `fgckenya.kristianhans.com` |
+**Step 1 - Delete:**
 
-### Project-specific notes
+```bash
+curl -s -X DELETE \
+  "https://api.cloudflare.com/client/v4/accounts/YOUR_CF_ACCOUNT_ID/pages/projects/PROJECT_NAME" \
+  -H "Authorization: Bearer YOUR_CF_API_TOKEN"
+```
 
-**ScraperX:**
-- Branch is `master`, not `main`
-- Build command is `npm run build:frontend`, not the default `npm run build`
-- Output dir is `dist/frontend` because the repo contains both backend and frontend; Cloudflare must only serve the frontend build
-
-**MWC Advocates:**
-- Default branch is `PERN` — this is the production branch, not `main`
-- Frontend is in the `client/` subdirectory; set `root_dir: "client"`
-
-**Atote/Venturely:**
-- The GitHub repo is lowercase `atote` (it was renamed on GitHub)
-- The Cloudflare Pages project name is also `atote`
-- Frontend is in the `client/` subdirectory
-
-**OwnTheJoke:**
-- The GitHub repo was renamed from `ClothHats.com` to `OwnTheJoke.com` — always use the current name
-- Frontend is in `client/`
-
-**FGC Kenya:**
-- Uses Next.js static export — output directory is `out`, not `dist`
-- The `.gitignore` in this repo blocks `.github/workflows` — use `git add -f` when adding or updating CI files
-
-**Portfolio:**
-- Uses Astro — requires Node.js 22 or higher
-- Set `NODE_VERSION = 22` as an environment variable in the Cloudflare Pages project settings
-
-**Atote Labs:**
-- Has no custom domain yet; accessible at `atote-labs.pages.dev`
+Wait a few seconds, then recreate with Option B above.
 
 ---
 
-## CI/CD Workflow After the Fix
+## All 8 Projects - Configuration Reference
 
-After switching to native Git-connected deployments, Cloudflare Pages handles all builds and deploys natively on push. The GitHub Actions workflows were updated to be **build-verification only** — they no longer deploy anything.
+| CF Project Name      | Repository         | Branch | Build Command                               | Dist Dir       |
+|----------------------|--------------------|--------|---------------------------------------------|----------------|
+| kristian-portfolio   | kristian-portfolio | main   | npm run build                               | dist           |
+| scrapifie            | Scraper            | main   | npm run build:frontend                      | dist/frontend  |
+| atote                | Atote              | main   | cd client && npm install && npm run build   | client/dist    |
+| fgc-kenya            | FGC_Kenya          | main   | npm run build                               | out            |
+| ownthejoke           | ClothHats.com      | main   | cd client && npm install && npm run build   | client/dist    |
+| logistics-hq         | Logistics          | main   | cd site && npm install && npm run build     | site/dist      |
+| atote-labs           | Atote-Labs         | main   | cd client && npm install && npm run build   | client/dist    |
+| mwc-advocates        | MWC_Advocates      | main   | npm run build                               | dist           |
 
-This means every push triggers:
-1. A GitHub Actions CI run that builds the project and verifies there are no build errors
-2. A Cloudflare Pages native build that deploys the result to production
+Custom domains follow the pattern: PROJECT_NAME.kristianhans.com
 
-### What was changed in all CI workflows
+**Notes:**
+- `kristian-portfolio` requires `NODE_VERSION=22` as an env var (Astro requires Node 22+)
+- `fgc-kenya` is a Next.js static export so the output dir is `out`, not `dist`
+- For monorepo projects (atote, ownthejoke, logistics-hq, atote-labs), the root dir is the repo root and the build command cds into the client subdirectory
+- `scrapifie` deploys only the frontend; the backend runs separately on Coolify
 
-Removed from every workflow:
+---
+
+## GitHub Actions CI Workflow
+
+All repos have `.github/workflows/ci.yml` that runs on push to `main`. The workflow installs dependencies and runs the build. If CI is failing, check:
+
+- Node version: set `node-version` in the workflow to match what the project requires
+- Build command: make sure it matches the CF Pages build command in the table above
+- Missing env vars: CI builds cannot access CF Pages env vars; the build must succeed with only workflow-defined variables
+
+Example for a standard Vite/React project:
+
 ```yaml
-- name: Deploy to Cloudflare Pages
-  uses: cloudflare/wrangler-action@v3
-  with:
-    apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-    accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-    command: pages deploy ...
-```
-
-Renamed from `Deploy to Cloudflare Pages` / `CI / Deploy` to just `CI`.
-
-Added `pull_request` trigger to workflows that only had `push`:
-```yaml
+name: CI
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build
 ```
 
-All eight workflows follow the same pattern now:
-1. Checkout code
-2. Setup Node.js
-3. Install dependencies
-4. Build
-5. (Cloudflare deploys natively from the same push)
+For monorepo projects, adjust the cache-dependency-path and commands:
+
+```yaml
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: client/package-lock.json
+      - run: cd client && npm ci
+      - run: cd client && npm run build
+```
 
 ---
 
-## Cloudflare Secrets and Credentials
+## Environment Variables Set Per Project
 
-Do not commit API tokens or secrets to any repository. All sensitive values are stored as:
-- Cloudflare Pages environment variables (for build-time values and runtime secrets)
-- GitHub Actions repository secrets (for CI workflows)
+Set via the PATCH API endpoint with `plain_text` type (visible and editable in CF dashboard).
 
-Required GitHub Actions secrets per project (where applicable):
-- `CLOUDFLARE_API_TOKEN` — was previously used for wrangler deploys; no longer needed for CI-only workflows but may still be present
-- `CLOUDFLARE_ACCOUNT_ID` — same situation
+**kristian-portfolio**: PUBLIC_TURNSTILE_SITE_KEY, TURNSTILE_SECRET_KEY, CONTACT_TO_EMAIL, CONTACT_FROM_EMAIL, CONTACT_ACK_FROM_EMAIL, EMAIL_PROVIDER, SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, SITE_URL, NODE_VERSION
 
-For fullstack projects that need runtime environment variables (database URLs, API keys), these are set in the Cloudflare Pages dashboard under **Settings** > **Environment Variables**, not in GitHub.
+**logistics-hq**: GOOGLE_AI_API_KEY
+
+**atote**: VITE_API_URL (the full production API base URL; code reads import.meta.env.VITE_API_URL)
+
+**fgc-kenya**: NEXT_PUBLIC_APP_URL, NEXT_PUBLIC_API_URL, NEXT_PUBLIC_SUPABASE_URL
+
+**ownthejoke**: VITE_ENABLE_3D_MOCKUP, VITE_AI_MOCKUP_ENABLE_OPENROUTER, VITE_AI_MOCKUP_DEFAULT_PROVIDER, VITE_AI_MOCKUP_DEFAULT_MODEL_PROFILE, VITE_AI_MOCKUP_DEFAULT_ASPECT_RATIO, VITE_AI_MOCKUP_DEFAULT_IMAGE_SIZE
+
+**scrapifie, atote-labs, mwc-advocates**: No frontend environment variables required.
 
 ---
 
-## Verifying a Deployment
+## Triggering a Manual Deployment
 
-After any push to the production branch:
-
-1. Check the **Cloudflare Pages dashboard** for the project — the latest deployment should show the commit message and `deploy: success`
-2. Check the **GitHub Actions** tab — the CI workflow should complete with a green checkmark
-3. Verify the live site at the custom domain
-
-To check deployment status via API:
+After setting environment variables, trigger a new build so they take effect:
 
 ```bash
-curl "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT/pages/projects/PROJECT_NAME/deployments" \
-  -H "Authorization: Bearer $CF_TOKEN" | python3 -c "
-import sys, json
-d = json.load(sys.stdin)
-r = d.get('result', [])
-if r:
-    dep = r[0]
-    print('Stage:', dep['latest_stage']['name'] + ':' + dep['latest_stage']['status'])
-    print('Commit:', dep.get('deployment_trigger', {}).get('metadata', {}).get('commit_message', 'N/A'))
-    print('URL:', dep.get('url', 'N/A'))
-"
+curl -s -X POST \
+  "https://api.cloudflare.com/client/v4/accounts/YOUR_CF_ACCOUNT_ID/pages/projects/PROJECT_NAME/deployments" \
+  -H "Authorization: Bearer YOUR_CF_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{}'
 ```
 
 ---
 
-## LLM Crawling Files
+## Verifying Git Connection Status
 
-Every deployed project has the following files in its `public/` directory to enable AI agent and search engine discovery:
+Run this Python script to check all projects:
 
-| File | Purpose |
-|------|---------|
-| `robots.txt` | Crawler rules — all major AI and search crawlers are explicitly allowed |
-| `llms.txt` | Comprehensive plain-text description of every page and view in the project |
-| `sitemap.xml` | All public URLs for search engine indexing |
-| `_headers` | Cloudflare Pages custom headers for correct content-type and cache settings |
+```python
+import json, urllib.request
 
-The portfolio site additionally has `llms-full.txt`, `ai.txt`, `humans.txt`, and `opensearch.xml`.
+CF_ACCOUNT = "YOUR_CF_ACCOUNT_ID"
+CF_TOKEN = "YOUR_CF_API_TOKEN"
 
-The LLM crawling files are written to cover every view in every project — not just the landing page. See each project's `llms.txt` for the full list of routes documented.
+req = urllib.request.Request(
+    "https://api.cloudflare.com/client/v4/accounts/" + CF_ACCOUNT + "/pages/projects",
+    headers={"Authorization": "Bearer " + CF_TOKEN}
+)
+with urllib.request.urlopen(req) as resp:
+    d = json.load(resp)
 
-The portfolio's `llms.txt` and `llms-full.txt` contain a table linking to the `llms.txt` of every other deployed site, creating a discoverable ecosystem for AI agents starting from `kristianhans.com`.
-
-### Public directory locations
-
+for p in d["result"]:
+    src = p.get("source", {})
+    connected = bool(src.get("config", {}).get("repo_name"))
+    status = "Git: YES" if connected else "DIRECT-UPLOAD (needs fix)"
+    print(p["name"], "-", status)
 ```
-Logistics:      site/public/
-ScraperX:       public/
-Atote-Labs:     client/public/
-Atote:          client/public/
-ClothHats.com:  client/public/
-mwc-advocates:  client/public/
-FGC_Kenya:      public/
-Portfolio:      public/
-```
+
+Every project should show `Git: YES`.
 
 ---
 
-## Common Issues and Solutions
+## What Was Done During Initial Setup
 
-### "No Git connection" in Cloudflare dashboard
+1. All 8 projects were initially created with `wrangler pages deploy` — all showed "No Git connection".
+2. Each project was deleted via the DELETE endpoint.
+3. Each project was recreated via the POST endpoint with the `source.config` block pointing to the correct GitHub repo, branch, and GitHub App installation ID.
+4. Custom domains were re-added via the `/domains` endpoint.
+5. Environment variables were set via the PATCH endpoint for the 5 projects that need them.
+6. Manual deployments were triggered via the POST endpoint to bake environment variables into the first build.
 
-**Cause:** The project was created via `wrangler pages deploy`, which creates a direct-upload project.
-
-**Fix:** Delete the project and recreate it via the Cloudflare dashboard or API with `source.type: "github"`. See the API Process section above.
-
-### "Deployments source type cannot be changed" (error 8000069)
-
-**Cause:** Attempting to PATCH `source.type` on an existing direct-upload project.
-
-**Fix:** You cannot change the source type on an existing project. Delete and recreate it.
-
-### "Please remove custom domain first" (error 8000028)
-
-**Cause:** Attempting to delete a project that still has active custom domains.
-
-**Fix:** Remove all custom domains from the project before deleting it.
-
-### Build fails with "Cannot find module" or Node version error
-
-**Cause:** The Node.js version on Cloudflare's build environment does not match the project requirements.
-
-**Fix:** Set `NODE_VERSION` as an environment variable in the Cloudflare Pages project settings. The portfolio requires `NODE_VERSION=22` (Astro requirement).
-
-### Build output not found / wrong directory
-
-**Cause:** The `destination_dir` in `build_config` does not match where the framework outputs its build.
-
-**Fix:** Check the project's build script. Next.js static export outputs to `out`. Vite and most React setups output to `dist`. ScraperX outputs to `dist/frontend` because it is a monorepo with backend code.
-
-### Frontend in a subdirectory is not found
-
-**Cause:** The `root_dir` in `build_config` is not set, so Cloudflare tries to build from the repo root where there is no `package.json` or the wrong one.
-
-**Fix:** Set `root_dir` to the subdirectory containing the frontend (e.g., `client`). Cloudflare automatically runs `npm install` in that directory before running the build command.
-
-### CI fails because wrangler cannot find a project
-
-**Cause:** A leftover wrangler deploy step in the CI workflow after switching to native Git deployment.
-
-**Fix:** Remove the `cloudflare/wrangler-action@v3` step from the CI workflow. Cloudflare deploys natively; the CI workflow should only build and verify.
-
-### FGC Kenya .github/workflows is gitignored
-
-**Cause:** The FGC_Kenya repository has `.github/workflows` in its `.gitignore`.
-
-**Fix:** Use `git add -f .github/workflows/ci.yml` to force-add the CI file despite the gitignore rule.
+All 8 projects now auto-deploy on push to `main`.

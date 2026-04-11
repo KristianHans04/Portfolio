@@ -1,0 +1,66 @@
+{
+  "slug": "matflix",
+  "published": true,
+  "featured": false,
+  "order": 10,
+  "title": "Matflix",
+  "summary": "Hardware architecture for a bus-powered local media distribution device. A ruggedized single-board computer creates a Wi-Fi hotspot serving movies, series, and music to passengers from local NVMe storage — no internet required. Revenue model through injected local advertisements.",
+  "categories": [
+    "Hardware",
+    "Infrastructure",
+    "Product Design"
+  ],
+  "client": null,
+  "period": null,
+  "overview": "Matflix is a CDN on wheels — a ruggedized device installed in Kenyan matatus (public minibuses) that creates a local Wi-Fi hotspot serving a library of movies, series, music, and podcasts directly to passenger smartphones from onboard NVMe storage. No internet connection is required. The business model runs on mandatory local advertisements injected every fifteen minutes of playback. Content stays fresh through opportunistic peer-to-peer Wi-Fi Direct synchronization between buses when they are in physical proximity, propagating new content through the fleet without any centralized internet-connected distribution step.",
+  "problem": "Kenyan public transport passengers typically have over an hour of idle time per ride on mobile devices. Cellular data is expensive and inconsistent along routes. Existing in-bus entertainment systems are either non-existent or use low-quality screens that passengers ignore. Matflix solves this by removing the internet dependency entirely — the content library is distributed across the fleet via bus-to-bus sync — while creating a sustainable ad revenue model that aligns with the operating economics of a matatu.",
+  "role": [
+    "System Architect and Hardware Designer",
+    "Designed the full hardware stack including SBC selection, storage architecture, dual-radio Wi-Fi configuration, and power subsystem",
+    "Designed the P2P synchronization protocol using Wi-Fi Direct and BLE beacons for inter-bus content propagation",
+    "Specified the mechanical enclosure, thermal management, vibration isolation, and automotive electrical integration",
+    "Developed the bill of materials and cost model targeting sub-$150 per unit at volume",
+    "Authored the complete system architecture documentation covering compute, storage, networking, power, and enclosure"
+  ],
+  "architecture": [
+    "Rockchip RK3588-based SBC (or Raspberry Pi CM4) as compute core with hardware H.264/H.265 decode",
+    "1TB NVMe M.2 SSD for content library with EXT4 filesystem, capable of 30+ concurrent 720p streams",
+    "Dual Wi-Fi radio: MediaTek MT7921/MT7922 (Wi-Fi 6, passenger-facing) plus dedicated 5GHz adapter (bus-to-bus P2P sync)",
+    "BLE beacon via ESP32 module for low-power bus discovery and content manifest diffing before full Wi-Fi sync",
+    "12V/24V automotive DC-DC buck converter with TVS diode, automotive fuse, and LiPo UPS for graceful shutdown",
+    "IP54-rated aluminum passive-cooling enclosure with vibration-dampened mounting bracket",
+    "Ad injection middleware serving mandatory 15-minute interstitials as the primary revenue mechanism"
+  ],
+  "stack": [
+    "RK3588 / Raspberry Pi CM4",
+    "Linux (DietPi / Ubuntu Server)",
+    "Nginx",
+    "Wi-Fi 6 (802.11ax)",
+    "Wi-Fi Direct",
+    "BLE",
+    "NVMe",
+    "ESP32"
+  ],
+  "gallery": [],
+  "results": [
+    {
+      "title": "30+ Concurrent Streams",
+      "detail": "Hardware-decoded video on RK3588 with NVMe sequential read handles 30 simultaneous 720p streams well within thermal and bandwidth limits."
+    },
+    {
+      "title": "Zero-Internet Distribution",
+      "detail": "P2P Wi-Fi Direct sync between buses propagates new content through the fleet opportunistically — no central server or internet connection required at any point."
+    },
+    {
+      "title": "Sub-$150 Unit Cost",
+      "detail": "Bill of materials designed for cost targets compatible with individual matatu owner-operator economics across the Kenyan market."
+    }
+  ],
+  "lessonsLearned": [
+    "The most interesting constraint in hardware for emerging markets is not performance — it is durability and power. A device that handles voltage spikes, heat, dust, and vibration over years of operation is more valuable than one with 20% better throughput.",
+    "Peer-to-peer synchronization architectures are underexplored for content distribution. The matatu fleet becomes the CDN. Each bus acts as both a consumer and a propagation node. This model scales without any central infrastructure cost.",
+    "Ad injection at the network layer is simpler and more reliable than application-level ad insertion, and it prevents users from bypassing ads by switching media apps."
+  ],
+  "links": [],
+  "logo": "/images/projects/matflix.svg"
+}

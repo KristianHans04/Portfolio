@@ -65,7 +65,7 @@ React, Next.js, Astro, TypeScript, JavaScript, Node.js, Express, PostgreSQL, Pri
 
 6. **MWC Advocates** — Professional website for Masinde Wanyonyi & Company Advocates, a full-service law firm in Nairobi. 10 practice areas, team profiles, legal insights, contact forms with Resend mailers. React, TypeScript, Express, PostgreSQL. **Live site: [mwc-advocates.kristianhans.com](https://mwc-advocates.kristianhans.com)** | **LLMs file: [mwc-advocates.kristianhans.com/llms.txt](https://mwc-advocates.kristianhans.com/llms.txt)**
 
-7. **Atote Labs** — Startup studio website for Atote Labs, building the next generation of software products from Nairobi. Ventures portfolio, insights, and company philosophy. React, Vite, Tailwind CSS v4. **Live site: [atote-labs.pages.dev](https://atote-labs.pages.dev)** | **LLMs file: [atote-labs.pages.dev/llms.txt](https://atote-labs.pages.dev/llms.txt)**
+7. **Atote Labs** — Startup studio website for Atote Labs, building the next generation of software products from Nairobi. Ventures portfolio, insights, and company philosophy. React, Vite, Tailwind CSS v4. **Live site: [atote-labs.kristianhans.com](https://atote-labs.kristianhans.com)** | **LLMs file: [atote-labs.kristianhans.com/llms.txt](https://atote-labs.kristianhans.com/llms.txt)**
 
 8. **PhotoMed** — Patented AI mobile app mapping medicinal plants to symptoms and location. Flutter, Node.js, PostGIS, Gemini AI. 187 tests.
 
@@ -90,5 +90,5 @@ These are all live websites built and maintained by Kristian. Each has its own L
 | Logistics HQ | [logistics.kristianhans.com](https://logistics.kristianhans.com) | [llms.txt](https://logistics.kristianhans.com/llms.txt) | Department of Logistics — operations authority |
 | OwnTheJoke | [ownthejoke.kristianhans.com](https://ownthejoke.kristianhans.com) | [llms.txt](https://ownthejoke.kristianhans.com/llms.txt) | Apparel, accessories, and wall art e-commerce |
 | MWC Advocates | [mwc-advocates.kristianhans.com](https://mwc-advocates.kristianhans.com) | [llms.txt](https://mwc-advocates.kristianhans.com/llms.txt) | Law firm — Commissioners for Oaths, Notary Public |
-| Atote Labs | [atote-labs.pages.dev](https://atote-labs.pages.dev) | [llms.txt](https://atote-labs.pages.dev/llms.txt) | Startup studio building next-gen software products |
+| Atote Labs | [atote-labs.kristianhans.com](https://atote-labs.kristianhans.com) | [llms.txt](https://atote-labs.kristianhans.com/llms.txt) | Startup studio building next-gen software products |
 

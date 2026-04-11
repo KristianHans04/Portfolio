@@ -393,7 +393,7 @@ Kristian maintains multiple live web properties, each with its own LLM-readable 
 | Logistics HQ | [logistics.kristianhans.com](https://logistics.kristianhans.com) | [llms.txt](https://logistics.kristianhans.com/llms.txt) | Department of Logistics — clearing, forwarding, and recovery operations |
 | OwnTheJoke | [ownthejoke.kristianhans.com](https://ownthejoke.kristianhans.com) | [llms.txt](https://ownthejoke.kristianhans.com/llms.txt) | E-commerce for apparel, accessories, and wall art with 3D mockups |
 | MWC Advocates | [mwc-advocates.kristianhans.com](https://mwc-advocates.kristianhans.com) | [llms.txt](https://mwc-advocates.kristianhans.com/llms.txt) | Masinde Wanyonyi & Company Advocates — Nairobi law firm |
-| Atote Labs | [atote-labs.pages.dev](https://atote-labs.pages.dev) | [llms.txt](https://atote-labs.pages.dev/llms.txt) | Startup studio building next-gen software products from Nairobi |
+| Atote Labs | [atote-labs.kristianhans.com](https://atote-labs.kristianhans.com) | [llms.txt](https://atote-labs.kristianhans.com/llms.txt) | Startup studio building next-gen software products from Nairobi |
 
 ---
 

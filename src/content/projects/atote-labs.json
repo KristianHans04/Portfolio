@@ -1,0 +1,67 @@
+{
+  "slug": "atote-labs",
+  "published": true,
+  "featured": false,
+  "order": 8,
+  "title": "Atote Labs",
+  "summary": "Marketing and editorial website for Atote Labs, a Nairobi-based startup studio. Covers the studio's identity, its portfolio of ventures, insights and articles, and a contact system. Built with React 19, Vite, Tailwind CSS v4, and a Node.js/Express backend with PostgreSQL.",
+  "categories": [
+    "Full-Stack",
+    "Marketing"
+  ],
+  "client": "Atote Labs",
+  "period": null,
+  "overview": "Atote Labs is a startup studio based in Nairobi that builds software products from concept to launch. The website serves as the studio's public face — communicating its identity, introducing its portfolio of ventures, publishing insights and editorial content, and handling inbound inquiries. The platform has a React frontend backed by an Express API with PostgreSQL, with a light and dark theme toggle and a professional editorial design aesthetic.",
+  "problem": "Startup studios need to project institutional credibility while remaining approachable to founders and collaborators. A generic template site would undermine the brand positioning. The website needed to feel like it was built by people who build things — opinionated in design, technically solid, and structured to grow as the studio's venture portfolio expands.",
+  "role": [
+    "Lead Engineer",
+    "Designed and built the complete frontend in React 19 with React Router and Tailwind CSS v4",
+    "Built the Express backend with PostgreSQL and Prisma ORM for article and inquiry management",
+    "Implemented light and dark theme toggle with system preference detection",
+    "Structured the Ventures section to scale as new portfolio companies are added",
+    "Deployed the frontend to Cloudflare Pages and the backend to a managed Node.js environment"
+  ],
+  "architecture": [
+    "React 19 frontend with React Router for five-page navigation: Home, About, Ventures, Insights, Contact",
+    "Express.js API backend with PostgreSQL and Prisma ORM for content and inquiry persistence",
+    "ThemeContext for global light and dark mode with system preference detection",
+    "Tailwind CSS v4 with custom theme tokens for the studio's brand palette",
+    "VentureCard component system for scalable portfolio showcase",
+    "ArticleDetail page with structured content rendering for editorial insights"
+  ],
+  "stack": [
+    "React 19",
+    "React Router",
+    "Tailwind CSS v4",
+    "Vite",
+    "Express.js",
+    "PostgreSQL",
+    "Prisma"
+  ],
+  "gallery": [],
+  "results": [
+    {
+      "title": "Studio Identity Platform",
+      "detail": "Five-page site covering brand, ventures, editorial, and contact — giving Atote Labs a complete professional web presence."
+    },
+    {
+      "title": "Scalable Venture Showcase",
+      "detail": "Component-driven portfolio section designed to grow as the studio's pipeline of products and companies expands."
+    },
+    {
+      "title": "Theme System",
+      "detail": "Full light and dark mode with system preference detection and smooth transitions throughout."
+    }
+  ],
+  "lessonsLearned": [
+    "Studio websites need room to breathe. Dense information or cluttered layouts signal a team that hasn't prioritized communication — the design has to be as considered as the work itself.",
+    "Editorial sections (articles, insights) need a clear content model from day one. Retrofitting a content schema after launch is significantly more expensive than planning it correctly upfront."
+  ],
+  "links": [
+    {
+      "label": "Live Site",
+      "url": "https://atote-labs.kristianhans.com"
+    }
+  ],
+  "logo": "/images/projects/atote-labs.svg"
+}

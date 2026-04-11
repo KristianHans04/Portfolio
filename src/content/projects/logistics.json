@@ -1,0 +1,68 @@
+{
+  "slug": "logistics",
+  "published": true,
+  "featured": true,
+  "order": 7,
+  "title": "Department of Logistics",
+  "summary": "Multi-page web experience built as a dual-encoded institution. On the surface, an elite logistics authority with clearance protocols, operations doctrine, and a recovery division. Underneath, a layered inside joke written entirely in deadpan analogy for a private audience.",
+  "categories": [
+    "Frontend",
+    "Creative"
+  ],
+  "client": null,
+  "period": null,
+  "overview": "Department of Logistics is a premium, multi-page React site designed to read simultaneously as a credible elite logistics organization and as a private coded language for insiders. Every section, heading, and paragraph operates on two registers at once — formal institutional copy on the surface, layered analogy underneath. The site includes six routes covering departmental overview, operational divisions, clearance and authorization, compliance protocols, recovery and enforcement, and an intake system. The creative challenge was to keep both audiences convinced: an outsider should believe it is a real logistics authority, while an insider immediately reads every line as something else entirely.",
+  "problem": "The site could not look like a joke. It needed to be executed with enough discipline and production quality that the comedy only emerged from how convincingly the analogy held. Any section that broke tone would collapse the entire conceit. The design, copy, layout, and component system all had to serve a single vision without leaking the premise.",
+  "role": [
+    "Design and engineering",
+    "Conceived and executed the dual-register creative direction — institutional on the surface, layered analogy underneath",
+    "Built the full component system from scratch including custom SVG iconography, a scroll reveal system, and page-level layout components",
+    "Designed the cinematic hero with background image overlay and motion entrance sequences using Framer Motion",
+    "Wrote all copy maintaining deadpan institutional tone throughout all six routes",
+    "Configured Cloudflare Pages deployment with continuous deployment from GitHub"
+  ],
+  "architecture": [
+    "React 19 with React Router for multi-page navigation and clean URL structure",
+    "Framer Motion for scroll-triggered reveal animations and entrance sequences across all pages",
+    "Tailwind CSS v4 configured via CSS-first approach with custom design tokens for the navy, white, and gray palette",
+    "Custom SVG icon system — no third-party icon library used",
+    "ScrollReveal component as the primary animation primitive for section entrances",
+    "PageLayout with shared header and footer wrapping all six routes",
+    "Cloudflare Pages deployment with SPA redirect rules"
+  ],
+  "stack": [
+    "React 19",
+    "React Router",
+    "Framer Motion",
+    "Tailwind CSS v4",
+    "Vite",
+    "TypeScript"
+  ],
+  "gallery": [],
+  "results": [
+    {
+      "title": "Six-Route Architecture",
+      "detail": "Home, Operations, Clearance, Protocols, Recovery, and Intake — each page with a distinct layout and tone, none repeating the same visual structure."
+    },
+    {
+      "title": "Custom Component System",
+      "detail": "Built from scratch: custom SVG icons, scroll reveal animations, cinematic hero, sticky header, and page-level layout wrappers — no UI library."
+    },
+    {
+      "title": "Dual-Register Copy",
+      "detail": "Every line of copy functions on two levels simultaneously — credible logistics institution for any outsider, coded analogy for the intended audience."
+    }
+  ],
+  "lessonsLearned": [
+    "Tone is a design constraint. The moment any component, copy line, or section breaks the institutional voice, the premise falls apart. Every decision had to serve the conceit.",
+    "Tailwind v4's CSS-first configuration approach is cleaner for custom design systems. Defining tokens directly in CSS keeps the design language centralized and consistent.",
+    "Framer Motion scroll animations need careful performance tuning on mobile. Stagger delays that feel elegant on desktop can feel sluggish on lower-end phones."
+  ],
+  "links": [
+    {
+      "label": "Live Site",
+      "url": "https://logistics.kristianhans.com"
+    }
+  ],
+  "logo": "/images/projects/logistics.svg"
+}

@@ -4,20 +4,22 @@
   "featured": false,
   "order": 6,
   "title": "OwnTheJoke.com",
-  "summary": "E-commerce platform printing custom humor on apparels, wall hangings, and accessories. Features interactive 3D product mockups with Three.js, Paystack payments, flash sales, an affiliate system, and a content blog with Tiptap editor.",
+  "summary": "E-commerce platform printing custom humor on apparels, wall hangings, and accessories. Features AI-generated product mockups via Google Gemini, interactive 3D visualization with Three.js, Paystack payments, flash sales, an affiliate system, and a content blog with Tiptap editor.",
   "categories": [
     "Full-Stack",
     "E-Commerce",
-    "3D"
+    "3D",
+    "AI"
   ],
   "client": null,
   "period": null,
-  "overview": "OwnTheJoke is a humor-driven e-commerce platform where customers can browse and purchase printed items including apparel, wall hangings, and various accessories. The standout technical feature is interactive 3D product mockups powered by Three.js and React Three Fiber, allowing customers to rotate, zoom, and inspect products before purchasing. The platform includes a full e-commerce backend with inventory management, a flash sale system, an affiliate program, and a blog for content marketing.",
+  "overview": "OwnTheJoke is a humor-driven e-commerce platform where customers can browse and purchase printed items including apparel, wall hangings, and various accessories. The platform features two distinct product visualization systems: interactive 3D mockups powered by Three.js and React Three Fiber for real-time rotation and inspection, and an AI-powered mockup generator that uses Google Gemini image generation models to synthesize product visuals from text prompts. The backend runs three configurable Gemini model profiles (Nano Banana, Nano Banana 2, Nano Banana Pro) with optional OpenRouter fallback. Beyond visualization, the platform includes a full e-commerce stack with inventory management, a flash sale system, an affiliate program, and a Tiptap-powered blog.",
   "problem": "Standard e-commerce platforms cannot deliver the interactive product visualization that physical humor products demand. Customers need to see how a joke will look on a shirt or wall hanging before committing. Static images fail to capture the experience. The platform needed 3D product mockups alongside a robust e-commerce backend.",
   "role": [
     "Lead Engineer",
     "Built the complete e-commerce stack from storefront to payment processing",
     "Implemented 3D product visualization with Three.js and React Three Fiber",
+    "Built the AI mockup generation system with Google Gemini integration and configurable model profiles",
     "Built the flash sale engine with time-based pricing and inventory management",
     "Developed the affiliate tracking system for referral-based growth",
     "Created the blog system with Tiptap rich text editor for content marketing"
@@ -25,6 +27,7 @@
   "architecture": [
     "React 19 frontend with Vite and Zustand for state management",
     "Three.js with React Three Fiber for interactive 3D product mockups",
+    "AI mockup generation pipeline using Google Gemini image generation models (gemini-2.5-flash-image, gemini-3.1-flash-image-preview, gemini-3-pro-image-preview) with configurable model profiles and OpenRouter fallback",
     "Express backend with PostgreSQL and Prisma ORM",
     "Paystack payment integration for African market card and mobile money support",
     "Flash sale engine with scheduled pricing, countdown timers, and inventory locks",
@@ -37,6 +40,8 @@
     "Vite",
     "Three.js",
     "React Three Fiber",
+    "Google Gemini",
+    "OpenRouter",
     "Express",
     "PostgreSQL",
     "Prisma",
@@ -47,6 +52,10 @@
   ],
   "gallery": [],
   "results": [
+    {
+      "title": "AI Mockup Generation",
+      "detail": "Google Gemini image generation pipeline with three configurable model profiles, aspect ratio and image size controls, and optional OpenRouter fallback for cost management."
+    },
     {
       "title": "3D Product Mockups",
       "detail": "Interactive Three.js visualization allowing customers to rotate, zoom, and inspect printed products in real time."
@@ -61,6 +70,7 @@
     }
   ],
   "lessonsLearned": [
+    "AI image generation for product mockups requires a configurable model tier system. Faster, cheaper models work for iteration; higher-quality models are reserved for final assets. Hard-coding a single model creates cost and flexibility problems.",
     "3D product visualization significantly increases time-on-page and conversion intent, but requires careful optimization for mobile devices.",
     "Flash sale systems need atomic inventory operations. Race conditions during high-traffic sales windows can oversell products.",
     "Humor products have unpredictable demand curves. The inventory system needs to handle sudden viral spikes."
