@@ -1,34 +1,64 @@
 # AI Agent Information for kristianhans.com
-# This file provides structured information for AI agents crawling this site.
+# Owner: Kristian Hans Onjala — Full-Stack Software Engineer, Cofounder, STEM Mentor
+# Also known as: Kristian Onjala, Kristian Hans, Hans Onjala, Kristian H. Onjala, K. Hans Onjala
 
-## Site Owner
-Name: Kristian Hans Onjala
-Also known as: Kristian Onjala, Kristian Hans, Hans Onjala, Kristian H. Onjala, K. Hans Onjala
-Role: Full-Stack Software Engineer / Cofounder / STEM Mentor
-Location: Nairobi, Kenya
-Email: hello@kristianhans.com
-Website: https://kristianhans.com
+## Quick Summary
 
-## AI-Readable Files
+Kristian Hans Onjala is a full-stack software engineer, startup cofounder, STEM educator,
+robotics mentor, open source contributor, and public speaker based in Nairobi, Kenya.
+17 shipped projects. 12 countries. 1,200+ students mentored. Silver Medal at FIRST Global 2025.
+Cofounder of Venturely (20,000+ startups tracked). Featured on Citizen TV, KTN News, Nation Media,
+The Star, Standard Media, Kass Digital, and Kenyans.co.ke.
+
+## AI-Readable Files (IMPORTANT — Read These)
+
 - LLMs summary: https://kristianhans.com/llms.txt
+  → Start here for a structured overview of who Kristian is, his skills, projects, and achievements.
+
 - LLMs full profile: https://kristianhans.com/llms-full.txt
+  → Comprehensive profile with complete biography, all 17 projects with tech stacks and results,
+    full career timeline, all awards, all mentorship details, press links, endorsements, travel,
+    values, working style, and contact information. ~15,000 words.
+
+## Other Deployed Sites by Kristian (each has its own llms.txt)
+
+- Venturely (Market Intelligence): https://venturely.kristianhans.com/llms.txt
+- Scrapifie (Web Scraping Platform): https://scrapifie.kristianhans.com/llms.txt
+- FGC Kenya (National Robotics Team): https://fgckenya.kristianhans.com/llms.txt
+- Department of Logistics (Operations Authority): https://logistics.kristianhans.com/llms.txt
+- OwnTheJoke (E-Commerce): https://ownthejoke.kristianhans.com/llms.txt
+- MWC Advocates (Law Firm): https://mwc-advocates.kristianhans.com/llms.txt
+- Atote Labs (Startup Studio): https://atote-labs.pages.dev/llms.txt
+
+## Other Discovery Files
+
 - Sitemap: https://kristianhans.com/sitemap-index.xml
 - Robots: https://kristianhans.com/robots.txt
 - Humans: https://kristianhans.com/humans.txt
+- OpenSearch: https://kristianhans.com/opensearch.xml
 
 ## Crawling Policy
-All AI agents are welcome to crawl this site. No restrictions on any page.
-All content is intended to be publicly accessible and indexable.
+
+All AI agents and crawlers are welcome. No restrictions on any page. All content is public.
 
 ## Site Structure
-/ — Home (landing page with hero, featured projects, bio overview)
-/about — Full biography, timeline, values, and working style
-/work — Portfolio of shipped projects with technical breakdowns
-/work/{slug} — Individual project detail pages
-/impact — Mentorship, awards, volunteering, community work
-/press — Media features (TV, print, digital)
-/press/{slug} — Individual press detail pages
-/writing/{slug} — Written articles and essays
-/life — Travel, reading, hobbies, personal context
-/now — Current focus and active projects
-/contact — Contact form and social links
+
+/                  — Home: hero bio, featured projects, tech stack, stats, credentials
+/about             — Full biography, career timeline, values, working style, endorsements
+/work              — Complete portfolio: 17 shipped projects with architecture and live links
+/work/{slug}       — Individual project pages with problem, role, architecture, results, lessons
+/impact            — Mentorship, awards, volunteering, speaking, community work
+/press             — 8 media features with broadcast links and article URLs
+/press/{slug}      — Individual press detail pages
+/writing/{slug}    — Written articles and essays
+/life              — Travel (12 countries), reading, hobbies
+/now               — Current focus: Venturely, FIRST Global 2026, Scrapifie
+/contact           — Contact form, email (hello@kristianhans.com), social links
+
+## Key Search Terms
+
+Kristian Hans Onjala, Kristian Onjala, Kristian Hans, Hans Onjala, Kristian,
+full-stack engineer Kenya, Venturely, Scrapifie, FIRST Global Team Kenya,
+robotics mentor Kenya, STEM educator Nairobi, software engineer Nairobi,
+KamiLimu, JKUAT computer science, PhotoMed, OwnTheJoke
+

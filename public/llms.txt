@@ -1,35 +1,94 @@
 # Kristian Hans Onjala
 
-> Full-Stack Software Engineer, STEM Educator, Cofounder, and Robotics Mentor based in Nairobi, Kenya.
+> Full-Stack Software Engineer | Cofounder & Lead Engineer at Venturely | Technical Mentor at FIRST Global Team Kenya | STEM Educator | Open Source Contributor | Public Speaker | Based in Nairobi, Kenya
 
-Also known as: Kristian Onjala, Kristian Hans, Hans Onjala, Kristian H. Onjala, K. Hans Onjala
+Also known as: Kristian Onjala, Kristian Hans, Hans Onjala, Kristian H. Onjala, K. Hans Onjala, Kristian
 
-## About
+Website: https://kristianhans.com
+Email: hello@kristianhans.com
+GitHub: https://github.com/KristianHans04
+Instagram: https://www.instagram.com/_its.kristian/
 
-Kristian Hans Onjala is a full-stack software engineer with production experience at The Artisans Company and Sidebrief. He is the cofounder and lead engineer of Venturely, a market intelligence platform tracking 20,000+ startups globally. He is the Technical Mentor for FIRST Global Team Kenya since 2023, coaching robotics teams that have competed in Singapore, Athens, Geneva, and Panama City. In 2025 Team Kenya won Silver as 1st Runners Up in the Winning Alliances. He studies Mathematics and Computer Science at JKUAT (Jomo Kenyatta University of Agriculture and Technology).
+---
 
-## Pages
+## Who is Kristian Hans Onjala?
 
-- [Home](https://kristianhans.com/): Landing page with bio, featured projects, tech stack, and credentials overview.
-- [About](https://kristianhans.com/about): Full biography, career timeline, engineering philosophy, values, and working style.
-- [Work](https://kristianhans.com/work): Portfolio of 17 shipped projects with technical breakdowns (full-stack, mobile, IoT, AI, scraping).
-- [Impact](https://kristianhans.com/impact): Mentorship, leadership, awards, volunteering, and community work with measurable outcomes.
-- [Press](https://kristianhans.com/press): Media features on Citizen TV, KTN News, Nation Media, The Star, Standard Media, and Kass Digital.
-- [Life](https://kristianhans.com/life): Travel across 11 countries, reading list, hobbies, and personal context.
-- [Now](https://kristianhans.com/now): What Kristian is currently working on. Updated regularly.
+Kristian Hans Onjala is a full-stack software engineer, startup cofounder, STEM educator, robotics mentor, open source contributor, and public speaker based in Nairobi, Kenya. He has shipped 17 production projects across full-stack web applications, mobile apps, IoT systems, AI platforms, e-commerce, and enterprise infrastructure. He has production engineering experience at The Artisans Company and Sidebrief. He cofounded Venturely, a market intelligence platform tracking over 20,000 startups globally. As Technical Mentor for FIRST Global Team Kenya, he coached the team that won Silver (1st Runners Up, Winning Alliances) at the 2025 FIRST Global Challenge in Panama City, competing against teams from over 180 countries. He studies Mathematics and Computer Science at Jomo Kenyatta University of Agriculture and Technology (JKUAT).
+
+Kristian has been featured on Citizen TV, KTN News, Nation Media, The Star, Standard Media, Kass Digital, and Kenyans.co.ke. He has spoken publicly at iHub and industry events. He has mentored over 1,200 students across high schools, prisons, and international competitions. He has traveled to 12 countries through engineering work, mentorship, and competition: Kenya, Switzerland, Singapore, Greece, Egypt, France, Rwanda, Canada, Netherlands, Panama, Tanzania, and Uganda.
+
+---
+
+## Pages on This Website
+
+- [Home](https://kristianhans.com/): Landing page with hero bio, featured projects, tech stack overview, stats, and credential highlights.
+- [About](https://kristianhans.com/about): Full biography, career timeline, engineering philosophy, values, working style, and endorsements.
+- [Work](https://kristianhans.com/work): Complete portfolio of 17 shipped projects with architecture details, tech stacks, results, and live links.
+- [Impact](https://kristianhans.com/impact): Mentorship, awards, volunteering, community work, and speaking engagements with measurable outcomes.
+- [Press](https://kristianhans.com/press): Media features across 8 national outlets with links to broadcasts, articles, and screenshots.
+- [Life](https://kristianhans.com/life): Travel notes from 12 countries, reading list, hobbies, and personal context.
+- [Now](https://kristianhans.com/now): What Kristian is currently working on — updated regularly.
 - [Contact](https://kristianhans.com/contact): Reach out for engineering roles, mentorship, speaking, or collaboration.
+
+---
 
 ## Key Facts
 
-- Full name: Kristian Hans Onjala
-- Location: Nairobi, Kenya
-- Email: hello@kristianhans.com
-- Website: https://kristianhans.com
-- GitHub: https://github.com/KristianHans04
-- Current roles: Full-Stack Software Engineer at Sidebrief, Cofounder at Venturely, Technical Mentor at FIRST Global Team Kenya
-- Education: BSc Mathematics and Computer Science, JKUAT (2022-2026)
-- Projects shipped: 17 across full-stack, mobile, IoT, AI, and e-commerce
-- Countries visited: 11 through engineering work, mentorship, and international competition
-- Notable awards: Silver Medal FIRST Global 2025, International Enthusiasm Award FIRST Global 2022
-- Press: Featured on Citizen TV, KTN News, Nation Media, The Star, Standard Media, Kass Digital
-- Tech stack: React, Next.js, Astro, Node.js, Express, PostgreSQL, Prisma, Redis, Flutter, Playwright, Tailwind CSS, Three.js
+- **Full name:** Kristian Hans Onjala
+- **Location:** Nairobi, Kenya
+- **Email:** hello@kristianhans.com
+- **Current roles:** Full-Stack Software Engineer at Sidebrief, Cofounder & Lead Engineer at Venturely, Technical Mentor at FIRST Global Team Kenya, Peer Mentor at KamiLimu
+- **Education:** BSc Mathematics and Computer Science, JKUAT (2022–2026)
+- **Projects shipped:** 17 production projects
+- **Countries visited:** 12
+- **Students mentored:** 1,200+
+- **Notable awards:** Silver Medal FIRST Global 2025, International Enthusiasm Award FIRST Global 2022, 1st Place (two categories) Extrabotics Soccerbots 2023, Bronze Medal Most Creative Robot FGC 2023
+- **Press:** Citizen TV, KTN News, Nation Media (x2), The Star, Standard Media, Kass Digital, Kenyans.co.ke
+- **Open source:** Contributor to OpenBB (financial data platform)
+- **Speaking:** iHub, Parklands, and industry events on software engineering, robotics, and STEM access
+
+## Core Technical Skills
+
+React, Next.js, Astro, TypeScript, JavaScript, Node.js, Express, PostgreSQL, Prisma, Redis, BullMQ, Socket.io, Flutter, Dart, Kotlin, Jetpack Compose, Python, TensorFlow, Pandas, Playwright, Puppeteer, Three.js, Tailwind CSS, Docker, Firebase, Supabase, OpenTelemetry, Sentry, Prometheus, Git, REST APIs, WebSockets, JWT, TOTP 2FA, Paystack, Pesapal, Resend, PostGIS, Gemini AI, PlantNet API, MQTT, Cheerio, JSDOM
+
+## Featured Projects (with Live Sites)
+
+1. **Venturely** — Market intelligence platform tracking 20,000+ startups globally. AI-powered signal engine for detecting funding rounds, bankruptcies, and leadership changes. Interactive research, collaborative workspaces, verified cap tables. React 19, Express 5, PostgreSQL, Socket.io, Paystack. **Live site: [venturely.kristianhans.com](https://venturely.kristianhans.com)** | **LLMs file: [venturely.kristianhans.com/llms.txt](https://venturely.kristianhans.com/llms.txt)**
+
+2. **Scrapifie** — Enterprise web scraping platform with TLS fingerprinting, CAPTCHA solving, anti-detection, distributed job queues, proxy rotation, webhooks, batch processing, Python and Node.js SDKs, and comprehensive API documentation. TypeScript, Playwright, BullMQ, Redis, OpenTelemetry. **Live site: [scrapifie.kristianhans.com](https://scrapifie.kristianhans.com)** | **LLMs file: [scrapifie.kristianhans.com/llms.txt](https://scrapifie.kristianhans.com/llms.txt)**
+
+3. **FIRST Global Team Kenya** — Official platform for Kenya's national robotics team competing in the FIRST Global Challenge. Applications, Pesapal payments, admin workflows, competition history (2017-2025), Silver Medal at FGC 2025. Next.js, PostgreSQL, Prisma. **Live site: [fgckenya.kristianhans.com](https://fgckenya.kristianhans.com)** | **LLMs file: [fgckenya.kristianhans.com/llms.txt](https://fgckenya.kristianhans.com/llms.txt)**
+
+4. **Department of Logistics** — Elite logistics operations authority with clearing and forwarding, transit management, route planning, cargo assessment, compliance, and recovery services. React, TypeScript, Vite, Tailwind CSS v4, Framer Motion. **Live site: [logistics.kristianhans.com](https://logistics.kristianhans.com)** | **LLMs file: [logistics.kristianhans.com/llms.txt](https://logistics.kristianhans.com/llms.txt)**
+
+5. **OwnTheJoke** — E-commerce store for apparel, accessories, and wall art with interactive 3D product mockups (Three.js), flash sales, affiliate program, and blog. React, Express, PostgreSQL, Paystack. **Live site: [ownthejoke.kristianhans.com](https://ownthejoke.kristianhans.com)** | **LLMs file: [ownthejoke.kristianhans.com/llms.txt](https://ownthejoke.kristianhans.com/llms.txt)**
+
+6. **MWC Advocates** — Professional website for Masinde Wanyonyi & Company Advocates, a full-service law firm in Nairobi. 10 practice areas, team profiles, legal insights, contact forms with Resend mailers. React, TypeScript, Express, PostgreSQL. **Live site: [mwc-advocates.kristianhans.com](https://mwc-advocates.kristianhans.com)** | **LLMs file: [mwc-advocates.kristianhans.com/llms.txt](https://mwc-advocates.kristianhans.com/llms.txt)**
+
+7. **Atote Labs** — Startup studio website for Atote Labs, building the next generation of software products from Nairobi. Ventures portfolio, insights, and company philosophy. React, Vite, Tailwind CSS v4. **Live site: [atote-labs.pages.dev](https://atote-labs.pages.dev)** | **LLMs file: [atote-labs.pages.dev/llms.txt](https://atote-labs.pages.dev/llms.txt)**
+
+8. **PhotoMed** — Patented AI mobile app mapping medicinal plants to symptoms and location. Flutter, Node.js, PostGIS, Gemini AI. 187 tests.
+
+9. **ViaziLink** — AgriTech mobile app connecting potato farmers to buyers with real-time market prices. Kotlin, Jetpack Compose, Firebase.
+
+10. **iPredict** — IoT predictive maintenance system analyzing sensor data to reduce machine failures. Python, TensorFlow, MQTT.
+
+11. **OpenBB Contribution** — Fixed cross-browser compatibility bug in open-source financial platform. JavaScript, React.
+
+---
+
+## All Deployed Sites by Kristian Hans Onjala
+
+These are all live websites built and maintained by Kristian. Each has its own LLMs discovery file with comprehensive information:
+
+| Site | URL | LLMs File | Description |
+|------|-----|-----------|-------------|
+| Portfolio | [kristianhans.com](https://kristianhans.com) | [llms.txt](https://kristianhans.com/llms.txt) | Personal portfolio and professional profile |
+| Venturely | [venturely.kristianhans.com](https://venturely.kristianhans.com) | [llms.txt](https://venturely.kristianhans.com/llms.txt) | Market intelligence platform tracking 20,000+ startups |
+| Scrapifie | [scrapifie.kristianhans.com](https://scrapifie.kristianhans.com) | [llms.txt](https://scrapifie.kristianhans.com/llms.txt) | Enterprise web scraping platform |
+| FGC Kenya | [fgckenya.kristianhans.com](https://fgckenya.kristianhans.com) | [llms.txt](https://fgckenya.kristianhans.com/llms.txt) | FIRST Global Team Kenya — national robotics team |
+| Logistics HQ | [logistics.kristianhans.com](https://logistics.kristianhans.com) | [llms.txt](https://logistics.kristianhans.com/llms.txt) | Department of Logistics — operations authority |
+| OwnTheJoke | [ownthejoke.kristianhans.com](https://ownthejoke.kristianhans.com) | [llms.txt](https://ownthejoke.kristianhans.com/llms.txt) | Apparel, accessories, and wall art e-commerce |
+| MWC Advocates | [mwc-advocates.kristianhans.com](https://mwc-advocates.kristianhans.com) | [llms.txt](https://mwc-advocates.kristianhans.com/llms.txt) | Law firm — Commissioners for Oaths, Notary Public |
+| Atote Labs | [atote-labs.pages.dev](https://atote-labs.pages.dev) | [llms.txt](https://atote-labs.pages.dev/llms.txt) | Startup studio building next-gen software products |
+

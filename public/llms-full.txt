@@ -1,8 +1,8 @@
-# Kristian Hans Onjala — Full Profile
+# Kristian Hans Onjala — Complete Profile
 
-> Full-Stack Software Engineer, STEM Educator, Cofounder, and Robotics Mentor based in Nairobi, Kenya.
+> Full-Stack Software Engineer | Cofounder & Lead Engineer at Venturely | Technical Mentor at FIRST Global Team Kenya | STEM Educator | Open Source Contributor | Public Speaker | Based in Nairobi, Kenya
 
-Also known as: Kristian Onjala, Kristian Hans, Hans Onjala, Kristian H. Onjala, K. Hans Onjala
+Also known as: Kristian Onjala, Kristian Hans, Hans Onjala, Kristian H. Onjala, K. Hans Onjala, Kristian
 
 Website: https://kristianhans.com
 Email: hello@kristianhans.com
@@ -13,161 +13,395 @@ Instagram: https://www.instagram.com/_its.kristian/
 
 ## Identity
 
-- Full name: Kristian Hans Onjala
-- Given name: Kristian
-- Middle name: Hans
-- Family name: Onjala
-- Alternate names: Kristian Onjala, Kristian Hans, Hans Onjala, Kristian H. Onjala
-- Nationality: Kenyan
-- Location: Nairobi, Kenya
-- Education: BSc Mathematics and Computer Science, Jomo Kenyatta University of Agriculture and Technology (JKUAT), 2022-2026
+- **Full name:** Kristian Hans Onjala
+- **Given name:** Kristian
+- **Middle name:** Hans
+- **Family name:** Onjala
+- **Alternate names:** Kristian Onjala, Kristian Hans, Hans Onjala, Kristian H. Onjala, K. Hans Onjala
+- **Nationality:** Kenyan
+- **Location:** Nairobi, Kenya
+- **Email:** hello@kristianhans.com
+- **Website:** https://kristianhans.com
+- **GitHub:** https://github.com/KristianHans04
+- **Instagram:** https://www.instagram.com/_its.kristian/
+- **Education:** BSc Mathematics and Computer Science, Jomo Kenyatta University of Agriculture and Technology (JKUAT), 2022–2026
 
 ---
 
-## Biography
+## Who is Kristian Hans Onjala?
 
-Software is easy to talk about and hard to ship. Education is easy to fund and hard to make stick. Kristian does both, and he does them at the same time.
+Kristian Hans Onjala is a full-stack software engineer, startup cofounder, STEM educator, robotics mentor, open source contributor, and public speaker based in Nairobi, Kenya. He is one of those rare engineers who operates with equal depth across technical execution and human leadership. He does not just write code — he builds production systems used by real people, cofounds companies that track global markets, mentors robotics teams that win international medals, teaches engineering inside prisons, and speaks on national television.
 
-Kristian Hans Onjala has worked as a Full-Stack Software Engineer at The Artisans Company and Sidebrief, building production systems for real users under real constraints. He cofounded Venturely, a market intelligence platform that tracks over 20,000 startups globally and uses AI signals to flag funding rounds, bankruptcies, and leadership changes before they hit the news cycle.
+He has shipped 17 production projects end-to-end across full-stack web applications, mobile apps (Flutter, Kotlin), IoT systems, AI platforms, e-commerce with 3D visualization, enterprise scraping infrastructure, and AgriTech marketplaces. Every project has real users, real constraints, and full technical breakdowns available on his portfolio.
 
-Outside of product work, he has shipped 17 projects end-to-end: from Scrapifie, an enterprise web scraping platform with TLS fingerprinting and anti-detection, to the official FIRST Global Team Kenya website, to PhotoMed, a patented AI system that maps medicinal plants to your location and symptoms.
+He has production engineering experience at The Artisans Company and Sidebrief (a business registration and compliance platform serving companies across Africa). He cofounded Venturely, a market intelligence platform that tracks over 20,000 startups globally and uses AI-powered signals to detect funding rounds, bankruptcies, leadership changes, and layoffs before they hit the news cycle.
 
-Parallel to engineering, Kristian has spent years on competition floors and in classrooms. As Technical Mentor for FIRST Global Team Kenya, he oversaw everything the teams built from scratch to what eventually traveled overseas for competition. The teams have competed in Geneva, Singapore, Athens, Panama City, and next in Incheon. In 2022 they won the International Enthusiasm Award. In 2025 they took Silver as 1st Runners Up in the Winning Alliances. He has also served as a Peer Mentor in KamiLimu, preparing mentees for pitches, presentations, and professional growth.
+As Technical Mentor for FIRST Global Team Kenya since 2023, he oversaw everything the team built from scratch — mechanical design, electrical systems, software, and competition strategy. His teams have competed in Singapore (2023), Athens (2024), and Panama City (2025). At the 2025 FIRST Global Challenge in Panama City, Team Kenya won the Silver Medal as 1st Runners Up in the Winning Alliances, competing against teams from over 180 countries. Previously, as a student at FGC 2022 in Geneva, he won the International Enthusiasm Award. He is currently preparing Team Kenya for FGC 2026 in Incheon, South Korea (October 7–10, 2026).
 
-He has spoken publicly at iHub, Parklands, and industry events. He has appeared on Citizen TV, KTN News, Nation Media, The Star, Standard Media, and Kass Digital. He contributes to open source, including OpenBB.
+He has been featured on Citizen TV (Kenya's most-watched network), KTN News, Nation Media Group (Kenya's largest media house, twice), The Star, Standard Media, Kass Digital, and Kenyans.co.ke. He speaks publicly at iHub (one of Africa's leading innovation hubs), Parklands, and industry events.
+
+He has mentored over 1,200 students across organizations including FIRST Global Team Kenya, Young Scientists Kenya (1,000+ students from 25+ high schools), Alliance Robotics and Computing Fair (200+ students from 15+ high schools), Thika High School (50 students for Kenya Science and Engineering Fair), CREPTIE School, and Kamiti Medium Prison (through School for a Village). He served as Peer Mentor for KamiLimu Cohort 9 after being selected as a mentee in Cohort 8 (one of 38 chosen from thousands across 55 Kenyan universities).
+
+He has traveled to 12 countries through engineering work, mentorship, and international competition: Kenya, Switzerland, Singapore, Greece, Egypt, France, Rwanda, Canada, Netherlands, Panama, Tanzania, and Uganda.
+
+He studies Mathematics and Computer Science at JKUAT — the mathematics foundations that make the engineering rigorous.
+
+---
+
+## Biography (In His Own Words)
+
+Software is easy to talk about and hard to ship. Education is easy to fund and hard to make stick. I do both, and I do them at the same time.
+
+I have worked as a Full-Stack Software Engineer at The Artisans Company and Sidebrief, building production systems for real users under real constraints. I cofounded Venturely, a market intelligence platform that tracks over 20,000 startups globally and uses AI signals to flag funding rounds, bankruptcies, and leadership changes before they hit the news cycle.
+
+Outside of product work, I have shipped 17 projects end-to-end: from Scrapifie, an enterprise web scraping platform with TLS fingerprinting and anti-detection, to the official FIRST Global Team Kenya website, to PhotoMed, a patented AI system that maps medicinal plants to your location and symptoms.
+
+Parallel to engineering, I have spent years on competition floors and in classrooms. As Technical Mentor for FIRST Global Team Kenya, I oversaw everything our teams built from scratch to what eventually traveled overseas for competition. Our teams have competed in Geneva, Singapore, Athens, Panama City, and next in Incheon. In 2022 we won the International Enthusiasm Award. In 2025 we took Silver as 1st Runners Up in the Winning Alliances. I have also served as a Peer Mentor in KamiLimu, preparing mentees for pitches, presentations, and professional growth.
+
+I have spoken publicly at iHub, Parklands, and industry events. I have appeared on Citizen TV, KTN News, Nation Media, The Star, Standard Media, and Kass Digital. I contribute to open source, including OpenBB.
+
+The throughline is simple: build things that matter, and make sure other people can too. Technical depth without human context is just engineering theater. I am not interested in theater.
 
 ---
 
 ## Current Roles
 
-1. Full-Stack Software Engineer at Sidebrief (2025 - Present)
-   Engineering at a business registration and compliance platform serving companies across Africa.
+### Full-Stack Software Engineer at Sidebrief (2025 – Present)
+Engineering at a business registration and compliance platform serving companies across Africa. Building production systems with real deadlines and real users.
 
-2. Cofounder and Lead Engineer at Venturely (2024 - Present)
-   Cofounded a market intelligence platform tracking 20,000+ startups globally with AI-powered signal detection for investors and founders.
+### Cofounder & Lead Engineer at Venturely (2024 – Present)
+Cofounded and leads engineering for a market intelligence platform tracking 20,000+ startups globally. Designed and implemented the full system architecture from database schema to production deployment. Built the AI-powered scraping pipeline, workspace features (briefs, dossiers, watchlists, signals, team collaboration), subscription billing with Paystack, and real-time collaboration with Socket.io. Stack: React 19, Express 5, PostgreSQL, Puppeteer Stealth, Socket.io, Paystack, Tailwind CSS.
 
-3. Technical Mentor at FIRST Global Team Kenya (2023 - Present)
-   Oversaw everything built for international robotics competition. Teams competed in Singapore, Athens, Panama City. Silver Medal 2025.
+### Technical Mentor, FIRST Global Team Kenya (2023 – Present)
+Responsible for all engineering, design, build, and strategy decisions for international competition robots. Oversaw everything from scratch to what traveled overseas. Teams competed in Singapore (2023), Athens (2024), Panama City (2025). Silver Medal at FGC 2025. Currently preparing for FGC 2026 in Incheon, South Korea.
 
----
-
-## Career Timeline
-
-- 2025: Full-Stack Software Engineer at The Artisans Company. Built production full-stack systems. Shipped features used by real clients with real deadlines.
-- 2025 - Present: Full-Stack Software Engineer at Sidebrief. Engineering at a business registration and compliance platform serving companies across Africa.
-- 2024 - Present: Cofounder and Lead Engineer at Venturely. Market intelligence platform tracking 20,000+ startups globally.
-- 2023 - Present: Technical Mentor at FIRST Global Team Kenya. Teams competed in Singapore, Athens, Panama City. Silver Medal 2025.
-- March 2025 - November 2025: Peer Mentor at KamiLimu. Prepared mentees for pitches, presentations, speech rehearsals, and essay reviews.
-- January 2023 - October 2024: STEM Educator at CREPTIE School. Built a robotics and coding program from scratch.
-- 2022 - 2026: BSc Mathematics and Computer Science at JKUAT.
-- March 2024 - November 2024: Mentee, Cohort 8 at KamiLimu. Selected as one of 38 from thousands across 55 Kenyan universities.
+### Peer Mentor, KamiLimu Cohort 9 (March 2025 – November 2025)
+Prepares mentees for pitches, presentations, speech rehearsals, and essay reviews. Transitioned from Cohort 8 mentee to Cohort 9 peer mentor.
 
 ---
 
-## Technical Capabilities
+## Complete Career Timeline
 
+| Period | Role | Organization | Summary |
+|--------|------|-------------|---------|
+| 2025 | Full-Stack Software Engineer | The Artisans Company | Built production full-stack systems. Shipped features for real clients with real deadlines. |
+| 2025 – Present | Full-Stack Software Engineer | Sidebrief | Engineering at a business registration and compliance platform serving companies across Africa. |
+| 2024 – Present | Cofounder & Lead Engineer | Venturely | Market intelligence platform tracking 20,000+ startups globally with AI-powered signal detection. |
+| 2023 – Present | Technical Mentor | FIRST Global Team Kenya | Robotics teams competing internationally. Silver Medal 2025. Competed in 4 countries as mentor. |
+| Mar 2025 – Nov 2025 | Peer Mentor | KamiLimu Cohort 9 | Preparing mentees for pitches, presentations, and professional growth. |
+| Jan 2023 – Oct 2024 | STEM Educator | CREPTIE School | Built a robotics and coding program from scratch. Taught students who had never seen a microcontroller. |
+| 2022 – 2026 | BSc Mathematics & Computer Science | JKUAT | Mathematics, algorithms, computational theory. |
+| Mar 2024 – Nov 2024 | Mentee, Cohort 8 | KamiLimu | Selected as one of 38 from thousands across 55 Kenyan universities. |
+
+---
+
+## Technical Skills & Capabilities
+
+### Languages
+TypeScript, JavaScript, Python, Dart, Kotlin, SQL, HTML, CSS, C++
+
+### Frontend
+React 19, Next.js 16, Astro, Tailwind CSS v4, Three.js, React Three Fiber, shadcn/ui, Radix UI, Zustand, Tiptap, Recharts, Vite
+
+### Backend
+Node.js, Express 5, BullMQ, Socket.io, JWT, TOTP 2FA, REST APIs, WebSockets, Cheerio, JSDOM, Node-cron
+
+### Mobile
+Flutter 3.27, Dart, Riverpod, Kotlin, Jetpack Compose, Hilt, DataStore, Coil
+
+### Databases & Infrastructure
+PostgreSQL, PostGIS, Prisma, Redis, Firebase, Supabase, Cloud Firestore, Docker
+
+### AI & Data
+TensorFlow/Keras, Pandas, NumPy, Statsmodels, Gemini AI, PlantNet API, Puppeteer Stealth, Playwright
+
+### DevOps & Observability
+OpenTelemetry, Sentry, Prometheus, Cloudflare Pages, Render, Git, GitHub Actions
+
+### Payments & Integrations
+Paystack, Pesapal, Resend, Google Sheets API, Web Push Notifications, MQTT
+
+### Domains
+Full-Stack Web, Mobile Development, E-Commerce, SaaS, IoT, Predictive Analytics, AI/ML, HealthTech, AgriTech, EdTech, Scraping Infrastructure, Data Intelligence, Non-Profit, Professional Services, Open Source
+
+### Engineering Capabilities
 - End-to-end product delivery: database schema to deployed application to paying users.
-- React, Next.js, and Astro frontends with Tailwind, Radix UI, and Three.js.
-- Node.js and Express backends with PostgreSQL, Prisma, Redis, and BullMQ.
-- Flutter mobile development with Riverpod, PostGIS, and AI integration.
-- Scraping infrastructure: Playwright, TLS fingerprinting, anti-detection, distributed queues.
+- System architecture design for scalable, production-grade applications.
+- AI-powered data pipelines and signal detection engines.
+- Enterprise scraping infrastructure with TLS fingerprinting, anti-detection, and distributed queues.
+- 3D product visualization and interactive web experiences.
+- Mobile development across both Flutter and native Android (Kotlin).
+- Payment integration across African markets (Paystack, Pesapal, mobile money).
+- Real-time collaboration systems with WebSockets.
+- Observability and monitoring stacks (OpenTelemetry, Sentry, Prometheus).
 - Technical mentorship that produces award-winning international competition teams.
 
 ---
 
-## Notable Projects
+## All Shipped Projects (17 Total)
 
-1. Venturely — Market intelligence platform tracking 20,000+ startups globally with AI signals.
-2. Scrapifie — Enterprise web scraping platform with TLS fingerprinting and anti-detection.
-3. FIRST Global Team Kenya Website — Official website for the Kenyan robotics team.
-4. PhotoMed — AI system mapping medicinal plants to location and symptoms.
-5. ViaziLink — Agricultural technology platform.
-6. iPredict — Prediction and analytics platform.
-7. MWC Advocates — Professional services platform.
-8. OwnTheJoke — Creative content platform.
-9. OpenBB Contribution — Open source contribution to financial data platform.
+### 1. Venturely — Market Intelligence Platform
+**Summary:** Tracks 20,000+ startups globally. AI-powered signal engine detects funding rounds, bankruptcies, leadership changes, and layoffs before mainstream news. Built for VCs, founders, and anyone who needs to move before consensus forms.
+**Stack:** React 19, Express 5, PostgreSQL, Puppeteer Stealth, Socket.io, Paystack, Cheerio, JSDOM, Node-cron, JWT, Tailwind CSS
+**Categories:** Full-Stack, AI, SaaS, Data Intelligence
+**Role:** Cofounder and Lead Engineer. Designed full architecture. Built AI scraping pipeline, workspace features (briefs, dossiers, watchlists, signals, team collaboration), subscription billing, and real-time collaboration.
+**Results:** 20,000+ startups indexed. AI signal engine operational. Full workspace ecosystem with team collaboration.
+**Link:** https://venturely.kristianhans.com
+
+### 2. Scrapifie — Enterprise Web Scraping Infrastructure
+**Summary:** Enterprise scraping platform with TLS fingerprinting, CAPTCHA solving, residential proxy rotation, headless stealth browsers, honeypot avoidance, and bot bypass. API key access for scraping the web without getting blocked.
+**Stack:** TypeScript, Playwright, Puppeteer Extra, BullMQ, Redis, OpenTelemetry, Sentry, Prometheus, TOTP 2FA, Express, PostgreSQL
+**Categories:** Full-Stack, SaaS, Infrastructure, Security
+**Role:** Lead Engineer and Architect. Built anti-detection engine, distributed job queue (BullMQ + Redis), full observability stack (OpenTelemetry, Sentry, Prometheus), credit/subscription billing, and TOTP 2FA.
+**Results:** Anti-detection engine bypassing modern bot systems. Distributed processing with horizontal scalability. Full end-to-end observability.
+**Link:** https://scrapifie.kristianhans.com
+
+### 3. FIRST Global Team Kenya — Official Organizational Platform
+**Summary:** Complete organizational platform with team history, achievements, student application system with admin review, OTP authentication, push notifications, and Pesaval payment integration.
+**Stack:** Next.js 16, PostgreSQL, Prisma, Supabase, Tailwind CSS v4, shadcn/ui, Pesapal, Web Push, Tiptap, Recharts, TypeScript
+**Categories:** Full-Stack, Non-Profit, Education
+**Role:** Lead Engineer and Architect. Built complete application from scratch. Student application system, admin review workflow, OTP authentication, Pesapal payment integration, and CMS with Tiptap.
+**Results:** Centralized platform for Team Kenya. End-to-end application pipeline. Mobile money and card payments via Pesapal.
+**Link:** https://fgckenya.kristianhans.com
+
+### 4. PhotoMed — AI Medicinal Plant Identification (Patented)
+**Summary:** Patented AI-powered mobile app that identifies medicinal plants near your location and matches them to your symptoms. Geospatial plant mapping with PostGIS, AI diagnosis via Gemini and PlantNet.
+**Stack:** Flutter 3.27, Dart, Node.js, Express, TypeScript, PostgreSQL, PostGIS, Gemini AI, PlantNet API, Riverpod
+**Categories:** Mobile, AI, HealthTech, Geospatial
+**Role:** Lead Developer and Architect. Flutter app with Riverpod, Node.js + PostGIS backend, Gemini AI for symptom analysis, PlantNet for visual plant identification. Wrote 187 tests.
+**Results:** Patented system with formal IP protection. Symptom-to-plant-to-remedy matching. 187 tests across the full stack.
+
+### 5. OwnTheJoke — E-Commerce with 3D Product Visualization
+**Summary:** Humor-driven e-commerce platform with interactive 3D product mockups (Three.js), flash sales engine, affiliate tracking system, and content blog.
+**Stack:** React 19, Vite, Three.js, React Three Fiber, Express, PostgreSQL, Prisma, Paystack, Zustand, Tiptap, Tailwind CSS
+**Categories:** Full-Stack, E-Commerce, 3D
+**Role:** Lead Engineer. Built complete e-commerce stack, 3D visualization, flash sale engine, affiliate system, and blog with Tiptap.
+**Results:** Interactive 3D product mockups. Time-based promotional engine. Referral tracking with commission management.
+**Link:** https://ownthejoke.kristianhans.com
+
+### 6. MWC Advocates — Law Firm Professional Platform
+**Summary:** Professional website with custom inbuilt mailers using Resend, Google Sheets integration for lead management, and multiple email service adapters.
+**Stack:** React 19, Vite, Express, Prisma, PostgreSQL, Resend, Google Sheets API, Tailwind CSS, Render
+**Categories:** Full-Stack, Client Work, Professional Services
+**Role:** Full-Stack Developer. Built complete PERN stack application, custom email infrastructure with Resend, Google Sheets CRM integration.
+**Results:** Professional digital presence. Reliable email system with redundancy. Automated lead pipeline.
+**Link:** https://mwcadvocates.kristianhans.com
+
+### 7. ViaziLink — AgriTech Marketplace
+**Summary:** Mobile platform connecting potato farmers directly with buyers and exposing real-time market prices. Projected to improve farmer income by 20–30%.
+**Stack:** Kotlin, Jetpack Compose, Firebase Auth, Cloud Firestore, Hilt, DataStore, Coil
+**Categories:** AgriTech, Mobile, Marketplace
+**Role:** Built Android product flows for farmer and buyer journeys.
+**Link:** https://github.com/kamilimumobile/viazilink/tree/main
+
+### 8. iPredict — IoT Predictive Maintenance
+**Summary:** IoT-based predictive maintenance system analyzing machine sensor data (vibration, temperature, humidity) to reduce unexpected failures.
+**Stack:** Python, Pandas, NumPy, TensorFlow/Keras, Statsmodels, MQTT
+**Categories:** IoT, Predictive Analytics, Industrial
+**Link:** https://github.com/KristianHans04/IoT_Projects/tree/main/Smart_Predictive_Maintenance_System_for_Industrial_Machines
+
+### 9. OpenBB — Open Source Contribution
+**Summary:** Fixed cross-browser compatibility bug in OpenBB, an open-source financial data platform. Resolved crashes affecting Edge and non-Chrome browsers.
+**Stack:** JavaScript, React, Browser APIs
+**Categories:** Open Source, Frontend, Bug Fix
+**Link:** https://openbb.co
 
 ---
 
-## Awards and Recognition
+## Awards & Recognition
 
-- Silver Medal at FIRST Global 2025: 1st Runners Up in Winning Alliances, Panama City.
-- International Enthusiasm Award at FIRST Global 2022.
-- Featured on Citizen TV, KTN News, Nation Media, The Star, Standard Media, and Kass Digital.
-- Selected into KamiLimu Cohort 8 (38 out of thousands across 55 Kenyan universities).
-
----
-
-## Community Impact
-
-- Mentored 50 students at Thika High School for Kenya Science and Engineering Fair.
-- Taught engineering inside Kamiti Medium Prison through School for a Village.
-- Supported technical operations at FIRST Global programs across five countries and counting.
-- Served as Technovation Judge evaluating student tech projects.
-- STEM volunteering and outreach across multiple communities in Kenya.
+| Year | Award | Organization | Details |
+|------|-------|-------------|---------|
+| 2025 | **Silver Medal — 1st Runners Up, Winning Alliances** | FIRST Global Challenge 2025, Panama City | Competing against teams from 180+ countries. Served as Technical Mentor. |
+| 2023 | **1st Place in Two Categories** | Extrabotics Soccerbots Competition | Won first place in two separate categories. Autonomous soccer-playing robots. |
+| 2023 | **Bronze Medal — Most Creative Robot** | FIRST Global Roboco Challenge 2023 | Recognition for robotics innovation and creative technical execution. |
+| 2022 | **Silver Medal — International Enthusiasm Award** | FIRST Global Challenge 2022, Geneva | Team spirit and cross-cultural collaboration. Participated as student. |
+| 2023 | Climate Science Olympiad Quarter-Finalist | Climate Science Olympiad | Sustainable solutions for global climate challenges. |
+| 2022 | IAAC Competitor (20/25) | Int'l Astronomy & Astrophysics Competition | Analytical reasoning in astronomy and astrophysics. |
+| 2024 | UNESCO World Engineering Day Hackathon | UNESCO | Global team engineering challenges. |
+| 2023 | Safaricom Design Challenge | #MyLittleBigThing | Innovation and practical tech design. |
 
 ---
 
-## Credential Highlights
+## Mentorship & Community Impact
 
-- 17 shipped projects across full-stack, mobile, IoT, AI, and e-commerce.
-- Production engineering experience at The Artisans Company and Sidebrief.
-- Silver Medal at FIRST Global 2025: 1st Runners Up in Winning Alliances, Panama City.
-- Featured on Citizen TV, KTN News, Nation Media, The Star, Standard Media, and Kass Digital.
-- Visited 11 countries through engineering work, mentorship, and international competition.
+### Technical Mentor, FIRST Global Team Kenya (2023 – Present)
+- Responsible for all engineering, design, build, and strategy decisions for international competition robots.
+- FGC 2023 (Singapore): First year as mentor. Guided full robot design-build-compete cycle.
+- FGC 2024 (Athens, Greece): Expanded to include strategy, alliance formation, international collaboration.
+- FGC 2025 (Panama City, Panama): **Silver Medal — 1st Runners Up in Winning Alliances.** Peak competitive result.
+- FGC 2026 (Incheon, South Korea): Currently preparing the next cohort.
+- Previously participated as student at FGC 2022 (Geneva), winning the International Enthusiasm Award.
+
+### STEM Mentor, Young Scientists Kenya (2024)
+- Mentored over 1,000 students from 25+ high schools.
+- Technical coaching and innovation guidance for global STEM opportunities.
+
+### Mentor, Alliance Robotics and Computing Fair (2023)
+- Mentored 200+ students from 15+ high schools.
+- Focused on practical guidance and motivation toward global technology opportunities.
+
+### STEM Educator, CREPTIE School (Jan 2023 – Oct 2024)
+- Built a robotics and coding program from scratch.
+- Taught students who had never seen a microcontroller to build and program one.
+
+### KamiLimu (2024–2025)
+- **Cohort 8 Mentee (2024):** Selected as one of 38 from thousands across 55 Kenyan universities. Nine-month program on personal development, professional skills, innovation, ICT, scholarships, and community engagement.
+- **Cohort 9 Peer Mentor (2025):** Preparing mentees for pitches, presentations, speech rehearsals, and essay reviews.
+
+### Technical Trainer, Kamiti Medium Prison (2024)
+- Delivered Arduino, sensors, and C++ training through School for a Village partnership.
+- Taught hands-on projects: traffic lights, Blink LED, alarm systems.
+
+### Thika High School (50 students for Kenya Science and Engineering Fair)
+### Technovation Judge (2023 – Present): Assessing solutions by young women in tech.
+### FIRST Global Representative, Athens (2024): Led VIP tours, supported event operations.
+
+### Total students directly mentored: **1,200+**
 
 ---
 
-## Current Focus (as of March 2025)
+## Press & Media Coverage
 
-- Launching Venturely: market intelligence for 20,000+ startups globally.
-- Preparing Team Kenya for FIRST Global Challenge 2026 in Incheon, South Korea.
-- Scaling Scrapifie into production-grade scraping infrastructure.
+Kristian Hans Onjala has been featured across Kenya's major media outlets:
+
+1. **Citizen TV** — "Kenyan Youth Making Waves in International Robotics." Kenya's most-watched television network. National broadcast.
+2. **KTN News** — Television broadcast covering Team Kenya's Silver Medal win and robotics achievements. [Watch](https://youtu.be/PKhWWcU90Ec)
+3. **Nation Media Group** (Article 1) — "Kenyan Innovation on the International Stage." Kenya's largest media house. [View](https://drive.google.com/file/d/1_mJYgR_Kmc94hfFqcPnllIdwffH-W6qY/view?usp=sharing)
+4. **Nation Media Group** (Article 2) — "Silver Medal Spotlight and STEM Impact." Follow-up on the Silver Medal and youth STEM development. [View](https://drive.google.com/file/d/1_jNFsaeQluj1VjguXG3FHXX_7GLFpNj9/view?usp=sharing)
+5. **Standard Media** — "Team Kenya Scoops Silver at the Global Robotics Arena." [Read](https://www.standardmedia.co.ke/health/tech-innovation/article/2001533317/team-kenya-scoops-silver-at-the-global-robotics-arena)
+6. **The Star** — "Kenyan Robotics Team Takes Silver on the World Stage." National daily newspaper. [View](https://drive.google.com/file/d/1a2KlaHjEqL9CVmRJAvqBmjWL7wkMx9uV/view?usp=sharing)
+7. **Kass Digital** — "Kenya Makes History at the 2025 Robotics Olympiad in Panama City." [Read](https://kassdigital.co.ke/business/kenya-makes-history-at-the-2025-first-global-robotics-olympiad-in-panama-city/)
+8. **Kenyans.co.ke** — "Kenyan Students Emerge Second at International Robotics Challenge." [Read](https://www.kenyans.co.ke/news/117666-kenyan-high-school-students-emerge-second-first-global-robotics-challenge-2025)
+
+---
+
+## Public Speaking
+
+- **iHub** — One of Africa's leading innovation hubs. Talks on technology and engineering.
+- **Parklands** — STEM education and mentorship experiences.
+- Topics: Software engineering, international robotics competition, building STEM access for underserved communities.
+
+---
+
+## Travel (12 Countries)
+
+Kristian has traveled to 12 countries through engineering, competition, and mentorship:
+
+1. **Kenya** (Nairobi) — Home base. Hub of M-Pesa, Africa's largest mobile money ecosystem.
+2. **Switzerland** (Geneva, 2022) — FIRST Global Challenge 2022. Won International Enthusiasm Award.
+3. **Singapore** (2023) — FIRST Global Challenge 2023. First year as Technical Mentor.
+4. **Greece** (Athens, 2024) — FIRST Global Challenge 2024. FIRST Global Representative.
+5. **Egypt** (Cairo, 2023) — Explored the Great Pyramids.
+6. **France** (Paris, 2024) — Most visited country in the world.
+7. **Rwanda** (Kigali, 2024) — Cleanest city in Africa. Banned single-use plastics in 2008.
+8. **Canada** (2024) — More lakes than the rest of the world combined.
+9. **Netherlands** (2024) — A third of the country below sea level. Infrastructure masterclass.
+10. **Panama** (Panama City, 2025) — FIRST Global Challenge 2025. Silver Medal.
+11. **Tanzania** (Dar es Salaam, 2024) — Kilimanjaro, Lake Tanganyika.
+12. **Uganda** (Kampala, 2024) — Source of the Nile. Mountain gorillas.
 
 ---
 
 ## Endorsements
 
-- Catherine Kemunto (Business Analyst, KCB Bank and Professional Peer Mentor, KamiLimu): "Through KamiLimu, I have witnessed Kristian's adaptability and commitment to continuous growth. He approaches challenges with creativity and strategic thinking."
-- Annette Mwende (CEO and Founder, CREPTIE School): "Kristian brought strong technical energy and student-centered mentorship to CREPTIE, helping learners build confidence and curiosity in STEM."
-- Kelvin Gitau (TME Education Ambassador, Kenya and Mentor, FIRST Global Team Kenya): "Kristian demonstrates strong teamwork, curiosity, and cross-cultural collaboration, with a clear ability to bring diverse groups together around purpose."
+> "Through KamiLimu, I have witnessed Kristian's adaptability and commitment to continuous growth. He approaches challenges with creativity and strategic thinking."
+> — **Catherine Kemunto**, Business Analyst at KCB Bank & Professional Peer Mentor at KamiLimu
+
+> "Kristian brought strong technical energy and student-centered mentorship to CREPTIE, helping learners build confidence and curiosity in STEM."
+> — **Annette Mwende**, CEO & Founder of CREPTIE School
+
+> "Kristian demonstrates strong teamwork, curiosity, and cross-cultural collaboration, with a clear ability to bring diverse groups together around purpose."
+> — **Kelvin Gitau**, TME Education Ambassador (Kenya) & Mentor at FIRST Global Team Kenya
 
 ---
 
 ## Values
 
-- Ship it, then improve it. Perfection is procrastination.
-- Clarity over cleverness. If you cannot explain it simply, you do not understand it.
-- Access matters more than prestige. Build doors, not gatekeeps.
-- Consistency compounds. Show up, stay sharp, grow long-term.
-
----
+1. Ship it, then improve it. Perfection is procrastination.
+2. Clarity over cleverness. If you cannot explain it simply, you do not understand it.
+3. Access matters more than prestige. Build doors, not gatekeeps.
+4. Consistency compounds. Show up, stay sharp, grow long-term.
 
 ## Working Style
 
-- Outcome-obsessed. Plans exist to produce results, not to look organized.
-- Fluent at every altitude: boardroom strategy to terminal commands.
-- Feedback-hungry and mentor-driven. Ego does not ship products.
-- Pragmatic scope, relentless quality. Fast does not mean fragile.
+1. Outcome-obsessed. Plans exist to produce results, not to look organized.
+2. Fluent at every altitude: boardroom strategy to terminal commands.
+3. Feedback-hungry and mentor-driven. Ego does not ship products.
+4. Pragmatic scope, relentless quality. Fast does not mean fragile.
+
+---
+
+## Credential Highlights (At a Glance)
+
+- 17 shipped projects across full-stack, mobile, IoT, AI, and e-commerce.
+- Production engineering experience at The Artisans Company and Sidebrief.
+- Cofounder of Venturely, tracking 20,000+ startups globally.
+- Silver Medal at FIRST Global 2025: 1st Runners Up in Winning Alliances (180+ countries).
+- Featured on Citizen TV, KTN News, Nation Media, The Star, Standard Media, Kass Digital, Kenyans.co.ke.
+- 1,200+ students mentored across schools, prisons, and international competitions.
+- Traveled to 12 countries through engineering and mentorship.
+- Open source contributor (OpenBB).
+- Public speaker at iHub and industry events.
+- KamiLimu Cohort 8 alumnus (38 selected from thousands).
+- Patented AI system (PhotoMed).
+- BSc Mathematics and Computer Science, JKUAT.
+
+---
+
+## Current Focus (as of March 2025)
+
+1. **Venturely** — Launching market intelligence for 20,000+ startups globally. [venturely.kristianhans.com](https://venturely.kristianhans.com)
+2. **FIRST Global 2026** — Preparing Team Kenya for the FIRST Global Challenge in Incheon, South Korea. October 7–10, 2026. The goal is gold. [fgckenya.kristianhans.com](https://fgckenya.kristianhans.com)
+3. **Scrapifie** — Scaling enterprise scraping infrastructure into a production SaaS. [scrapifie.kristianhans.com](https://scrapifie.kristianhans.com)
+
+---
+
+## Hobbies & Personal Interests
+
+- Puzzle solving and logic games
+- Robotics prototyping and hardware tinkering
+- Community STEM volunteering and outreach
 
 ---
 
 ## Site Navigation
 
-- Home: https://kristianhans.com/
-- About: https://kristianhans.com/about
-- Work: https://kristianhans.com/work
-- Impact: https://kristianhans.com/impact
-- Press: https://kristianhans.com/press
-- Life: https://kristianhans.com/life
-- Now: https://kristianhans.com/now
-- Contact: https://kristianhans.com/contact
+| Page | URL | Description |
+|------|-----|-------------|
+| Home | https://kristianhans.com/ | Landing page with hero, projects, stats, bio |
+| About | https://kristianhans.com/about | Full biography, timeline, values, working style |
+| Work | https://kristianhans.com/work | 17 shipped projects with technical breakdowns |
+| Impact | https://kristianhans.com/impact | Mentorship, awards, volunteering, community work |
+| Press | https://kristianhans.com/press | Media features across 8 national outlets |
+| Life | https://kristianhans.com/life | Travel, reading, hobbies, personal context |
+| Now | https://kristianhans.com/now | Current projects and focus |
+| Contact | https://kristianhans.com/contact | Contact form, email, social links |
 
 ---
 
-## Contact
+## All Deployed Sites by Kristian Hans Onjala
 
-For engineering roles, mentorship, speaking, or strategic collaboration:
-- Email: hello@kristianhans.com
-- Website: https://kristianhans.com/contact
-- GitHub: https://github.com/KristianHans04
+Kristian maintains multiple live web properties, each with its own LLM-readable discovery file. For comprehensive information about any site, visit its llms.txt file.
+
+| Site | URL | LLMs File | Description |
+|------|-----|-----------|-------------|
+| Portfolio | [kristianhans.com](https://kristianhans.com) | [llms.txt](https://kristianhans.com/llms.txt) | Personal portfolio and professional profile |
+| Venturely | [venturely.kristianhans.com](https://venturely.kristianhans.com) | [llms.txt](https://venturely.kristianhans.com/llms.txt) | Market intelligence platform tracking 20,000+ startups globally |
+| Scrapifie | [scrapifie.kristianhans.com](https://scrapifie.kristianhans.com) | [llms.txt](https://scrapifie.kristianhans.com/llms.txt) | Enterprise web scraping platform with SDKs, anti-detection, and webhooks |
+| FGC Kenya | [fgckenya.kristianhans.com](https://fgckenya.kristianhans.com) | [llms.txt](https://fgckenya.kristianhans.com/llms.txt) | FIRST Global Team Kenya — national robotics competition team |
+| Logistics HQ | [logistics.kristianhans.com](https://logistics.kristianhans.com) | [llms.txt](https://logistics.kristianhans.com/llms.txt) | Department of Logistics — clearing, forwarding, and recovery operations |
+| OwnTheJoke | [ownthejoke.kristianhans.com](https://ownthejoke.kristianhans.com) | [llms.txt](https://ownthejoke.kristianhans.com/llms.txt) | E-commerce for apparel, accessories, and wall art with 3D mockups |
+| MWC Advocates | [mwc-advocates.kristianhans.com](https://mwc-advocates.kristianhans.com) | [llms.txt](https://mwc-advocates.kristianhans.com/llms.txt) | Masinde Wanyonyi & Company Advocates — Nairobi law firm |
+| Atote Labs | [atote-labs.pages.dev](https://atote-labs.pages.dev) | [llms.txt](https://atote-labs.pages.dev/llms.txt) | Startup studio building next-gen software products from Nairobi |
+
+---
+
+## Contact Kristian Hans Onjala
+
+For engineering roles, mentorship opportunities, speaking engagements, or strategic collaboration:
+- **Email:** hello@kristianhans.com
+- **Contact form:** https://kristianhans.com/contact
+- **GitHub:** https://github.com/KristianHans04
+- **Instagram:** https://www.instagram.com/_its.kristian/
+- **Website:** https://kristianhans.com
