@@ -69,6 +69,7 @@ All documentation is written for developers and maintainers who need to understa
 ### Deployment
 
 - [Cloudflare Pages Setup](deployment/cloudflare-pages.md)
+- [Cloudflare Git Integration (Full Guide)](deployment/cloudflare-git-deployment.md)
 - [Environment Variables](deployment/environment-variables.md)
 - [Custom Domain](deployment/custom-domain.md)
 
